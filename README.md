@@ -12,7 +12,7 @@
 ## What Scala level are you at?
 `"How do you learn Scala when you dont know what you know and what you don't know?" - Alan Turing`
 
-[Beginner to expert Scala](/articles/scala-level.md) 
+* [Short beginner to expert Scala article](/articles/scala-level.md) 
 
 ## Scala Online Courses
 `"Why do I have to go back to school to learn a language!?" - everybody`
