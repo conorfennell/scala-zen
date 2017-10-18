@@ -17,6 +17,7 @@
 ## Scala Online Courses
 `"Why do I have to go back to school to learn a language!?" - everybody`
 * [Scala](/courses/scala.md)
+* [Apache Spark](/courses/apache-spark.md)
 
 ## Companies using Scala in
 `"Get me a feckin job" - Steve Wozniak`
