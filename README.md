@@ -14,8 +14,12 @@
 
 [Beginner to expert Scala](/articles/scala-level.md) 
 
+## Scala Online Courses
+`"Why do I have to go back to school to learn a language!?" - everybody`
+* [Scala](/courses/scala.md)
 
 ## Companies using Scala in
+`"Get me a feckin job" - Steve Wozniak`
 
 * [Ireland](/companies/ireland.md)
 
