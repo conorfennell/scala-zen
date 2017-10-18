@@ -28,6 +28,6 @@
 `"Hot off the presses, read all about it" - Martin Oderskey`
  
  * [Scala Times news letter](http://scalatimes.com/)
-
+ * [Scala Twitter list](https://twitter.com/ConorFennell/lists/scala)
 
 Pull requests are very welcome
