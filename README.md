@@ -10,7 +10,7 @@
 
 
 ## What Scala level are you at?
-`"How do you learn Scala when you dont know what you know and what you don't know?" - Alan Turing`
+`"How do you learn Scala when you don't know what you know and what you don't know?" - Alan Turing`
 
 * [Short beginner to expert Scala article](/articles/scala-level.md) 
 
@@ -25,7 +25,7 @@
 * [Ireland](/companies/ireland.md)
 
 ## Keep up with the latest Scala
-`"Hot off the presses, read all about it" - Martin Oderskey`
+`"Hot off the press, read all about it" - Martin Oderskey`
  
  * [Scala Times news letter](http://scalatimes.com/)
  * [Scala Twitter list](https://twitter.com/ConorFennell/lists/scala)
