@@ -24,6 +24,10 @@
 
 * [Ireland](/companies/ireland.md)
 
+## Scala Books
+
+* [Scala](/books/scala.md)
+
 ## Keep up with the latest Scala
 `"Hot off the press, read all about it" - Martin Oderskey`
  
