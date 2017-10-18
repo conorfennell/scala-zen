@@ -24,4 +24,10 @@
 
 * [Ireland](/companies/ireland.md)
 
+## Keep up with the latest Scala
+`"Hot off the presses, read all about it" - Martin Oderskey`
+ 
+ * [Scala Times news letter](http://scalatimes.com/)
+
+
 Pull requests are very welcome
