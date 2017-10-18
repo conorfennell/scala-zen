@@ -1,5 +1,5 @@
 
-<h1>What is my purpose?</h1>
+# What is my purpose?
 
 ![Alt Text](http://i.imgur.com/EdK1bag.gif)
 * A guiding hand to learning Scala (It is a long but productive journey!)
@@ -9,8 +9,14 @@
 * Companies who are excited about and are actively using Scala with a link to their hiring page
 
 
-<h2>Companies by country using Scala</h2>
+## What Scala level are you at?
+`"How do you learn Scala when you dont know what you know and what you don't know?" - Alan Turing`
 
-* [Ireland](/companies/Ireland.md)
+[Beginner to expert Scala](/articles/scala-level.md) 
+
+
+## Companies using Scala in
+
+* [Ireland](/companies/ireland.md)
 
 Pull requests are very welcome
