@@ -27,6 +27,7 @@
 ## Scala Books
 
 * [Scala](/books/scala.md)
+* [Akka](/books/akka.md)
 
 ## Keep up with the latest Scala
 `"Hot off the press, read all about it" - Martin Oderskey`
