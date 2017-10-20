@@ -29,6 +29,10 @@
 * [Scala](/books/scala.md)
 * [Akka](/books/akka.md)
 
+## Scala interview questions
+
+* [Scala](/questions/scala.md)
+
 ## Keep up with the latest Scala
 `"Hot off the press, read all about it" - Martin Oderskey`
  
