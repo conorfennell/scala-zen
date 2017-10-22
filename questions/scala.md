@@ -29,9 +29,8 @@ case class Log(var level: String ="ERROR") extends Logger {
 
 val log = Log()
 
+// the argument passed to `log.warn` is never evaluated
 log.warn(s"${Thread.currentThread().getName}: yo there is an error on thread")
-
-// the argument past to `log.warn` is never evaluated
 
 ```
 
