@@ -2,6 +2,7 @@
 2. [Explain by name parameter?](#explain-by-name-parameter)
 3. [What is Unit?](#what-is-unit)
 4. [Differences between def val var lazy](#differences-between-def-val-var-lazy)
+5. [What are Nothing Nil None Empty Null null](#what-are-nothing-nil-none-empty-null-null)
 
 ## Explain by value parameter?
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
@@ -56,3 +57,12 @@ val w = {println("x"); 1}
 // evaluated only when invoked, once
 lazy val y = { println("y"); 2}
 ```
+
+## What are Nothing Nil None Empty Null null
+`Nothing` is a trait that is the bottom subtype of every subtype of `Any`  
+`Nil` is an empty list that is defined as a List[Nothing]  
+`None` is an empty Option that is deifned as a Option[Nothing]  
+`Null` is a trait and is the bottom type similiar to Nothing but only for `AnyRef` not `AnyVal`  
+`null` is an instance of the `Null` trait
+
+![Alt text](./class-hierarchy.png?raw=true "Scala class hierarchy")
