@@ -15,7 +15,6 @@
 * [Short beginner to expert Scala article](/articles/scala-level.md) 
 
 ## Online Courses 🖱️
-`"Why do I have to go back to school to learn a language!?" - everybody`
 * [Scala](/courses/scala.md)
 * [Apache Spark](/courses/apache-spark.md)
 
@@ -30,6 +29,7 @@
 * [Akka](/books/akka.md)
 
 ## Interview questions ❔
+`"Why do they keep asking me Java questions in this Scala interview"` - James Gosling
 
 * [Scala](/questions/scala.md)
 
