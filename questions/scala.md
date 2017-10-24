@@ -3,6 +3,7 @@
 3. [What is Unit?](#what-is-unit)
 4. [Differences between def val var lazy](#differences-between-def-val-var-lazy)
 5. [What are Nothing Nil None Empty Null null](#what-are-nothing-nil-none-empty-null-null)
+6. [What is the uniform access principal](#what-is-the-uniform-access-principal)
 
 ## Explain by value parameter?
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
@@ -66,3 +67,41 @@ lazy val y = { println("y"); 2}
 `null` is an instance of the `Null` trait
 
 ![Alt text](./class-hierarchy.png?raw=true "Scala class hierarchy")
+
+
+
+## What is the uniform access principal
+The uniform access principle states that variables, precomputed properties and parameterless functions should be accessed using the same syntax.
+Therefore not betraying whether they are implemented through storage or through computation.  
+Scala supports this principle by not allowing parentheses to be placed at call sites of parameterless functions
+A parameterless function definition can be changed to a val or vice versa, without affecting client code
+
+```
+  def nonUniformRandom() = new scala.util.Random().nextInt()
+  def uniformRandom = new scala.util.Random().nextInt()
+  val rand = 213
+
+  // non uniform access
+  nonUniformRandom()
+  rand 
+  
+  // uniform access
+  uniformRandom
+  rand
+
+
+  object a {
+      def nonUniformRandom() = new scala.util.Random().nextInt()
+      def uniformRandom = new scala.util.Random().nextInt()
+      val rand = 213
+  }
+
+  // non uniform access
+  a.nonUniformRandom()
+  a.rand 
+  
+  // uniform access
+  a.uniformRandom
+  a.rand
+
+```
