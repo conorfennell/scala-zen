@@ -4,6 +4,7 @@
 4. [Differences between def val var lazy](#differences-between-def-val-var-lazy)
 5. [What are Nothing Nil None Empty Null null](#what-are-nothing-nil-none-empty-null-null)
 6. [What is the uniform access principal](#what-is-the-uniform-access-principal)
+7. [What are free and bound variables](#what-are-free-and-bound-variables)
 
 ## Explain by value parameter?
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
@@ -103,5 +104,34 @@ A parameterless function definition can be changed to a val or vice versa, witho
   // uniform access
   a.uniformRandom
   a.rand
+
+```
+
+## What are free and bound variables
+Free and bound variables are talked about in the context of a function.  
+`bound variables` are arguments to a function that are explicity defined in their function definition.  
+`free variables` are variables that are referenced in the function body and are defined outside the function
+
+```
+// bound variable function, x is a bound variable
+def addOne(x: Int): Int = x + 1
+
+object Counter {
+  var counter: Int = 0
+  // free variable function, counter is a free variable
+  def increment: Int = {
+    counter = counter + 1
+    counter
+  }
+
+  // mix of bound varibale `x` and free variable `counter`
+  def resetCounterTo(x: Int): Int = {
+    counter = x
+    counter
+  }
+}
+
+println(Counter.increment)
+
 
 ```
