@@ -5,6 +5,7 @@
 5. [What are Nothing Nil None Empty Null null](#what-are-nothing-nil-none-empty-null-null)
 6. [What is the uniform access principal](#what-is-the-uniform-access-principal)
 7. [What are free and bound variables](#what-are-free-and-bound-variables)
+8. [What is a higher order function](#what-is-a-higher-order-function)
 
 ## Explain by value parameter?
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
@@ -132,6 +133,25 @@ object Counter {
 }
 
 println(Counter.increment)
+
+
+```
+
+## What is a higher order function
+A higher order function is either:
+1. A function which takes another function as an argument.
+2. A function which returns another function as a result.
+
+```
+// map, flatMap and filter are examples of functions which take other functions as arguments
+List(1, 2, 3).map(_ + 2)
+List(1, 2, 3).flatMap(number => number.to(10).toList)
+List(1, 2, 3).filter(number => (number % 2) == 0)
+
+// generateAdder is an example of a function returning another function
+def generateAdder(x: Int) = (y: Int) => y + x
+val addFive = generateAdder(5)
+addFive(4)
 
 
 ```
