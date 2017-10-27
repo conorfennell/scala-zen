@@ -8,3 +8,4 @@
 |Scala for the impatient 2nd Edition|2016||https://www.amazon.com/Scala-Impatient-2nd-Cay-Horstmann/dp/0134540565|
 |Learn Concurrent Programming in Scala  2nd Edition|2017||https://www.amazon.com/Learning-Concurrent-Programming-Scala-Second/dp/1786466899|
 |Scala High Performance Programming|2016||https://www.amazon.com/Scala-Performance-Programming-Vincent-Theron/dp/178646604X|
+|The Neophyte's Guide to Scala|2015||https://leanpub.com/theneophytesguidetoscala|
