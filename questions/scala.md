@@ -155,3 +155,4 @@ addFive(4)
 
 
 ```
+<iframe height="400px" frameborder="0" style="width: 100%" src="https://embed.scalafiddle.io/embed?sfid=Ss66a22/0"></iframe>

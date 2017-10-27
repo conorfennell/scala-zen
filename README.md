@@ -39,6 +39,7 @@
 
 * [Scastie: Scala in the browser](https://scastie.scala-lang.org/)
 * [Scaladex: Searchable index of Scala libraries](https://index.scala-lang.org/)
+* [Scala Fiddle: Also Scala in the browser](https://scalafiddle.io/)
 * [Scala.js: Scala compile to Javascript](https://www.scala-js.org/)
 * [Dotty: Next generation Scala Compiler](http://dotty.epfl.ch/)
 * [Scala Native: No JVM](http://www.scala-native.org/en/latest/)
