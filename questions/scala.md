@@ -6,6 +6,7 @@
 6. [What is the uniform access principal](#what-is-the-uniform-access-principal)
 7. [What are free and bound variables](#what-are-free-and-bound-variables)
 8. [What is a higher order function](#what-is-a-higher-order-function)
+9. [What is a first class function](#what-is-a-first-class-function)
 
 ## Explain by value parameter?
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
@@ -155,4 +156,18 @@ addFive(4)
 
 
 ```
-<iframe height="400px" frameborder="0" style="width: 100%" src="https://embed.scalafiddle.io/embed?sfid=Ss66a22/0"></iframe>
+
+## What is a first class function
+A first class function is when a language treats a function as a value and can be assigned to variables.
+
+```
+// a function assigned to a variable
+val squared = (x: Int) => x * x
+
+// then set to another variable
+val squareInt = squared
+
+println(squared(5))
+println(squareInt(5))
+
+```
