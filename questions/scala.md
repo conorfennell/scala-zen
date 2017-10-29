@@ -7,10 +7,11 @@
 7. [What are free and bound variables](#what-are-free-and-bound-variables)
 8. [What is a higher order function](#what-is-a-higher-order-function)
 9. [What is a first class function](#what-is-a-first-class-function)
+10. [What is a companion object](#what-is-a-companion-object)
 
 ## Explain by value parameter?
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
-```
+```scala
 // a and b are by value parameters
 def sum(a: Int, b: Int): Int = a + b
 
@@ -19,7 +20,7 @@ sum(3 + 4, 4)
 
 ## Explain by name parameter?
 A by-name parameter is not evaluated before the method is invoked. But each time the parameter is referenced inside the method  e.g. ```(msg: => String)```
-```
+```scala
 trait Logger {
   def info(msg: => String)
   def warn(msg: => String)
@@ -51,7 +52,7 @@ def logToConsole(msg: => String): Unit = println(msg)
 `var` defines a variable reference, it is mutable  
 `lazy` only initialised when required and as late as possible, default is strict and is not recomputed like `by-name` parameters
 
-```
+```scala
 // evaluated every time that gets invoked
 def z = { println("z"); 3}
 // evaluated immeditately once
@@ -79,7 +80,7 @@ Therefore not betraying whether they are implemented through storage or through 
 Scala supports this principle by not allowing parentheses to be placed at call sites of parameterless functions
 A parameterless function definition can be changed to a val or vice versa, without affecting client code
 
-```
+```scala
   def nonUniformRandom() = new scala.util.Random().nextInt()
   def uniformRandom = new scala.util.Random().nextInt()
   val rand = 213
@@ -114,7 +115,7 @@ Free and bound variables are talked about in the context of a function.
 `bound variables` are arguments to a function that are explicity defined in their function definition.  
 `free variables` are variables that are referenced in the function body and are defined outside the function
 
-```
+```scala
 // bound variable function, x is a bound variable
 def addOne(x: Int): Int = x + 1
 
@@ -143,7 +144,7 @@ A higher order function is either:
 1. A function which takes another function as an argument.
 2. A function which returns another function as a result.
 
-```
+```scala
 // map, flatMap and filter are examples of functions which take other functions as arguments
 List(1, 2, 3).map(_ + 2)
 List(1, 2, 3).flatMap(number => number.to(10).toList)
@@ -160,7 +161,7 @@ addFive(4)
 ## What is a first class function
 A first class function is when a language treats a function as a value and can be assigned to variables.
 
-```
+```scala
 // a function assigned to a variable
 val squared = (x: Int) => x * x
 
@@ -170,4 +171,25 @@ val squareInt = squared
 println(squared(5))
 println(squareInt(5))
 
+```
+
+## What is a companion object
+A companion object is a singleton object that shares the same name with a class defined in the same source file.  
+Companion objects and classes have access to each other’s private members.
+
+```scala
+
+class User(val name: String, val age: Int)
+
+object User {
+  // factory pattern in Scala, do not require nee for instantiation
+  def apply(name: String, age: Int): User = new User(name, age)
+  // unapply enables the extractor pattern
+  def unapply(user: User): Option[(String, Int)] = Option((user.name, user.age))
+}
+
+User("Conor", 32) match {
+  case User(name, _) => println(name)
+  case _ => println("default")
+}
 ```
