@@ -65,7 +65,7 @@ lazy val y = { println("y"); 2}
 ## What are Nothing Nil None Empty Null null
 `Nothing` is a trait that is the bottom subtype of every subtype of `Any`  
 `Nil` is an empty list that is defined as a List[Nothing]  
-`None` is an empty Option that is deifned as a Option[Nothing]  
+`None` is an empty Option that is defined as a Option[Nothing]  
 `Null` is a trait and is the bottom type similiar to Nothing but only for `AnyRef` not `AnyVal`  
 `null` is an instance of the `Null` trait
 
