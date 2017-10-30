@@ -8,6 +8,7 @@
 8. [What is a higher order function](#what-is-a-higher-order-function)
 9. [What is a first class function](#what-is-a-first-class-function)
 10. [What is a companion object](#what-is-a-companion-object)
+11. [Is there an if statement in scala](#is-there-an-if-statement-in-scala)
 
 ## Explain by value parameter?
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
@@ -191,5 +192,26 @@ object User {
 User("Conor", 32) match {
   case User(name, _) => println(name)
   case _ => println("default")
+}
+```
+
+## Is there an if statement in scala
+If statement like functionality is known as `conditional expressions` in Scala.  
+The key difference is that the if syntax returns a value, so therefore it is an expression rather than a statement.  
+In Java the if statement does not return a value.
+
+```Scala
+
+// conditional expression returns the Boolean value
+def isNegative(x: Int): Boolean = if (x < 0) true else false 
+
+
+// more traditional way outside Scala with statements
+def isPositive(x: Int): Boolean = {
+  var isPos = false
+  if (x > -1) {
+    isPos = true
+  }
+  return isPos  
 }
 ```
