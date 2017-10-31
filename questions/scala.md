@@ -9,6 +9,7 @@
 9. [What is a first class function](#what-is-a-first-class-function)
 10. [What is a companion object](#what-is-a-companion-object)
 11. [Is there an if statement in scala](#is-there-an-if-statement-in-scala)
+12. [What are the differences between case class and normal class](#what-are-the-differences-between-case-class-and-normal-class)
 
 ## Explain by value parameter?
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
@@ -214,4 +215,47 @@ def isPositive(x: Int): Boolean = {
   }
   return isPos  
 }
+```
+
+## What are the differences between case class and normal class
+1. By default case class member variables are `val`.
+2. Creates a companion object with `apply` and `unapply` methods.
+3. Automatically can use for extractor pattern.
+4. Eligible `toString` statement.
+5. Sane `equals` which compares the member variables and not the memory reference of the instance.
+6. Useful `copy` method.
+7. An implemented `hashCode`.
+
+```Scala
+
+case class CaseUser(name: String, age: Int)
+class NormalUser(val name: String, val age: Int)
+
+// Calls CaseUser.apply("Conor", 32) which is on the generated companion object
+val caseConor = CaseUser("Conor", 32)
+// Normal instantiation of a class
+val normalConor = new NormalUser("Conor", 32)
+
+// Extractor pattern
+caseConor match {
+  case CaseUser(name, _) => println(name)
+}
+
+// prints: CaseUser(Conor,32)
+println(caseConor)
+// prints: NormalUser@1b53e6fc
+println(normalConor)
+
+// compares the member variables for equality 
+println(CaseUser("Conor", 32) == CaseUser("Conor", 32)) // results true
+
+// compares the memory reference
+println(new NormalUser("Conor", 32) == new NormalUser("Conor", 32)) // results false
+
+
+// useful copy method when you want to preserve some fields and return an new instance
+def changeName(user: CaseUser, name: String): CaseUser = user.copy(name = name)
+
+println(changeName(caseConor, "James"))
+
 ```
