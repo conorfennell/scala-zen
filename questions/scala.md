@@ -10,6 +10,7 @@
 10. [What is a companion object](#what-is-a-companion-object)
 11. [Is there an if statement in scala](#is-there-an-if-statement-in-scala)
 12. [What are the differences between case class and normal class](#what-are-the-differences-between-case-class-and-normal-class)
+13. [What would be a trait for a monad in Scala](#what-would-be-a-trait-for-a-monad-in-scala)
 
 ## Explain by value parameter?
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
@@ -257,5 +258,21 @@ println(new NormalUser("Conor", 32) == new NormalUser("Conor", 32)) // results f
 def changeName(user: CaseUser, name: String): CaseUser = user.copy(name = name)
 
 println(changeName(caseConor, "James"))
+
+```
+
+## What would be a trait for a monad in Scala
+Simply a monad trait in Scala would have two methods
+1. `apply` which takes any `A` and wraps it in a monad
+2. `flatMap` take a higher order function which converts `A` into a monad of type `F[B]`
+
+From these base methods other methods like `map` and `fold` can be defined.
+
+```Scala
+
+trait Monad[F[_]] {
+  def apply[A](value: A): F[A]
+  def flatMap[A, B](value: F[A])(func: A => F[B]): F[B]
+}
 
 ```
