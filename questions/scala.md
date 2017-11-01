@@ -266,13 +266,22 @@ Simply a monad trait in Scala would have two methods
 1. `apply` which takes any `A` and wraps it in a monad
 2. `flatMap` take a higher order function which converts `A` into a monad of type `F[B]`
 
-From these base methods other methods like `map` and `fold` can be defined.
+The great thing is when `flatMap` and `apply` is defined, `map` can be easily derived from them.
 
 ```Scala
 
 trait Monad[F[_]] {
   def apply[A](value: A): F[A]
   def flatMap[A, B](value: F[A])(func: A => F[B]): F[B]
+}
+
+trait MonadWithMap[F[_]] {
+  def apply[A](value: A): F[A]
+
+  def flatMap[A, B](value: F[A])(func: A => F[B]): F[B]
+
+  def map[A, B](value: F[A])(func: A => B): F[B] = 
+    flatMap(value)(a => apply(func(a)))  
 }
 
 ```
