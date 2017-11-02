@@ -11,6 +11,7 @@
 11. [Is there an if statement in scala](#is-there-an-if-statement-in-scala)
 12. [What are the differences between case class and normal class](#what-are-the-differences-between-case-class-and-normal-class)
 13. [What would be a trait for a monad in Scala](#what-would-be-a-trait-for-a-monad-in-scala)
+14. [What operations is a for comprehension syntactic sugar for](#what-operations-is-a-for-comprehension-syntactic-sugar-for)
 
 ## Explain by value parameter?
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
@@ -283,5 +284,69 @@ trait MonadWithMap[F[_]] {
   def map[A, B](value: F[A])(func: A => B): F[B] = 
     flatMap(value)(a => apply(func(a)))  
 }
+
+```
+
+## What operations is a for comprehension syntactic sugar for
+
+Scala’s `for comprehensions` are syntactic sugar for composition of multiple operations with `foreach` ,`map` ,`flatMap` ,`filter` or `withFilter`.  
+Scala actually translates a for-expression into calls to those methods, so any class providing them, or a subset of them, can be used with for comprehensions.
+
+#### Ex 1: foreach
+```Scala
+
+val ages = List(21, 24, 43, 21, 33, 44)
+
+
+for (age <- ages) {
+    println(age)
+  }
+
+// is translated into
+ages.foreach(age => println(age))
+```
+
+#### Ex 2: foreach
+```Scala
+for (age1 <- ages; age2 <- ages) {
+    println(age1 + age2)
+  }
+
+// is translated into
+ages.foreach(age1 => ages.foreach(age2 => println(age1 + age2)))  
+```
+
+#### Ex 3: map
+```Scala
+for (
+  age <- ages
+) yield age + 1
+
+// is translated into
+ages.map(age => age + 1)
+```
+
+#### Ex 4: flatMap + map
+```Scala
+for (
+  age1 <- ages;
+  age2 <- ages
+  ) yield age1 + age2
+  
+// is translated into
+ages.flatMap(age1 => ages.map(age2 => age1 + age2))  
+```
+
+#### Ex 5: withFilter + map
+```Scala
+for (
+  age <- ages if age % 2 == 0
+  ) yield age + 1
+  
+// is translated into
+ages.withFilter(age => age % 2 == 0).map(age => age + 1)
+
+// with a fallback into filter if withFilter is not available
+ages.filter(age => age % 2 == 0).map(age => age + 1)
 
 ```
