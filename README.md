@@ -22,6 +22,7 @@ Scala Zen
 ### Interview questions
 
 - @ref[Scala](./questions/scala.md)
+- @ref[JVM](./questions/jvm.md)
 
 ### Keep up with the latest Scala
  

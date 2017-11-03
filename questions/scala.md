@@ -1,3 +1,5 @@
+## Scala Questions
+
 1. [Explain by value parameter?](#explain-by-value-parameter)
 2. [Explain by name parameter?](#explain-by-name-parameter)
 3. [What is Unit?](#what-is-unit)
