@@ -4,8 +4,6 @@ scala:
 
 script: 
   - sbt para paradox
-  - ls 
-  - pwd
 
 deploy:
   provider: pages
