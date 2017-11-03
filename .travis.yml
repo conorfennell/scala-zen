@@ -2,4 +2,15 @@ language: scala
 scala:
    - 2.12.4
 
-script: sbt para paradox
+script: 
+  - sbt para paradox
+  - ls 
+  - pwd
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: ./target/paradox/site/main/
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: master
