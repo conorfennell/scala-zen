@@ -31,10 +31,10 @@ Scala Zen
 
 ### Interesting Scala 🤔
 
-- [Scastie: Scala in the browser](https://scastie.scala-lang.org/)
-- [Scaladex: Searchable index of Scala libraries](https://index.scala-lang.org/)
-- [Scala Fiddle: Also Scala in the browser](https://scalafiddle.io/)
-- [Scala.js: Scala compile to Javascript](https://www.scala-js.org/)
-- [Dotty: Next generation Scala Compiler](http://dotty.epfl.ch/)
-- [Scala Native: No JVM](http://www.scala-native.org/en/latest/)
-- [Chisel3: Hardware construction language](https://chisel.eecs.berkeley.edu/)
+- [Scastie:](https://scastie.scala-lang.org/) Scala in the browser
+- [Scaladex:](https://index.scala-lang.org/) Searchable index of Scala libraries
+- [Scala Fiddle:](https://scalafiddle.io/) Also Scala in the browser
+- [Scala.js:](https://www.scala-js.org/) Scala compile to Javascript
+- [Dotty:](http://dotty.epfl.ch/) Next generation Scala Compiler
+- [Scala Native:](http://www.scala-native.org/en/latest/) No JVM
+- [Chisel3:](https://chisel.eecs.berkeley.edu/) Hardware construction language
