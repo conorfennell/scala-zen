@@ -14,6 +14,7 @@
 12. [What are the differences between case class and normal class](#what-are-the-differences-between-case-class-and-normal-class)
 13. [What would be a trait for a monad in Scala](#what-would-be-a-trait-for-a-monad-in-scala)
 14. [What operations is a for comprehension syntactic sugar for](#what-operations-is-a-for-comprehension-syntactic-sugar-for)
+15. [What is an algerbraic data type](#what-is-an-algerbraic-data-type)
 
 ## Explain by value parameter?
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
@@ -350,5 +351,49 @@ ages.withFilter(age => age % 2 == 0).map(age => age + 1)
 
 // with a fallback into filter if withFilter is not available
 ages.filter(age => age % 2 == 0).map(age => age + 1)
+
+```
+
+### What is an algerbraic data type
+ADT's approach structuring your data as products and sums.
+
+Say we are modelling renewable power plants.  
+
+A power plant can be solar or wind.  
+A power source can be solar panels or turbines. 
+
+A power plant has many solar panels and a support contractor.
+ 
+Sum types are `this` OR `that`  
+`Solar` OR `Wind`  
+`SolarPanel` OR `Turbine` 
+
+Product types are `this` AND `that`  
+`powerPanels` AND `supportContractor`
+
+Example algerbraic data types in the core scala library `Option`, `Either`, `Try` and `List` 
+
+```Scala
+
+sealed trait RenewablePlant {
+  val powerSources: Seq[PowerSource]
+  val supportContractor: String
+}
+sealed trait PowerSource
+
+case class SolarPanel() extends PowerSource
+case class Turbine() extends PowerSource
+
+case class Solar(powerSources: Seq[SolarPanel], supportContractor: String) extends RenewablePlant
+
+case class Wind(powerSources: Seq[Turbine], supportContractor: String) extends RenewablePlant
+
+def identify(plant: RenewablePlant): Unit = plant match {
+  case Solar(_, _) => println("SUN SUN SUN")
+  case Wind(_, _) => println("WIND WIND WIND")
+}
+
+identify(Solar(List(), "Jim"))
+identify(Wind(List(), "Mark"))
 
 ```
