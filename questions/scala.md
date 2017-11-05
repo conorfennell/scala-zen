@@ -402,7 +402,7 @@ identify(Wind(List(), "Mark"))
 ### What is function currying
 Currying transforms a function that takes multiple parameters into a chain of functions, each taking a subset of the parameters.  
 Its achieved by defining parameter lists `(x:Int, t: Int)(y:Int)(z:Int)`.  
-The strange term currying is named after the logician (Haskell Curry)[https://en.wikipedia.org/wiki/Haskell_Curry].
+The strange term currying is named after the logician [Haskell Curry](https://en.wikipedia.org/wiki/Haskell_Curry).
 
 ```Scala
 
