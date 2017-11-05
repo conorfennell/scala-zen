@@ -15,6 +15,7 @@
 13. [What would be a trait for a monad in Scala](#what-would-be-a-trait-for-a-monad-in-scala)
 14. [What operations is a for comprehension syntactic sugar for](#what-operations-is-a-for-comprehension-syntactic-sugar-for)
 15. [What is an algerbraic data type](#what-is-an-algerbraic-data-type)
+16. [What is function currying](#what-is-function-currying)
 
 ## Explain by value parameter?
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
@@ -395,5 +396,21 @@ def identify(plant: RenewablePlant): Unit = plant match {
 
 identify(Solar(List(), "Jim"))
 identify(Wind(List(), "Mark"))
+
+```
+
+### What is function currying
+Currying transforms a function that takes multiple parameters into a chain of functions, each taking a subset of the parameters.  
+Its achieved by defining parameter lists `(x:Int, t: Int)(y:Int)(z:Int)`.  
+The strange term currying is named after the logician (Haskell Curry)[https://en.wikipedia.org/wiki/Haskell_Curry].
+
+```Scala
+
+def sum(x:Int)(y: Int): Int = x + y
+
+val sumFive = sum(5)(_)
+
+println(sumFive(5))
+
 
 ```
