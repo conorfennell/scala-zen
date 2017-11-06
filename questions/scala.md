@@ -1,8 +1,8 @@
 ## Scala Questions
 
-1. [Explain by value parameter?](#explain-by-value-parameter)
-2. [Explain by name parameter?](#explain-by-name-parameter)
-3. [What is Unit?](#what-is-unit)
+1. [Explain by value parameter](#explain-by-value-parameter)
+2. [Explain by name parameter](#explain-by-name-parameter)
+3. [What is Unit](#what-is-unit)
 4. [Differences between def val var lazy](#differences-between-def-val-var-lazy)
 5. [What are Nothing Nil None Empty Null null](#what-are-nothing-nil-none-empty-null-null)
 6. [What is the uniform access principal](#what-is-the-uniform-access-principal)
@@ -16,9 +16,9 @@
 14. [What operations is a for comprehension syntactic sugar for](#what-operations-is-a-for-comprehension-syntactic-sugar-for)
 15. [What is an algerbraic data type](#what-is-an-algerbraic-data-type)
 16. [What is function currying](#what-is-function-currying)
-17. [What is tail recursion](#what-is-tail-recursion)
+17. [What is head and tail recursion](#what-is-head-and-tail-recursion)
 
-## Explain by value parameter?
+## Explain by value parameter
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
 ```scala
 // a and b are by value parameters
@@ -27,7 +27,7 @@ def sum(a: Int, b: Int): Int = a + b
 sum(3 + 4, 4)
 ```
 
-## Explain by name parameter?
+## Explain by name parameter
 A by-name parameter is not evaluated before the method is invoked. But each time the parameter is referenced inside the method  e.g. ```(msg: => String)```
 ```scala
 trait Logger {
@@ -49,13 +49,13 @@ log.warn(s"${Thread.currentThread().getName}: yo there is an error on thread")
 
 ```
 
-## What is Unit?
+## What is Unit
 `Unit` is a subtype of `AnyVal`. There is only one value of type `Unit`, `()`, and it is not represented by any object in the underlying runtime system. A method with return type `Unit` is analogous to a Java method which is declared `void`.
 ```
 def logToConsole(msg: => String): Unit = println(msg)
 ```
 
-## Differences between def val var lazy?
+## Differences between def val var lazy
 `def` defines a method  
 `val` defines a fixed value, it is immmutable and eagerly initialized  
 `var` defines a variable reference, it is mutable  
@@ -86,7 +86,7 @@ lazy val y = { println("y"); 2}
 ## What is the uniform access principal
 The uniform access principle states that variables, precomputed properties and parameterless functions should be accessed using the same syntax.
 Therefore not betraying whether they are implemented through storage or through computation.  
-Scala supports this principle by not allowing parentheses to be placed at call sites of parameterless functions
+Scala supports this principle by not allowing parentheses to be placed at call sites of parameterless functions.  
 A parameterless function definition can be changed to a val or vice versa, without affecting client code
 
 ```scala
@@ -356,7 +356,7 @@ ages.filter(age => age % 2 == 0).map(age => age + 1)
 
 ```
 
-### What is an algerbraic data type
+## What is an algerbraic data type
 ADT's approach structuring your data as products and sums.
 
 Say we are modelling renewable power plants.  
@@ -400,7 +400,7 @@ identify(Wind(List(), "Mark"))
 
 ```
 
-### What is function currying
+## What is function currying
 Currying transforms a function that takes multiple parameters into a chain of functions, each taking a subset of the parameters.  
 Its achieved by defining parameter lists `(x:Int, t: Int)(y:Int)(z:Int)`.  
 The strange term currying is named after the logician [Haskell Curry](https://en.wikipedia.org/wiki/Haskell_Curry).
@@ -416,7 +416,7 @@ println(sumFive(5))
 
 ```
 
-### What is head and tail recursion
+## What is head and tail recursion
 Recursion occurs when a function calls itself.  
 `Head` recursion is where the function calls itself before the last expression in the function body.  
 `Tail` recursion is a more specific recursion where the last expression in the function body calls itself.  
