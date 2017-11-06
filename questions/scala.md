@@ -16,6 +16,7 @@
 14. [What operations is a for comprehension syntactic sugar for](#what-operations-is-a-for-comprehension-syntactic-sugar-for)
 15. [What is an algerbraic data type](#what-is-an-algerbraic-data-type)
 16. [What is function currying](#what-is-function-currying)
+17. [What is tail recursion](#what-is-tail-recursion)
 
 ## Explain by value parameter?
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
@@ -412,5 +413,38 @@ val sumFive = sum(5)(_)
 
 println(sumFive(5))
 
+
+```
+
+### What is head and tail recursion
+Recursion occurs when a function calls itself.  
+`Head` recursion is where the function calls itself before the last expression in the function body.  
+`Tail` recursion is a more specific recursion where the last expression in the function body calls itself.  
+
+Tail recursion has the advantage that it is optimised by the scala compiler into a normal loop and therefore cannot cause stackoverflows.
+
+```Scala
+
+// head recursion as sumHead(n -1) is not the final expression
+def sumHead(n: Int): Int = {
+  val result = if (n <= 0) 
+    0
+  else
+    n + sumHead(n -1) 
+
+  result
+}
+
+// tail recursion as sumTail(n -1) is the final expression
+def sumTail(acc: Int, n: Int): Int =
+  if (n <= 1) 
+    acc 
+  else
+    sumTail(acc + n, n - 1) 
+
+
+sumHead(1000000) // throws stack overflow as it is not converted to a normal loop
+
+sumTail(0,1000000) // executes normally because it is optimised to a normal loop
 
 ```
