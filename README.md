@@ -6,6 +6,10 @@ Scala Zen
 
 - @ref[Short beginner to expert Scala article](./articles/scala-level.md) 
 
+### Functional jargon in Scala
+
+- @ref[Jargon](./articles/functional-jargon.md)
+
 ### Online Courses 🖱
 - @ref[Scala](./courses/scala.md)
 - @ref[Apache Spark](./courses/apache-spark.md)
