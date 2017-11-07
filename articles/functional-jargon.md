@@ -33,3 +33,22 @@ sumAll(1)
 sumAll(1, 2, 3, 4)
 
 ```
+
+###  Higher-Order Functions (HOF)
+A higher order function is and/or:
+1. A function which takes another function as an argument.
+2. A function which returns another function as a result.
+
+```scala
+// map, flatMap and filter are examples of functions which take other functions as arguments
+List(1, 2, 3).map(_ + 2)
+List(1, 2, 3).flatMap(number => number.to(10).toList)
+List(1, 2, 3).filter(number => (number % 2) == 0)
+
+// generateAdder is an example of a function returning another function
+def generateAdder(x: Int) = (y: Int) => y + x
+val addFive = generateAdder(5)
+addFive(4)
+
+
+```
