@@ -50,5 +50,19 @@ def generateAdder(x: Int) = (y: Int) => y + x
 val addFive = generateAdder(5)
 addFive(4)
 
+```
+
+### Currying
+Currying transforms a function that takes multiple parameters into a chain of functions, each taking a subset of the parameters.  
+Its achieved by defining parameter lists `(x:Int, t: Int)(y:Int)(z:Int)`.  
+The strange term currying is named after the logician [Haskell Curry](https://en.wikipedia.org/wiki/Haskell_Curry).
+
+```Scala
+
+def sum(x:Int)(y: Int): Int = x + y
+
+val sumFive = sum(5)(_)
+
+println(sumFive(5))
 
 ```
