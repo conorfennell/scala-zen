@@ -35,9 +35,7 @@ sumAll(1, 2, 3, 4)
 ```
 
 ###  Higher-Order Functions (HOF)
-A higher order function is and/or:
-1. A function which takes another function as an argument.
-2. A function which returns another function as a result.
+A higher order function is a function which takes another function as an argument and/or a function which returns another function as a result.
 
 ```scala
 // map, flatMap and filter are examples of functions which take other functions as arguments
