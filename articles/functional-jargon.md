@@ -64,3 +64,32 @@ val sumFive = sum(5)(_)
 println(sumFive(5))
 
 ```
+
+## Free and Bound variables
+Free and bound variables are variables referenced in a function body.  
+`bound variables` are arguments to a function that are explicity defined in their function definition.  
+`free variables` are variables that are referenced in the function body and are defined outside the function
+
+```scala
+// bound variable function, x is a bound variable
+def addOne(x: Int): Int = x + 1
+
+object Counter {
+  var counter: Int = 0
+  // free variable function, counter is a free variable
+  def increment: Int = {
+    counter = counter + 1
+    counter
+  }
+
+  // mix of bound varibale `x` and free variable `counter`
+  def resetCounterTo(x: Int): Int = {
+    counter = x
+    counter
+  }
+}
+
+println(Counter.increment)
+
+
+```
