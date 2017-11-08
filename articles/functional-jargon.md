@@ -65,7 +65,7 @@ println(sumFive(5))
 
 ```
 
-## Free and Bound variables
+### Free and Bound variables
 Free and bound variables are variables referenced in a function body.  
 `bound variables` are arguments to a function that are explicity defined in their function definition.  
 `free variables` are variables that are referenced in the function body and are defined outside the function
@@ -91,5 +91,20 @@ object Counter {
 
 println(Counter.increment)
 
+
+```
+
+
+### Partial Application
+A partially applied function is a function where some of the parameters are applied and it returns a function defined with just the unapplied parameters.  
+Underscore followed by its type `_ : Int` is used to desiginate the unapplied parameters.
+
+```Scala
+val enclose = (prefix:String, inner:String, postfix:String) => s"$prefix$inner$postfix"
+
+val div = enclose("<div>", _ : String, "</div>")
+val p = enclose("<p>", _ : String, "</p>")
+
+println(div(p("Hello World!")))
 
 ```
