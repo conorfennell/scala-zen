@@ -96,6 +96,7 @@ println(Counter.increment)
 
 ### Closure
 A function which has free variables bound are known as closures.
+Even if the scope of which the variable was defined has exited it will still exist if the closure function is within scope.
 
 ```Scala
 val increment = {
@@ -125,4 +126,30 @@ println(div(p("Hello World!")))
 
 ```
 
+
+### Functor
+Functors are types which define a map function. The map function adheres to two laws: `preserve identity` and `composablity`.
+```Scala
+trait Functor[A] {
+    def map[B](f: A => B): Functor[B]
+}
+```
+`Preserve Identity` When an idenity functor is passed to a map. The resulting functor will be equal to the original functor.
+```Scala
+// an identity function simply returns the argument passed in without changing it
+def identity(x: Int) = x
+List(1, 2, 3).map(identity)  == List(1, 2, 3)
+```
+`Composable` composing two functions and then mapping the resulting function over a functor should be the same as first mapping one function over the functor and then mapping the other one. `functor.map(x => f(g(x))) = functor.map(g).map(f)`
+```Scala
+def addOne(x: Int) = x + 1
+def multiplyByFive(x: Int) = x * 5
+
+val nums = List(1, 2, 3)
+
+nums.map(num => multiplyByFive(addOne(num))) == nums.map(addOne).map(multiplyByFive)
+
+```
+
+Examples of functors in the scala library are `List`, `Try` and `Option`.
 
