@@ -94,6 +94,22 @@ println(Counter.increment)
 
 ```
 
+### Closure
+A function which has free variables bound are known as closures.
+
+```Scala
+val increment = {
+    var counter = 0
+    () => {
+        counter = counter + 1
+        counter
+        }
+    
+}
+
+println(increment())
+
+```
 
 ### Partial Application
 A partially applied function is a function where some of the parameters are applied and it returns a function defined with just the unapplied parameters.  
@@ -108,3 +124,5 @@ val p = enclose("<p>", _ : String, "</p>")
 println(div(p("Hello World!")))
 
 ```
+
+
