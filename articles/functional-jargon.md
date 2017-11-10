@@ -153,3 +153,42 @@ nums.map(num => multiplyByFive(addOne(num))) == nums.map(addOne).map(multiplyByF
 
 Examples of functors in the scala library are `List`, `Try` and `Option`.
 
+
+### Referential Transparency
+Is the ability to replace an expression by its resulting value and not change the behaviour of a program.
+
+`Referentially transparent`
+```Scala
+def add(x:Int, y: Int): Int = x + y
+
+// this is referentially transparent
+val sum = add(3, 4)
+// and can be replaced with
+val sum = 7
+
+```
+
+`Not Referentially transparent`
+```Scala
+var counter = 0
+
+def addAndCount(x:Int, y: Int): Int = {
+  counter = counter + 1
+  x + y
+}
+
+// this is not referentially transparent
+val sum = addAndCount(3, 4)
+val counterSum = _sum + counter
+println(counterSum) // prints 8
+
+counter = 0 // reset
+
+// cannot be replaced with 
+val _sum = 7
+val _counterSum = 7 + 0
+println(_counterSum) // prints 7
+```
+
+
+
