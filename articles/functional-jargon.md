@@ -190,5 +190,17 @@ val _counterSum = 7 + 0
 println(_counterSum) // prints 7
 ```
 
+### Lambda
+Lambda is an anonymous function that can be passed around like a value.
+```Scala
+val sum = (x:Int, y:Int) => x + y
+sum(3, 4)
+```
+They are often passed into Higher Order Functions
+```Scala
+List(1, 2, 3)
+  .map((num: Int) => num * 10)
+```
+
 
 
