@@ -246,3 +246,17 @@ identify(Wind(List(), "Mark"))
 
 ```
 
+### Value
+
+A value is the result of an expression which can be assigned to a variable.
+
+Examples of a value
+```Scala
+
+// the lambda function here is a value
+val add = (x:Int, y:Int) => x + y
+
+// 3 is a value
+val x = 3
+
+```
