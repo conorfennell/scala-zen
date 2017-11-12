@@ -260,3 +260,43 @@ val add = (x:Int, y:Int) => x + y
 val x = 3
 
 ```
+
+### Side Effect
+A function is said to have a side effect if it read or wrote to external mutable state.
+
+```Scala
+// no side effect, pure function
+def add(x:Int, y:Int): Int = x + y
+
+// side effects by printing
+def addPrint(x:Int, y:Int): Int = {
+  println(x + y)
+  x + y
+}
+```
+
+### Pure
+A pure function is said to have no side effects and is not allowed to read from any mutual external state.
+
+```Scala
+// no side effect, pure function
+def add(x:Int, y:Int): Int = x + y
+```
+
+### Idempotent
+An idempotent function can cause idempotent side-effects.  
+When calling an idempotent function multiple times with the same parameters, it will produce the same result and any of its side-effects will produce the same results.
+
+The function below is idempotent, since the number stays removed from the set after subsequent calls i.e. additional calls do nothing. 
+```Scala
+var set = Set(1, 2)
+
+def removeFromSet(x:Int): Boolean = {
+  set = set.-(x)
+  set.contains(x)
+  } 
+removeFromSet(2)
+removeFromSet(2)
+removeFromSet(2)
+
+```
