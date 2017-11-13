@@ -300,3 +300,13 @@ removeFromSet(2)
 removeFromSet(2)
 
 ```
+
+### Constant
+A constant is a variable which can not be reassigned once assigned.  
+In Scala a variable is made constant using the `val` keyword.  
+
+Constants are [referentially transparent](#referential-transparency).
+```Scala
+val Five = 5
+val sum = (x:Int, y:Int): Int => x + y
+```
