@@ -310,3 +310,33 @@ Constants are [referentially transparent](#referential-transparency).
 val Five = 5
 val sum = (x:Int, y:Int): Int => x + y
 ```
+
+### Semigroup
+A type is a semigroup if there is a way to combine it with an instance of the same type resulting in that type while being associative.
+
+Formally, a semigroup for a type A is:
+- an operation combine with type (A, A) => A
+- adheres to the rules of associatively
+
+Examples of semigroups are
+- Concatenation of strings
+- Addition of integers
+- Orring of Booleans
+
+```Scala
+
+def stringConcatSemigroup(a: String, b: String): String = s"$a$b"
+
+def integerAddSemigroup(x: Int, y: Int): Int = x + y
+
+def booleanAndSemigroup(a: Boolean, b: Boolean): Boolean = a && b
+
+
+// assoicative laws held (x combine y) combine z = x combine (y combine z)
+stringConcatSemigroup("x", stringConcatSemigroup("y", "z")) == stringConcatSemigroup(stringConcatSemigroup("x", "y"), "z")
+
+integerAddSemigroup(1, integerAddSemigroup(2, 3)) == integerAddSemigroup(integerAddSemigroup(1, 2), 3)
+
+booleanAndSemigroup(true, booleanAndSemigroup(false, true)) == booleanAndSemigroup(booleanAndSemigroup(true, false), true)
+```
+
