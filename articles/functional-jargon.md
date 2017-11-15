@@ -313,7 +313,7 @@ val sum = (x:Int, y:Int): Int => x + y
 
 ### Semigroup
 Formally, a type can be called a semigroup if it has:  
-- an combine operation with type (A, A) => A  
+- a combine operation with type (A, A) => A  
 - adheres to the rules of associatively when combining  
 
 Examples of semigroups are  
@@ -338,3 +338,18 @@ integerAddSemigroup(1, integerAddSemigroup(2, 3)) == integerAddSemigroup(integer
 booleanAndSemigroup(true, booleanAndSemigroup(false, true)) == booleanAndSemigroup(booleanAndSemigroup(true, false), true)
 ```
 
+### Lift
+The term `lifting` comes from category theory.  
+It is the ability to convert a function of `A => B` to a lifted function `F[A] => F[B]` where it can be applied to a [functor](#functor) or monad `F[A]`    
+
+A concrete example using the monad container `Option`:  
+Assume we have a function that converts a string to an integer and the string is wrapped in an `Option` monad. Here we cannot pass in the `Option("4")` in to the function because of incompatiable types. So we have to lift the function to be compatiable.  
+```Scala
+def stringToInt(s: String): Int = s.toInt
+val four: Option[String] = Option("4")
+
+def lift[A, B](f: A => B): Option[A] => Option[B] = (a: Option[A]) => a.map(f)
+
+val optionStringToInt = lift(stringToInt)
+optionStringToInt(four)
+```
