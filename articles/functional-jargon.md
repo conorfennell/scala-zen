@@ -56,7 +56,6 @@ Its achieved by defining parameter lists `(x:Int, t: Int)(y:Int)(z:Int)`.
 The strange term currying is named after the logician [Haskell Curry](https://en.wikipedia.org/wiki/Haskell_Curry).
 
 ```Scala
-
 def sum(x:Int)(y: Int): Int = x + y
 
 val sumFive = sum(5)(_)
@@ -222,7 +221,6 @@ A power plant has many solar panels `AND` a support contractor.
 Example algerbraic data types in the core scala library `Option`, `Either`, `Try` and `List` 
 
 ```Scala
-
 sealed trait RenewablePlant {
   val powerSources: Seq[PowerSource]
   val supportContractor: String
@@ -252,7 +250,6 @@ A value is the result of an expression which can be assigned to a variable.
 
 Examples of a value
 ```Scala
-
 // the lambda function here is a value
 val add = (x:Int, y:Int) => x + y
 
@@ -321,7 +318,6 @@ Examples of semigroups are
 - Addition of integers `{1 + 2} + 3 == 1 + {2 + 3}`  
 - Oring of Booleans `{true || false} || false == true || {false || false}`  
 ```Scala
-
 // def combine[A](a: A, b: A): A
 def stringConcatSemigroup(a: String, b: String): String = s"$a$b"
 
@@ -352,4 +348,46 @@ def lift[A, B](f: A => B): Option[A] => Option[B] = (a: Option[A]) => a.map(f)
 
 val optionStringToInt = lift(stringToInt)
 optionStringToInt(four)
+```
+
+### Domain Codomain
+A function maps one set, called a `domain`, to another set, called the `codomain`.  
+A function associates every element in the domain with exactly one element in the codomain. In Scala, both domain and codomain are known as `types`.
+```Scala
+// domain and codomain are both Ints
+def increment(num: Int): Int = num + 1
+
+// domain and codomain are Strings
+def upperCase(s: String): String = s.toUpperCase
+
+// domain is type Int and the codomain is type string
+def intToString(num: Int): String = num.toString
+
+```
+
+### Morphism
+Is a mapping from `type` to `type`
+
+#### Endomorphism
+A mapping where the input type is the same as the output type.  
+```Scala
+def upperCase(s: String): String = s.toUpperCase
+
+def increment(num: Int): Int = num + 1 
+```
+
+#### Isomorphism
+A pair of transformations between 2 types of objects that is structural in nature and no data is lost.  
+For example, 2D coordinates could be stored as an array `[2,3]` or object `{x: 2, y: 3}`
+```Scala
+// Providing functions to convert in both directions makes them isomorphic.
+case class Coords(x: Int, y: Int)
+
+val pairToCoords = (pair: (Int, Int)) => Coords(pair._1, pair._2)
+
+val coordsToPair = (coods: Coords) => (coods.x, coods.y)
+
+coordsToPair(pairToCoords((1, 2)))
+
+pairToCoords(coordsToPair(Coords(1, 2)))
 ```
