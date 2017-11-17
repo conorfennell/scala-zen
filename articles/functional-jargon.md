@@ -391,3 +391,13 @@ coordsToPair(pairToCoords((1, 2)))
 
 pairToCoords(coordsToPair(Coords(1, 2)))
 ```
+
+### Predicate
+A predicate is a function which takes a value and returns a boolean `(a:A):Boolean`
+Commonly used for filtering.  
+`something which is affirmed or denied concerning an argument of a proposition.`
+```Scala
+def isEven(a: Int):Boolean = (a % 2) == 0
+
+Array(1, 3, 4, 5, 6).filter(isEven)
+```
