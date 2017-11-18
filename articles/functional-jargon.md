@@ -401,3 +401,14 @@ def isEven(a: Int):Boolean = (a % 2) == 0
 
 Array(1, 3, 4, 5, 6).filter(isEven)
 ```
+
+### Auto Currying
+Transforming a function that takes multiple arguments into one that if given less than its correct number of arguments returns a function that takes the rest. When the function gets the correct number of arguments it is then evaluated.
+```Scala
+val add = (x: Int, y: Int) => x + y
+
+val curriedAdd = add.curried
+curriedAdd(2) // (y) => 2 + y
+
+curriedAdd(1)(2)
+```
