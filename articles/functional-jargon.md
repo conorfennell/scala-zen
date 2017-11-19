@@ -412,3 +412,12 @@ curriedAdd(2) // (y) => 2 + y
 
 curriedAdd(1)(2)
 ```
+
+### Identity Function
+An identity function takes one argument and returns that argument without modification.  
+There is an identity function defined in Scala [Predef](https://www.scala-lang.org/api/current/scala/Predef$.html#identity[A](x:A):A)
+```Scala
+def identity[A](a: A): a
+
+List(List(1), List(2, 3), List(4, 5)).flatMap(identity) // List(1, 2, 3, 4, 5)
+```
