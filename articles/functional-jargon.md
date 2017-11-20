@@ -415,9 +415,39 @@ curriedAdd(1)(2)
 
 ### Identity Function
 An identity function takes one argument and returns that argument without modification.  
-There is an identity function defined in Scala [Predef](https://www.scala-lang.org/api/current/scala/Predef$.html#identity[A](x:A):A)
+There is an identity function defined in Scala [Predef](https://www.scala-lang.org/api/current/scala/Predef$.html)
 ```Scala
 def identity[A](a: A): a
 
 List(List(1), List(2, 3), List(4, 5)).flatMap(identity) // List(1, 2, 3, 4, 5)
+```
+
+### Monoid
+A monoid is a [Semigroup](#semigroup) with an empty element, in math it is known as an identity element.   
+
+Formally, a monoid has the properties of a semigroup:
+- a combine operation with type (A, A) => A 
+- adheres to the rules of associatively when combining  
+
+With the additional property:
+- an empty element of type A
+
+```Scala
+// def combine[A](a: A, b: A): A
+val emptyString: String = ""
+def stringConcatSemigroup(a: String, b: String = emptyString): String = s"$a$b"
+
+val emptyAddInteger = 0
+def integerAddSemigroup(x: Int, y: Int = emptyAddInteger): Int = x + y
+
+val emptyAndBoolean = true
+def booleanAndSemigroup(a: Boolean, b: Boolean = emptyAndBoolean): Boolean = a && b
+
+
+// assoicative laws held (x combine y) combine z = x combine (y combine z)
+stringConcatSemigroup("x", stringConcatSemigroup("y", "z")) == stringConcatSemigroup(stringConcatSemigroup("x", "y"), "z")
+
+integerAddSemigroup(1, integerAddSemigroup(2, 3)) == integerAddSemigroup(integerAddSemigroup(1, 2), 3)
+
+booleanAndSemigroup(true, booleanAndSemigroup(false, true)) == booleanAndSemigroup(booleanAndSemigroup(true, false), true)
 ```
