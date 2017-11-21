@@ -451,3 +451,35 @@ integerAddSemigroup(1, integerAddSemigroup(2, 3)) == integerAddSemigroup(integer
 
 booleanAndSemigroup(true, booleanAndSemigroup(false, true)) == booleanAndSemigroup(booleanAndSemigroup(true, false), true)
 ```
+
+### Setoid
+Is a type which can be compared with instances of the same type for equality.  
+
+Make array a setoid, therefore equivalent if sorted and has the same elements.
+```Scala
+trait Eq[A] {
+  def eqv(X: A, y: A): Boolean
+}
+
+object Eq {
+  def apply[A](implicit ev: Eq[A]) = ev
+
+  implicit def arrayInstances[B]: Eq[Array[B]] = new Eq[Array[B]] {
+    def eqv(xs: Array[B], ys: Array[B]): Boolean =
+      xs.zip(ys).foldLeft(true) {
+        case (isEq, (x, y)) => isEq && x == y
+      }
+  }
+
+  implicit class EqOps[A](x:A) {
+    def eqv(y: A)(implicit ev: Eq[A]) = ev.eqv(x, y)
+  }
+}
+
+import Eq._
+Array(1, 3) == Array(1, 3) // false
+
+Array(1, 3).eqv(Array(1, 3)) // true
+
+Array(1, 3).eqv(Array(0)) // false
+``` 
