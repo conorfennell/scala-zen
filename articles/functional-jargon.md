@@ -483,3 +483,44 @@ Array(1, 3).eqv(Array(1, 3)) // true
 
 Array(1, 3).eqv(Array(0)) // false
 ``` 
+
+### Monad
+Monads are types which define a flatMap and pure function. The flatMap function adheres to three laws: `left identity`, `right identity` and `associativity`.
+
+```Scala
+trait Monad[A] {
+  def pure(value: A): Monad[A]
+  def flatMap[B](f: A => Monad[B]): Monad[B]
+}
+```
+Examples of Monads in Scala are `Option` and `List`.  
+With Option and List the `apply` function is the equivalent of `pure`.  
+
+`Left Identity` Calling pure on type A followed by a flatmapping over f is the same as calling f on type A 
+```Scala
+val a = 1
+def f(x: Int): Option[Int] = Option.apply(x + 1)
+
+Option.apply(a).flatMap(f) == f(a)
+```
+
+`Right Identity` a monad flatmapping over pure results in the same monad
+```Scala
+val a = 1
+def f(x: Int): Option[Int] = Option.apply(x + 1)
+
+val monad = Option.apply(a)
+
+monad.flatMap(Option.apply) == monad
+```
+
+`Associativity` flat mapping over function f and g is the same as flat mapping over f and then g.
+```Scala
+val a = 1
+def f(x: Int): Option[Int] = Option.apply(x + 1)
+def g(x: Int): Option[Int] = Option.apply(x * 2)
+
+val monad = Option.apply(a)
+
+monad.flatMap(f).flatMap(g) == monad.flatMap(f(_).flatMap(g))
+```
