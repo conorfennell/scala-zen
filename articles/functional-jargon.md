@@ -425,12 +425,12 @@ List(List(1), List(2, 3), List(4, 5)).flatMap(identity) // List(1, 2, 3, 4, 5)
 ### Monoid
 A monoid is a [Semigroup](#semigroup) with an empty element, in math it is known as an identity element.   
 
-Formally, a monoid has the properties of a semigroup:
-- a combine operation with type (A, A) => A 
-- adheres to the rules of associatively when combining  
+Formally, a monoid has the properties of a semigroup:  
+- a combine operation with type (A, A) => A  
+- adheres to the rules of associatively when combining    
 
-With the additional property:
-- an empty element of type A
+With the additional property:  
+- an empty element of type A  
 
 ```Scala
 // def combine[A](a: A, b: A): A
@@ -523,4 +523,28 @@ def g(x: Int): Option[Int] = Option.apply(x * 2)
 val monad = Option.apply(a)
 
 monad.flatMap(f).flatMap(g) == monad.flatMap(f(_).flatMap(g))
+```
+
+### Immutable
+Immutablility is a variable reference or object whose state cannot be modified after it is created.  
+Scala is not strict on immutability and allows mutable variables and mutable objects too.
+
+- A reference can be declared immutable `val` or mutable `var` 
+- Scala provides `immutable collection` and `mutable collection`  
+
+||`collection.mutable`|`collection.immutable`|
+|-|------|---------|
+|`val`|use rarely|use by default|
+|`var`|do not use|use rarely|
+
+```Scala
+// Order of preference
+// 1 val --> immutable
+val valImmutable = scala.collection.immutable.Set(0)
+// 2 var --> immutable
+var varImmutable = scala.collection.immutable.Set(0)
+// 3 val --> mutable
+val valMutable = scala.collection.mutable.Set(0)
+// 4 var --> mutable
+var varMutable = scala.collection.mutable.Set(0)
 ```
