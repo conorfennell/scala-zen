@@ -525,17 +525,17 @@ val monad = Option.apply(a)
 monad.flatMap(f).flatMap(g) == monad.flatMap(f(_).flatMap(g))
 ```
 
-### Immutable
+### Immutability
 Immutablility is a variable reference or object whose state cannot be modified after it is created.  
 Scala is not strict on immutability and allows mutable variables and mutable objects too.
 
 - A reference can be declared immutable `val` or mutable `var` 
 - Scala provides `immutable collection` and `mutable collection`  
 
-||`collection.mutable`|`collection.immutable`|
+| |collection.mutable|collection.immutable|
 |-|------|---------|
-|`val`|use rarely|use by default|
-|`var`|do not use|use rarely|
+|val|<span style="color:orange">use rarely</span>|<span style="color:green"><b>use by default</b></span>|
+|var|<span style="color:red">do not use</span>|<span style="color:orange">use rarely</span>|
 
 ```Scala
 // Order of preference
