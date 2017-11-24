@@ -6,11 +6,12 @@ The factory method abstracts the creation of objects behind a method.
 ### Purpose
 - Hide complex class instantiations  
 - Work as a bounded cache for objects  
-- Chooses which class to instanstiate  
+- Chooses which class to instantiate  
 - Manages access to shared resources  
 
 ### Examples
-Companion objects are the most common place to have factory methods.  
+In Scala companion objects are the most common place to have factory methods.  
+When case classes are defined an `apply` factory method is automatically created on the companion object.   
 
 `Companion object apply method`
 ```Scala
