@@ -10,6 +10,10 @@ Scala Zen
 
 - @ref[Jargon](./articles/functional-jargon.md)
 
+### Design patterns in Scala
+
+- @ref[Design Patterns](./articles/design-patterns.md)
+
 ### Online Courses 🖱
 - @ref[Scala](./courses/scala.md)
 - @ref[Apache Spark](./courses/apache-spark.md)
