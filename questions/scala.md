@@ -17,6 +17,7 @@
 15. [What is an algerbraic data type](#what-is-an-algerbraic-data-type)
 16. [What is function currying](#what-is-function-currying)
 17. [What is head and tail recursion](#what-is-head-and-tail-recursion)
+18. [N what is type inference](#what-is-type-inference)
 
 ## Explain by value parameter
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
@@ -446,5 +447,28 @@ def sumTail(acc: Int, n: Int): Int =
 sumHead(1000000) // throws stack overflow as it is not converted to a normal loop
 
 sumTail(0,1000000) // executes normally because it is optimised to a normal loop
+
+```
+
+## What is type inference
+In scala the compiler can infer the type of an expression and therefore leave out the explictit declaring of types for variable declarations.
+
+```Scala
+// 3's type is automatically infered to be an Int
+val integer = 3
+// versus
+val _integer: Int = 3
+
+// "I am a string" type is automatically infered to be a string
+val string = "I am a string"
+// versus
+val _string: String = "I am a string"
+
+case class Person(age: Int, name: String)
+
+// Person(32, "conor") is automatically infered to be a Person
+val person = Person(32, "Conor")
+// versus
+val _person: Person = Person(32, "Conor")
 
 ```
