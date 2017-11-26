@@ -17,7 +17,8 @@
 15. [What is an algerbraic data type](#what-is-an-algerbraic-data-type)
 16. [What is function currying](#what-is-function-currying)
 17. [What is head and tail recursion](#what-is-head-and-tail-recursion)
-18. [N what is type inference](#what-is-type-inference)
+18. [What is type inference](#what-is-type-inference)
+19. [What is a vararg parameter](#what-is-a-vararg-parameter)
 
 ## Explain by value parameter
 A by-value parameter is evaluated before the method is invoked. e.g. ```(a: Int)```
@@ -471,4 +472,13 @@ val person = Person(32, "Conor")
 // versus
 val _person: Person = Person(32, "Conor")
 
+```
+
+## What is a vararg parameter
+It allows a function to have a variable amount of arguments of the same type.
+
+```Scala
+def concat(strings: String*): String = strings.foldLeft("")(_ + _)
+
+concat("hello", "world")
 ```
