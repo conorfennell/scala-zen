@@ -40,3 +40,17 @@ object Animal {
 Animal("cat")
 Animal("dog")
 ```
+
+
+## Singleton - Creational
+The singleton pattern restricts a class to have only one instance.
+
+The great thing in Scala, is that the singleton pattern is already inbuilt through `object`s. You do not have to provide your own implementaion.
+
+```Scala
+object Singleton {
+    def doSingletonStuff(): Unit = println("stuff")
+}
+
+Singleton.doSingletonStuff()
+```
