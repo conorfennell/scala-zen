@@ -1,15 +1,15 @@
 ## Design patterns in Scala
 
-## Factory Method - Creational
+### Factory Method - Creational
 The factory method abstracts the creation of objects behind a method.  
 
-### Purpose
+#### Purpose
 - Hide complex class instantiations  
 - Work as a bounded cache for objects  
 - Chooses which class to instantiate  
 - Manages access to shared resources  
 
-### Examples
+#### Examples
 In Scala companion objects are the most common place to have factory methods.  
 When case classes are defined an `apply` factory method is automatically created on the companion object.   
 
@@ -42,7 +42,7 @@ Animal("dog")
 ```
 
 
-## Singleton - Creational
+### Singleton - Creational
 The singleton pattern restricts a class to have only one instance.
 
 The great thing in Scala, is that the singleton pattern is already inbuilt through `object`s. You do not have to provide your own implementaion.
@@ -53,4 +53,31 @@ object Singleton {
 }
 
 Singleton.doSingletonStuff()
+```
+
+### Lazy Initialization - Creational
+The lazy initialization pattern only initilaizes a value or object on its first access.
+
+Scala has this inbuilt into the language using the `lazy` keyword.
+
+#### Purpose
+- Delay expensive computation   
+- Avoid expensive compitation  
+
+#### Examples
+`object`'s in Scala are lazy initialized.
+
+```Scala
+lazy val x =  {
+        println("Only printed on first access")
+        2
+    }
+
+val y =  {
+    println("Evaluated immediately") // prints to console here
+    2
+}
+
+x // prints to console here
+
 ```
