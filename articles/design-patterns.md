@@ -1,4 +1,7 @@
 ## Design patterns in Scala
+`Design Patterns are not language agnostic`  
+“One person’s pattern can be another person’s primitive building block.”[1,p.3]  
+“The choice of programming language is important because it influences one’s point of view ... that choice determines what can and cannot be implemented easily.”[1, p.4]  
 
 ### Factory Method - Creational
 The factory method abstracts the creation of objects behind a method.  
@@ -43,9 +46,9 @@ Animal("dog")
 
 
 ### Singleton - Creational
-The singleton pattern restricts a class to have only one instance.
+The singleton pattern restricts a class to have only one instance, and provide a global point of access to it.
 
-The great thing in Scala, is that the singleton pattern is already inbuilt through `object`s. You do not have to provide your own implementaion.
+In Scala an `object` defines a singleton object, there is only one instance of this object in any given program. Therefore it is inbuilt into the language.
 
 ```Scala
 object Singleton {
@@ -82,14 +85,40 @@ x // prints to console here
 
 ```
 
+### Builder - Creational
+The builder pattern is used for creating complex objects with a lot of attributes for its constructor.
+
+Scala has a language feature that removes a bit the need of the classical builder pattern by using named arguments.
+
+#### Purpose
+- Make construction of objects more readable
+
+#### Examples
+
+```Scala
+case class Computer(isOn: Boolean, hasRam: Boolean, hasCpu: Boolean, hasMotherBoard: Boolean, hasOperatingSystem: Boolean)
+Computer(true, true, true, true, true) // not readable
+
+// name arguments
+Computer(
+    isOn = true,
+    hasRam = true,
+    hasCpu = true,
+    hasMotherBoard = true,
+    hasOperatingSystem = true
+)
+```
+
+
 ### Adapter - Structural
 The adpater pattern enriches an existing interface into a more expected interface.
 
 Scala has this inbuilt using `implicit classes`.
 
 #### Purpose
-- Adpaters are useful for intefrating existing components
+- Adpaters are useful for integrating existing components
 
+#### Examples
 
 ```Scala
 trait Log {
@@ -118,3 +147,7 @@ val log: Log = new Logger()
 log.warning("messsage")
 log.error("message")
 ```
+
+#### Bibliography
+[1]Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides. Design Patterns:
+Elements of Resusable Object-Oriented Software. Addison-Wesley Professional, 1995
