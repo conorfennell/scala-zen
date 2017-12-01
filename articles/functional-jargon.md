@@ -548,3 +548,7 @@ val valMutable = scala.collection.mutable.Set(0)
 // 4 var --> mutable
 var varMutable = scala.collection.mutable.Set(0)
 ```
+
+### Equational Reasoning
+Equational reasoning is enabled by [Referential Transparency](#referential-transparency).
+When an application is composed of expressions which Scala can achieve and devoid of side effects, truths about the system can be derived from the parts.
