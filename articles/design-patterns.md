@@ -109,6 +109,33 @@ Computer(
 )
 ```
 
+### Prototype - Creational
+The prototype pattern clones a new instance of a class from an existing instance.
+
+With case classes in Scala this is automatically implemented through the copy method.
+
+#### Purpose
+- Avoid subclasses of an object creator in the client application
+- Avoid the inherent cost of creating a new object in the standard way aka the `new` keyword.
+
+#### Examples
+```Scala
+trait Prototype[A] {
+    def clone(): A
+}
+
+class Person(val name: String, val age: Int) 
+extends Prototype[Person] {
+    def clone():Person = new Person(this.name, this.age)
+}
+
+val person = new Person("Conor", 32)
+person.clone()
+
+case class Dog(val name: String, val age: Int) 
+val dog = Dog("Conor", 32)
+dog.copy()
+```
 
 ### Adapter - Structural
 The adpater pattern enriches an existing interface into a more expected interface.
