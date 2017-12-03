@@ -175,6 +175,24 @@ log.warning("messsage")
 log.error("message")
 ```
 
+### Value Object - Behavioral
+Value objects are immutable objects. They are equivalent based on the values contained rather then the reference's being equal.
+
+#### Purpose
+- Used as the building blocks for domain driven design
+- Being immutable makes them easier to reason about
+- Once value objects are equal they remain equal
+
+#### Examples
+In scala `case class`es, `tuples` and algerbraic are all value objects.
+
+```Scala
+case class Person(name: String, age: Int)
+Person("Conor", 32) == Person("Conor", 32) // case class
+("Conor", 32) == ("Conor", 32) // tuple
+```
+
+
 #### Bibliography
 [1]Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides. Design Patterns:
 Elements of Resusable Object-Oriented Software. Addison-Wesley Professional, 1995
