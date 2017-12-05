@@ -187,11 +187,6 @@ Value objects are immutable objects. They are equivalent based on the values con
 In scala `case class`es, `tuples` and algerbraic are all value objects.
 
 ```Scala
-trait Iterator[A] {
-    def hasNext: Boolean
-    def next: A
-} 
-
 case class Person(name: String, age: Int)
 Person("Conor", 32) == Person("Conor", 32) // case class
 ("Conor", 32) == ("Conor", 32) // tuple
@@ -209,6 +204,11 @@ Iterator gives a common way to retrieve elements from a collection without knowi
 The iterator pattern is part of the standard library in Scala and all the collections have the Iterator interface implemented.
 
 ```Scala
+trait Iterator[A] {
+    def hasNext: Boolean
+    def next: A
+} 
+
 val option = Some(4)
 val optionIterator = option.iterator
 println(optionIterator.hasNext)
