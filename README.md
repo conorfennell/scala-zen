@@ -14,6 +14,10 @@ Scala Zen
 
 - @ref[Design Patterns](./articles/design-patterns.md)
 
+### SBT examples
+
+- @ref[SBT examples](./articles/sbt.md)
+
 ### Online Courses 🖱
 - @ref[Scala](./courses/scala.md)
 - @ref[Apache Spark](./courses/apache-spark.md)
