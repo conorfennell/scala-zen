@@ -175,6 +175,55 @@ log.warning("messsage")
 log.error("message")
 ```
 
+### Facade - structural
+A facade is a simplified interface to a large body of code.
+
+#### Purpose
+- make code easier to use.  
+- make code more readable.  
+- reduce dependencies on the sub system.  
+- wrap a poorly designed collection of API's with one well thought out API.  
+- perform additional functionality before and after requesting the subsytem.  
+
+#### Examples
+
+```Scala
+// Complex parts
+class CPU {
+  def freeze() = println("FREEZE")
+  def jump(position: Long) = println(s"JUMP TO $position")
+  def execute() = println("EXECUTE")
+}
+
+class HardDrive {
+  def read(addresss: Long, size: Int): Array[Byte] = "datadatadatadata".map(_.toByte).toArray
+}
+
+class Memory {
+  def load(position: Long, data: Array[Byte]) = println(s"LOADING ${data.map(_.toChar).mkString("")}") 
+}
+
+// Facade
+class ComputerFacade(private val processor: CPU, private val ram: Memory, private val hardDrive: HardDrive) {
+  import ComputerFacade._
+  def powerUp() = {
+    processor.freeze()
+    ram.load(BOOT_ADDRESS, hardDrive.read(BOOT_ADDRESS, SECTOR_SIZE))
+    processor.jump(BOOT_ADDRESS)
+    processor.execute()
+  }
+  
+}
+
+object ComputerFacade {
+  val BOOT_ADDRESS = 100L
+  val SECTOR_SIZE = 100
+  def apply() = new ComputerFacade(new CPU(), new Memory(), new HardDrive())
+}
+
+ComputerFacade().powerUp()
+```
+
 ### Value Object - Behavioral
 Value objects are immutable objects. They are equivalent based on the values contained rather then the reference's being equal.
 
