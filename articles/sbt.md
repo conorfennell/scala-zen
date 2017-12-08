@@ -47,9 +47,43 @@ sbt.vesion=1.0.4
 
 #### SBT commands
 ```Bash
+
 sbt
 ```
 `sbt`  
 - checks for version of SBT in `./project/build.properties`.  
-- downlods the version specifed or uses the default one installed globally if no properties present.  
+- downloads the version specifed or uses the default one installed globally if no properties present.  
 - launches a sbt shell that you can now issue commands to such as `run` `compile` `package`.  
+
+### Set name and version of project
+
+#### Purpose
+Show how to set the packaged jar version and name of the jar.
+
+#### File layout
+```
+./build.sbt
+./HelloWorld.scala
+```
+
+#### Files
+`./build.sbt`
+```Scala
+name := "hello"
+version := "1.0.1"
+organization := "com.scala"
+```
+
+`./HelloWorld.scala`
+```Scala
+object HelloWorld extends App {
+    println("Hi Martin!")
+}
+```
+
+#### SBT commands
+```Bash
+sbt package
+```
+`sbt package`  
+- outputs a jar in target to `/target/scala-2.12/hello_2.12-1.0.1.jar`
