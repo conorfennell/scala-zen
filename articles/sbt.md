@@ -87,3 +87,36 @@ sbt package
 ```
 `sbt package`  
 - outputs a jar in target to `/target/scala-2.12/hello_2.12-1.0.1.jar`
+
+### Add dependency
+
+#### Purpose
+Show how to add a jar dependency
+
+#### File layout
+```
+./build.sbt
+./HelloWorld.scala
+```
+
+#### Files
+`./build.sbt`
+```Scala
+name := "hello"
+version := "1.0.1"
+organization := "com.scala"
+librayDependencies += "ch.qos.logback" % "logback-classic" % "0.9.28"
+```
+
+`./HelloWorld.scala`
+```Scala
+object HelloWorld extends App {
+    println("Hi Martin!")
+}
+```
+
+##### Notes
+- `libraryDependencies` is a `SettingsKey[Seq[ModuleId]]`, it comes prepopulated with `org.scala-lang:scala-library:2.12.4`.  
+- `+=` adds a library dependency to the `Seq[ModuleID]` and sets it in the `SettingsKey`.  
+- `"ch.qos.logback"` is automatically converted to a `GroupId` and has the function `%` which takes an artifact string `"logback-classic"` and returns a `GroupArtifact`.  
+- Finally to make it a `ModuleId` it needs a version and this is added with the `%` function of the `GroupArtifact`  
