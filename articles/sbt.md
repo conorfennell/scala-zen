@@ -120,3 +120,39 @@ object HelloWorld extends App {
 - `+=` adds a library dependency to the `Seq[ModuleID]` and sets it in the `SettingsKey`.  
 - `"ch.qos.logback"` is automatically converted to a `GroupId` and has the function `%` which takes an artifact string `"logback-classic"` and returns a `GroupArtifact`.  
 - Finally to make it a `ModuleId` it needs a version and this is added with the `%` function of the `GroupArtifact`  
+
+
+### Cross build for different versions of scala
+
+#### Purpose
+Show how to cross build for different versions of Scala.
+
+#### File layout
+```
+./build.sbt
+./HelloWorld.scala
+```
+
+#### Files
+`./build.sbt`
+```Scala
+name := "hello"
+version := "1.0.1"
+organization := "com.scala"
+crossScalaVersions := Seq("2.11.2", "2.12.2")
+```
+
+`./HelloWorld.scala`
+```Scala
+object HelloWorld extends App {
+    println("Hi Martin!")
+}
+```
+
+#### SBT commands
+```Bash
+sbt "+ package"
+```
+`sbt "+ package"`  
+- outputs a version `2.12` jar  `/target/scala-2.12/hello_2.12-1.0.1.jar`
+- outputs a version `2.11` jar `/target/scala-2.12/hello_2.11-1.0.1.jar`
