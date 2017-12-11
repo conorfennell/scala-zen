@@ -154,5 +154,30 @@ object HelloWorld extends App {
 sbt "+ package"
 ```
 `sbt "+ package"`  
-- outputs a version `2.12` jar  `/target/scala-2.12/hello_2.12-1.0.1.jar`
+- outputs a version `2.12` jar  `/target/scala-2.12/hello_2.12-1.0.1.jar`  
 - outputs a version `2.11` jar `/target/scala-2.12/hello_2.11-1.0.1.jar`
+
+### Prevent SBT including test dependencies
+Show how adding a configuration `% test` to the `ModuleId` prevents it from being included when building a fat jar. 
+
+#### File layout
+```
+./build.sbt
+./HelloWorld.scala
+```
+
+#### Files
+`./build.sbt`
+```Scala
+name := "hello"
+version := "1.0.1"
+organization := "com.scala"
+librayDependencies += "org.scalatest" %% "scalatest" % "3.0.4" % "test"
+```
+
+`./HelloWorld.scala`
+```Scala
+object HelloWorld extends App {
+    println("Hi Martin!")
+}
+```
