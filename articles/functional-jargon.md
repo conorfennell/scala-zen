@@ -532,10 +532,10 @@ Scala is not strict on immutability and allows mutable variables and mutable obj
 - A reference can be declared immutable `val` or mutable `var` 
 - Scala provides `immutable collection` and `mutable collection`  
 
-| |collection.mutable|collection.immutable|
+| |collection.immutable|collection.mutable|
 |-|------|---------|
-|val|<span style="color:orange">use rarely</span>|<span style="color:green"><b>use by default</b></span>|
-|var|<span style="color:red">do not use</span>|<span style="color:orange">use rarely</span>|
+|val|😃|😓 |
+|var|😐|💩|
 
 ```Scala
 // Order of preference
