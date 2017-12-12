@@ -181,3 +181,40 @@ object HelloWorld extends App {
     println("Hi Martin!")
 }
 ```
+
+### Show how to run command line tools
+
+#### Purpose
+Determines the current git commit SHA"
+
+#### File layout
+```
+./build.sbt
+./HelloWorld.scala
+```
+
+#### Files
+`./build.sbt`
+```Scala
+import scala.sys.process.Process
+
+val head = taskKey[String]("Determines the current git commit SHA")
+head := Process("git rev-parse head").lineStream.head
+```
+
+`./HelloWorld.scala`
+```Scala
+object HelloWorld extends App {
+    println("Hi Martin!")
+}
+```
+
+#### SBT commands
+```Bash
+sbt
+head
+```
+`sbt`  
+- loads up the `head` task defined in the build.sbt  
+`head`  
+- Runs the defined `head` task and assigns the first line result, this being the commit SHA  
