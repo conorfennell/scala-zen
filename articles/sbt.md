@@ -183,9 +183,11 @@ object HelloWorld extends App {
 ```
 
 ### Show how to run command line tools
+To define custom tasks, the `taskKey` function is used to generate a `TaskKey[T]`.  
+Then the actual code to be run can be set on the task using the `:=` function.  
 
 #### Purpose
-Determines the current git commit SHA"
+Determines the current git commit SHA
 
 #### File layout
 ```
@@ -218,3 +220,18 @@ head
 - loads up the `head` task defined in the build.sbt  
 `head`  
 - Runs the defined `head` task and assigns the first line result, this being the commit SHA  
+
+### Show details including version about sbt
+
+#### Purpose
+Shows the following:  
+- version of sbt  
+- what version of scala is built against  
+- shows available plugins  
+
+#### SBT commands
+```Bash
+sbt about
+```
+`sbt about`  
+- Outputs `[info] This is sbt 1.0.3`  
