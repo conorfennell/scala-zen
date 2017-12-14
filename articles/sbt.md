@@ -235,3 +235,43 @@ sbt about
 ```
 `sbt about`  
 - Outputs `[info] This is sbt 1.0.3`  
+
+### Set scalac optinos in sbt  
+
+#### Purpose
+Show how to set `scalac` options.  
+
+#### File layout
+```
+./build.sbt
+./HelloWorld.scala
+```
+
+#### Files
+`./build.sbt`
+```Scala
+scalacOptions := Seq("-deprecation")
+```
+
+`./HelloWorld.scala`
+```Scala
+object Main extends App {
+    @deprecated("remove this in method", "1.0.0")
+    def hello() = println("Hello Martin")
+    
+    hello()
+}
+```
+
+#### SBT commands
+```Bash
+sbt run
+```
+`sbt compile`  
+-  While compiling it will warn on the deprecated function
+```
+[warn] /Users/conor/mess/sbt-examlpes/HelloWorld.scala:4:5: method hello in object Main is deprecated (since 1.0.0): remove this in method
+[warn]     hello()
+[warn]     ^
+[warn] one warning found
+```
