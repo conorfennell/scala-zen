@@ -275,3 +275,42 @@ sbt run
 [warn]     ^
 [warn] one warning found
 ```
+
+### Use a plugin in sbt 
+
+#### Purpose
+How to add a plugin to the build 
+
+#### File layout
+```
+./build.sbt
+./HelloWorld.scala
+./project/plugins.sbt
+```
+
+#### Files
+`./build.sbt`
+```Scala
+scalacOptions := Seq("-deprecation")
+```
+
+`./HelloWorld.scala`
+```Scala
+object Main extends App {
+    @deprecated("remove this in method", "1.0.0")
+    def hello() = println("Hello Martin")
+    
+    hello()
+}
+```
+
+`./project/plugins.sbt`
+```
+addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0")
+```
+
+#### SBT commands
+```Bash
+sbt run
+```
+`sbt scalastyle`  
