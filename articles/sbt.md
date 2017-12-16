@@ -327,3 +327,41 @@ sbt scalastyle
 [info] scalastyle Finished in 0 ms
 ```
 
+### Show how to call tasks from other tasks
+
+#### Purpose
+Shows how a task can be ran by calling `.value` on it.
+
+#### File layout
+```
+./build.sbt
+```
+
+#### Files
+
+`./build.sbt`
+```Scala
+val copy = taskKey[Unit]("copy")
+val delete = taskKey[Unit]("delete")
+val combine = taskKey[Unit]("combine")
+copy := println("copy")
+delete := println("delete")
+combine := {
+    copy.value
+    delete.value
+    println("combine")
+}
+```
+
+#### SBT commands
+```Bash
+sbt 
+combine
+```
+`sbt combine`
+- Runs copy and delete tasks
+```
+delete
+copy
+combine
+```
