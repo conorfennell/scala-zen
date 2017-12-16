@@ -279,22 +279,28 @@ sbt run
 ### Use a plugin in sbt 
 
 #### Purpose
-How to add a plugin to the build 
+Adds the scalastyle plugin to the project.
 
 #### File layout
 ```
 ./build.sbt
-./HelloWorld.scala
 ./project/plugins.sbt
+./src/main/scala/HelloWorld.scala
 ```
 
 #### Files
-`./build.sbt`
-```Scala
-scalacOptions := Seq("-deprecation")
+`./project/plugins.sbt`
+```
+addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
 ```
 
-`./HelloWorld.scala`
+`./build.sbt`
+```Scala
+scalastyleFailOnError := true
+scalastyleFailOnWarning := true
+```
+
+`./src/main/scala/HelloWorld.scala`
 ```Scala
 object Main extends App {
     @deprecated("remove this in method", "1.0.0")
@@ -304,13 +310,20 @@ object Main extends App {
 }
 ```
 
-`./project/plugins.sbt`
-```
-addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0")
-```
-
 #### SBT commands
 ```Bash
-sbt run
+sbt scalastyleGenerateConfig
+sbt scalastyle
 ```
-`sbt scalastyle`  
+`sbt scalastyle`
+- Checks the code for style
+```
+[warn] ./sbt-examlpes/src/main/scala/HelloWorld.scala:1: Header does not match expected text
+[warn] ./sbt-examlpes/src/main/scala/HelloWorld.scala:2:4: Regular expression matched 'println'
+[info] scalastyle Processed 1 file(s)
+[info] scalastyle Found 0 errors
+[info] scalastyle Found 2 warnings
+[info] scalastyle Found 0 infos
+[info] scalastyle Finished in 0 ms
+```
+
