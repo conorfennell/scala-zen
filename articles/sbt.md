@@ -365,3 +365,48 @@ delete
 copy
 combine
 ```
+
+### Show to take input into a task
+
+#### Purpose
+Show how to parse input correctly
+
+### File layout
+```
+./build.sbt
+```
+
+### Files
+`./build.sbt`
+```Scala
+import sbt.complete._
+import complete.DefaultParsers._
+
+val myTask = inputKey[Unit]("This task takes a parameter!")
+
+val stageEnv: Parser[String] = " staging" 
+val intEnv : Parser[String] = " integration" 
+val prodEnv : Parser[String] = " production"
+val combinedParser: Parser[String] = stageEnv | intEnv | prodEnv
+
+myTask := {
+    val environment = combinedParser.parsed.trim
+    val s = streams.value
+    s.log.info(s"Parameter was $environment")
+}
+```
+
+#### SBT commands
+```Bash
+sbt myTask <something>
+```
+`sbt myTask staging`
+- prints out staging
+`sbt myTask blah`
+```
+[error] Expected end of input.
+[error] Expected 'staging'
+[error] Expected 'integration'
+[error] Expected 'production'
+[error] myTask blah
+```
