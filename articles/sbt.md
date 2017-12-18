@@ -366,6 +366,41 @@ copy
 combine
 ```
 
+### Show to log out to the sbt logger
+
+#### Purpose
+Rather than using println use the sbt logger to output to the console  
+
+### File layout
+```
+./build.sbt
+```
+
+### Files
+`./build.sbt`
+
+### Files
+```Scala
+val task = inputKey[Unit]("I am a task")
+
+task := {
+    val s = streams.value
+    s.log.info("logged info")
+    s.log.warn("logged warn")
+    s.log.error("logged error")
+}
+```
+#### SBT commands
+```Bash
+sbt print
+```
+`sbt print`
+```
+[info] logged info
+[warn] logged warn
+[error] logged error
+```
+
 ### Show to take input into a task
 
 #### Purpose
