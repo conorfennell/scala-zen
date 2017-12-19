@@ -445,3 +445,61 @@ sbt myTask <something>
 [error] Expected 'production'
 [error] myTask blah
 ```
+
+### Check the dependencies of a build.sbt
+
+
+#### Purpose
+A command to see all the dependenices that are being used
+
+#### File layout
+```
+./build.sbt
+```
+
+#### Files
+`./build.sbt`
+```Scala
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.4" % "test"
+```
+
+#### SBT commands
+```Bash
+sbt "inspect tree allDependencies"
+```
+`sbt "inspect tree allDependencies"`
+```
+[info] *:allDependencies = Task[scala.collection.Seq[sbt.librarymanagement.ModuleID]]
+[info]   +-*:libraryDependencies = List(org.scala-lang:scala-library:2.12.4, org.scalatest:scalatest:3.0.4:test)
+[info]   | +-*/*:autoScalaLibrary = true
+[info]   | +-*/*:managedScalaInstance = true
+[info]   | +-*/*:sbtPlugin = false
+[info]   | +-*/*:scalaHome = None
+[info]   | +-*/*:scalaOrganization = org.scala-lang
+[info]   | +-*/*:scalaVersion = 2.12.4
+[info]   | 
+[info]   +-*/*:managedScalaInstance = true
+[info]   +-*:pluginCrossBuild::sbtDependency = org.scala-sbt:sbt:1.0.4
+[info]   | +-*/*:appConfiguration = xsbt.boot.AppConfiguration@531ed68e
+[info]   | +-*/*:pluginCrossBuild::sbtVersion = 1.0.4
+[info]   | +-*/*:scalaBinaryVersion = 2.12
+[info]   | +-*/*:scalaVersion = 2.12.4
+[info]   | 
+[info]   +-*:projectDependencies = Task[scala.collection.Seq[sbt.librarymanagement.ModuleID]]
+[info]   | +-*/*:buildDependencies = sbt.internal.BuildDependencies@551976c2
+[info]   | +-*/*:settingsData = Task[sbt.internal.util.Settings[sbt.Scope]]
+[info]   | +-*:thisProjectRef = ProjectRef(file:/Users/conor/mess/sbt-examlpes/,sbt-examlpes)
+[info]   | 
+[info]   +-*/*:sbtDependency = org.scala-sbt:sbt:1.0.4
+[info]   +-*/*:sbtPlugin = false
+[info]   +-*/*:scalaHome = None
+[info]   +-*:scalaModuleInfo = Some(ScalaModuleInfo(2.12.4, 2.12, Vector(), true, false, true, org.scala-lang, Vector(scala-library, scala-compiler, scala-..
+[info]   | +-*/*:scalaArtifacts = Vector(scala-library, scala-compiler, scala-reflect, scala-actors, scalap)
+[info]   | +-*/*:scalaOrganization = org.scala-lang
+[info]   | +-*/*:scalaBinaryVersion = 2.12
+[info]   | +-*/*:scalaVersion = 2.12.4
+[info]   | 
+[info]   +-*/*:scalaOrganization = org.scala-lang
+[info]   +-*/*:scalaVersion = 2.12.4
+[info]   
+```
