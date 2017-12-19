@@ -371,15 +371,15 @@ combine
 #### Purpose
 Rather than using println use the sbt logger to output to the console  
 
-### File layout
+#### File layout
 ```
 ./build.sbt
 ```
 
-### Files
+#### Files
 `./build.sbt`
 
-### Files
+#### Files
 ```Scala
 val task = inputKey[Unit]("I am a task")
 
@@ -406,12 +406,12 @@ sbt print
 #### Purpose
 Show how to parse input correctly
 
-### File layout
+#### File layout
 ```
 ./build.sbt
 ```
 
-### Files
+#### Files
 `./build.sbt`
 ```Scala
 import sbt.complete._
