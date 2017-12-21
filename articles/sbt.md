@@ -560,3 +560,14 @@ sbt "tasks -v"
   updateSbtClassifiers            Resolves and optionally retrieves classifiers, such as javadocs and sources, for sbt, transitively.
   woo                             Woo
 ```
+
+### Show how to rerun commands when code changes
+By putting `~` before any command it puts sbt in a mode that reruns the last command
+
+#### SBT commands
+```Bash
+sbt ~compile
+```
+```
+1. Waiting for source changes... (press enter to interrupt)
+```
