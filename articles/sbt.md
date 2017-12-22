@@ -571,3 +571,17 @@ sbt ~compile
 ```
 1. Waiting for source changes... (press enter to interrupt)
 ```
+
+### Configure how to run tasks in a seperate JVM
+Setting the property `fork` to true will kick it off in a new JVM
+
+#### File layout
+```
+./build.sbt
+```
+
+#### Files
+`./build.sbt`
+```Scala
+fork := True
+```
