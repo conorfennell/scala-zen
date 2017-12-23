@@ -264,6 +264,34 @@ println(optionIterator.hasNext)
 println(optionIterator.next)
 ```
 
+### Memento - behavioral
+Memento provides a mechanism to revert to a previous state.
+
+#### Purpose
+- An objects state should be persisted before it is changed, so it can be restored to that state later.  
+- The `orginator` object is responisble for the creation of the `memento` object to preserve encapsulation.  
+- A `caretaker` can request a `memento` object from the `orginator` to persist state and also provide the `orginator` with a `memento` to revert to that state.  
+
+#### Examples
+Memento 
+
+```Scala
+case class MementoPerson(age: Int, name: String)
+case class OrginatorGame(memento: MementoPerson)
+
+
+object Caretaker {
+	def setMemento(memento: MementoPerson): OrginatorGame = OrginatorGame(memento)
+	def getMemento(orginator: OrginatorGame): MementoPerson = orginator.memento
+}
+
+
+val orginator = Caretaker.setMemento(MementoPerson(33, "Conor Fennell"))
+val memento = Caretaker.getMemento(orginator)
+println(memento)
+
+```
+
 #### Bibliography
 [1]Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides. Design Patterns:
 Elements of Resusable Object-Oriented Software. Addison-Wesley Professional, 1995
