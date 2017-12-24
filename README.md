@@ -43,6 +43,7 @@ Scala Zen
 
 ### Interesting Scala 🤔
 
+- [Scala Improvement Proposals](http://docs.scala-lang.org/sips/all.html) Incoming features  
 - [Scastie:](https://scastie.scala-lang.org/) Scala in the browser
 - [Scaladex:](https://index.scala-lang.org/) Searchable index of Scala libraries
 - [Scala Fiddle:](https://scalafiddle.io/) Also Scala in the browser
