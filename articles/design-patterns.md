@@ -292,6 +292,30 @@ println(memento)
 
 ```
 
+### Implicit Context
+
+#### Purpose
+Pass around contexts that are so common it becomes an implicit expectation.  
+
+* The implicit parameter usually is not generic type, and does not have any type parameters  
+* The same implicit is being passed to all sorts of different funcitons with different signatures  
+* The implicit value might be mutable. Example might be a Thread pool in an execution context.
+
+#### Examples
+`Run piece of work asynchronously`
+* Future's all implicitly need an Execution Context to run work asynchronously  
+```Scala
+// object Future {
+//     def apply[T](body: =>T)(implicit executor: ExecutionContext): Future[T]
+// }
+
+// brings an implicit ExecutionContext into scope
+import scala.concurrent.ExecutionContext.Implicits.global
+
+// executes 1 + 1 asynchronously
+Future(1 + 1)
+```  
+
 #### Bibliography
 [1]Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides. Design Patterns:
 Elements of Resusable Object-Oriented Software. Addison-Wesley Professional, 1995
