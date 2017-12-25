@@ -302,7 +302,7 @@ Pass around contexts that are so common it becomes an implicit expectation.
 * The implicit value might be mutable. Example might be a Thread pool in an execution context.
 
 #### Examples
-`Run piece of work asynchronously`
+`Run piece of work asynchronously`  
 * Future's all implicitly need an Execution Context to run work asynchronously  
 ```Scala
 // object Future {
@@ -312,8 +312,25 @@ Pass around contexts that are so common it becomes an implicit expectation.
 // brings an implicit ExecutionContext into scope
 import scala.concurrent.ExecutionContext.Implicits.global
 
-// executes 1 + 1 asynchronously
-Future(1 + 1)
+// both the Future constructor and map function need an ExecutionContext
+Future(1 + 1).map(_ + 4)
+```  
+
+`Running an akka stream`  
+* Akka streams need a implicit materializer to run streams   
+```Scala
+import akka.stream.scaladsl.Source
+import akka.stream.ActorMaterializer
+import akka.actor.ActorSystem
+import scala.concurrent.ExecutionContext.Implicits.global
+
+object Main extends App {
+    implicit val actorSystem = ActorSystem("hello")
+    implicit val materialize = ActorMaterializer()
+    Source(1 to 5)
+        .runForeach(_ => println("Hello Martin"))
+        .map(_ => actorSystem.terminate())
+}
 ```  
 
 #### Bibliography
