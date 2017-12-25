@@ -317,7 +317,7 @@ Future(1 + 1).map(_ + 4)
 ```  
 
 `Running an akka stream`  
-* Akka streams need a implicit materializer to run streams   
+* Akka streams need an implicit materializer to run streams   
 ```Scala
 import akka.stream.scaladsl.Source
 import akka.stream.ActorMaterializer
@@ -331,7 +331,29 @@ object Main extends App {
         .runForeach(_ => println("Hello Martin"))
         .map(_ => actorSystem.terminate())
 }
-```  
+``` 
+
+### Type Class Implicits
+Type classes originated in Haskell, a type of adapter that uses Scala's implicits to add some extra capabilities to an existing type without direct coupling.
+
+Mainly used where you are doing a conversion an resolves to an immutable value like Json or Monad.  
+
+```Scala
+trait Jsonable[T]{
+  def serialize(t: T): Json
+}
+object Jsonable{
+  implicit object StringJsonable extends Jsonable[String]{
+    def serialize(t: String) = Json.Str(t)
+  }
+  implicit object DoubleJsonable extends Jsonable[Double]{
+    def serialize(t: Double) = Json.Num(t)
+  }
+  implicit object IntJsonable extends Jsonable[Int]{
+    def serialize(t: Int) = Json.Num(t.toDouble)
+  }
+}
+```
 
 #### Bibliography
 [1]Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides. Design Patterns:
