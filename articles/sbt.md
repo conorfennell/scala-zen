@@ -583,5 +583,5 @@ Setting the property `fork` to true will kick it off in a new JVM
 #### Files
 `./build.sbt`
 ```Scala
-fork := True
+fork := true
 ```
