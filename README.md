@@ -51,3 +51,4 @@ Scala Zen
 - [Dotty:](http://dotty.epfl.ch/) Next generation Scala Compiler
 - [Scala Native:](http://www.scala-native.org/en/latest/) No JVM
 - [Chisel3:](https://chisel.eecs.berkeley.edu/) Hardware construction language
+- [Ammonite](http://ammonite.io/#Ammonite-REPL) Improved Scala shell  
