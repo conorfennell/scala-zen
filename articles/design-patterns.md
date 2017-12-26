@@ -336,7 +336,7 @@ object Main extends App {
 ### Type Class Implicits
 Type classes originated in Haskell, a type of adapter that uses Scala's implicits to add some extra capabilities to an existing type without direct coupling.
 
-Mainly used where you are doing a conversion an resolves to an immutable value like Json or Monad.  
+Mainly used where you are doing a conversion and resolves to an immutable value like Json or Monad.  
 
 ```Scala
 trait Jsonable[T]{

@@ -10,6 +10,10 @@ Scala Zen
 
 - @ref[Jargon](./articles/functional-jargon.md)
 
+### Type jargon in Scala
+
+- @ref[Jargon](./articles/type-jargon.md)
+
 ### Design patterns in Scala
 
 - @ref[Design Patterns](./articles/design-patterns.md)
