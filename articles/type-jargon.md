@@ -10,15 +10,20 @@ type Number = Int
 ```
 
 ### Invariance  
-Invariance in a type system means it is locked to one type and it cannot be assigned a super class or a sub class.  
+Invariance in a type system means the allowable type is held to the specified type and its subtypes.  
 
-`arrays` in Scala are invariant, in that they can be only one type. 
+Mutable collections are made invariant to preserve type safety. Array, ArrayBuffer and ListBuffer are all defined with invariant type parameters.
+```Scala
+class Array[T]
+class ArrayBuffer[A]
+class ListBuffer[A]
+```
+
+If they were not invariant they would break type safety and it would be possible to do something like the example below.  
 
 ```Scala
-sealed trait Animal
-case class Dog() extends Animal
-case class Cat() extends Animal
-
-Array(Dog(), Cat())
-
+val ints: Array[Int] = Array[Int](1,2,3)
+val anys: Array[Any] = ints
+anys(0) = 2.54
 ```
+
