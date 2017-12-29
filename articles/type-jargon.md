@@ -36,9 +36,29 @@ class Seq[+A]
 ```
 
 ```Scala
-sealed trait Animal
-case class Dog() extends Animal
-case class Cat() extends Animal
+sealed trait Animal {
+    def speak: Unit
+}
+class Dog() extends Animal {
+    def speak = println("Dog says woof")
+}
+class DogCat() extends Dog {
+ override def speak = println("DogCat says meow")
+}
 
-val animals: List[Animal] = List[Cat](Cat()) 
+val animals: List[Animal] = List[DogCat]( new DogCat())
+
+def speakInvariant(array: Array[Dog]) {
+  array.foreach(_.speak)
+}
+
+def speakCovariant(array: Seq[Dog]) {
+  array.foreach(_.speak)
+}
+
+speakInvariant(Array(new Dog()))
+speakCovariant(Seq[DogCat](new DogCat())) 
+
+// compile error with invariant Array
+speakInvariant(Array[DogCat](new DogCat())) 
 ```
