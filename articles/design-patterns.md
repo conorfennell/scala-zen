@@ -355,6 +355,49 @@ object Jsonable{
 }
 ```
 
+### Algerbraic Data Types
+ADT's approach structuring your data as `products` and `sums`.
+
+Sum types are `this` OR `that`  
+Product types are `this` AND `that` 
+
+As an example when modelling ADT's for renewable power plants.  
+
+A power plant can be solar `OR` wind.  
+A power source can be solar panels `OR` turbines. 
+
+A power plant has many solar panels `AND` a support contractor.
+ 
+`Solar` OR `Wind`  
+`SolarPanel` OR `Turbine`  
+`powerPanels` AND `supportContractor`
+
+Example algerbraic data types in the core scala library `Option`, `Either`, `Try` and `List` 
+
+```Scala
+sealed trait RenewablePlant {
+  val powerSources: Seq[PowerSource]
+  val supportContractor: String
+}
+sealed trait PowerSource
+
+case class SolarPanel() extends PowerSource
+case class Turbine() extends PowerSource
+
+case class Solar(powerSources: Seq[SolarPanel], supportContractor: String) extends RenewablePlant
+
+case class Wind(powerSources: Seq[Turbine], supportContractor: String) extends RenewablePlant
+
+def identify(plant: RenewablePlant): Unit = plant match {
+  case Solar(_, _) => println("SUN SUN SUN")
+  case Wind(_, _) => println("WIND WIND WIND")
+}
+
+identify(Solar(List(), "Jim"))
+identify(Wind(List(), "Mark"))
+
+```
+
 #### Bibliography
 [1]Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides. Design Patterns:
 Elements of Resusable Object-Oriented Software. Addison-Wesley Professional, 1995
