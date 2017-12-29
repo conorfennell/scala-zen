@@ -62,3 +62,12 @@ speakCovariant(Seq[DogCat](new DogCat()))
 // compile error with invariant Array
 speakInvariant(Array[DogCat](new DogCat())) 
 ```
+
+### Contravariance  
+Contravariance is essentially the opposite of covariance, and is rarely used. 
+It is used in Scala's Functional trait.
+
+```Scala
+trait Function1[-T, +R]
+
+```
