@@ -71,3 +71,30 @@ It is used in Scala's Functional trait.
 trait Function1[-T, +R]
 
 ```
+
+### Value Type 
+A value type is any subclass of AnyVal such as Int, Double, or Unit. This term has meaning at the level of Scala source code. At run-time, instances of value types that correspond to Java primitives types may be implemented in terms of primitive type values or instances of wrapper types, such as java.lang.Integer. Over the lifetime of value type instance, the runtime may transform it back and forth betweeen primitive and wrapper types (i.e. to box and unbox it)
+
+* must have exactly one val parameter  
+* can define methods, but no val or var fields, nested traits, classes or objects;
+cannot be extended.  
+
+A library of value types 
+https://github.com/fthomas/refined
+
+```Scala
+import scala.language.implicitConversions
+class PositiveInt(val value: Int) extends AnyVal
+
+object PositiveInt {
+   def apply(value: Int): PositiveInt = {
+     require(value >= 0, "It is a negative number")
+     new PositiveInt(value)
+   }
+   implicit def intToPositiveInt(value: Int): PositiveInt = apply(value)
+}
+
+import PositiveInt.intToPositiveInt
+
+val x: PositiveInt = -3
+```
