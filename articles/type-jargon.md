@@ -9,7 +9,7 @@ type Number = Int
 
 ```
 
-### Invariance  
+### Invariance - nonvariant
 Invariance in a type system means the allowable type is held to the specified type and its subtypes.  
 
 Mutable collections in Scala are made invariant `[A]` to preserve type safety. Array, ArrayBuffer and ListBuffer are all defined with invariant type parameters.
@@ -97,4 +97,16 @@ object PositiveInt {
 import PositiveInt.intToPositiveInt
 
 val x: PositiveInt = -3
+```
+
+### Type Parameter  
+A type parameter to a generic class or generic function that must be filled in by a type.
+
+```Scala
+// List[T] is a type parameter to a generic class
+val list: List[String] = List("action")
+
+// count[T] is a type parameter to a generic function
+def count[T](list: List[Option[T]]) = list.size 
+
 ```
