@@ -110,3 +110,16 @@ val list: List[String] = List("action")
 def count[T](list: List[Option[T]]) = list.size 
 
 ```
+
+### Type Signatures
+A method's type signature comprises its name; the number, order, and types of its parameters, if any; and its result type. The type signature of a class, trait, or singleton object comprises its name, the type signatures of all of its members and constructors, and its declared inheritance and mixin relations.
+
+In Scala the `[]` are used to declare a generic type.  
+
+```Scala
+def countSome[T](list: List[Option[T]]): Int = list.filter(maybe => maybe.map(_ => true).getOrElse(false)).size
+
+trait Random[T] {
+  def getRandom : T
+}
+```

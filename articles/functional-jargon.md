@@ -52,6 +52,7 @@ addFive(4)
 
 ### Currying
 Currying transforms a function that takes multiple parameters into a chain of functions, each taking a subset of the parameters.  
+Currying is essentianly a factory for functions.  
 Its achieved by defining parameter lists `(x:Int, t: Int)(y:Int)(z:Int)`.  
 The strange term currying is named after the logician [Haskell Curry](https://en.wikipedia.org/wiki/Haskell_Curry).
 
@@ -552,3 +553,12 @@ var varMutable = scala.collection.mutable.Set(0)
 ### Equational Reasoning
 Equational reasoning is enabled by [Referential Transparency](#referential-transparency).
 When an application is composed of expressions which Scala can achieve and devoid of side effects, truths about the system can be derived from the parts.
+
+### Type class
+Type classes originated in Haskell, they are a pattern that allows us to extends exisiting libraries without using inheritence or changing the underlying code.
+
+A type of adapter that uses Scala's implicits to add some extra capabilities to an existing type without direct coupling.
+
+```Scala
+
+```
