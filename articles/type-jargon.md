@@ -123,3 +123,28 @@ trait Random[T] {
   def getRandom : T
 }
 ```
+
+### Self Type
+Self-types are a way to declare that a trait must be mixed into another trait, even though it doesnt directly extend it.  
+
+#### Purpose
+It makes the members of the dependency available without imports.  
+
+
+```Scala
+trait User {
+  def username: String
+}
+
+trait Tweeter {
+  blah: User => // reassign this
+  def tweet(tweetText: String) = println(s"$username: $tweetText")
+}
+
+class VerifiedTweeter(val username_ : String) extends Tweeter with User {
+  def username = s"real $username_"
+}
+
+val martin = new VerifiedTweeter("MartinOdersky")
+martin.tweet("I can now announce Scala is feature complete")
+```
