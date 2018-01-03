@@ -148,3 +148,15 @@ class VerifiedTweeter(val username_ : String) extends Tweeter with User {
 val martin = new VerifiedTweeter("MartinOdersky")
 martin.tweet("I can now announce Scala is feature complete")
 ```
+
+### Target Typing  
+Target typing is where you do not have to provide a type to the parameters of a lambda function.  
+It is automatically infered from the scala compiler.  
+
+```Scala
+// here the x is automatically infered to be an Int from the the array
+Array(1, 2, 3, 4).map(x => x + 1)
+
+// here the s is automatically infered to be a String from the the List
+List("df", "ab", "b", "a").filter(s => s.length > 1)
+```
