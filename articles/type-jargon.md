@@ -160,3 +160,24 @@ Array(1, 2, 3, 4).map(x => x + 1)
 // here the s is automatically infered to be a String from the the List
 List("df", "ab", "b", "a").filter(s => s.length > 1)
 ```
+
+### Type Erasure  
+Type erasure is a procedure performed by Java and Scala compilers which removes all generic type information after compilation.  
+This means that we are not able to differetiate between, say, `List[Int]` and `List[String]` at runtime. Why does the compiler do this? Well, because Java Virtual Machine doesn't know anything about generics.  
+
+
+```Scala
+object Extractor {
+  def extract[T](list: List[Any]) = list.flatMap {
+    case element: T => Some(element)
+    case _ => None
+  }
+}
+
+val list = List(1, "string", List(), "string2")
+val result = Extractor.extract[String](list)
+println(result) // List(1, string1, List(), string2)
+
+//warning: abstract type pattern T is unchecked since it is eliminated by erasure
+//    case element: T => Some(element)
+```
