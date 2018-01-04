@@ -485,7 +485,9 @@ Array(1, 3).eqv(Array(1, 3)) // true
 Array(1, 3).eqv(Array(0)) // false
 ``` 
 
-### Monad
+### Monad  
+“Eugenio Moggi first described the general use of monads to structure programs in 1991. Several people built on his work … early versions of Haskell used a problematic ‘lazy list’ model for I/O, and Haskell 1.3 introduced monads as a more flexible way to combine I/O with lazy evaluation.”
+
 Monads are types which define a flatMap and pure function. The flatMap function adheres to three laws: `left identity`, `right identity` and `associativity`.
 
 ```Scala
