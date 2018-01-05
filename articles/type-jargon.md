@@ -181,3 +181,14 @@ println(result) // List(1, string1, List(), string2)
 //warning: abstract type pattern T is unchecked since it is eliminated by erasure
 //    case element: T => Some(element)
 ```
+
+### Sub Type
+A sub type can be formed throuugh a  form of polyporphyism know as inheritence.
+A type can be declared which inherits from another type. 
+
+
+```Scala
+class Animal(val age: Int, val name: String)
+
+class Dog(val legs: Int, age: Int, name: String) extends Animal(age, name)
+```Scala
