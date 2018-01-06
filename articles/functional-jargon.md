@@ -556,11 +556,16 @@ var varMutable = scala.collection.mutable.Set(0)
 Equational reasoning is enabled by [Referential Transparency](#referential-transparency).
 When an application is composed of expressions which Scala can achieve and devoid of side effects, truths about the system can be derived from the parts.
 
-### Type class
-Type classes originated in Haskell, they are a pattern that allows us to extends exisiting libraries without using inheritence or changing the underlying code.
+### Combinator
+From the Haskell wiki "a style of oranising libraries centered around the idea of combining things". Specifically in this case it is combining functions.
 
-A type of adapter that uses Scala's implicits to add some extra capabilities to an existing type without direct coupling.
+Scala has parser combinators which join parses.  
+
 
 ```Scala
+def addOne(i: Int): Int = i + 1
+def productTen(i: Int): Int = i + 10
 
+// combining functions
+List(1, 2, 3).map(addOne).map(productTen)
 ```
