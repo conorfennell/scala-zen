@@ -183,12 +183,23 @@ println(result) // List(1, string1, List(), string2)
 ```
 
 ### Sub Type
-A sub type can be formed throuugh a  form of polyporphyism know as inheritence.
+A sub type can be formed through a  form of polyporphyism know as inheritence.
 A type can be declared which inherits from another type. 
 
 
 ```Scala
 class Animal(val age: Int, val name: String)
 
+// Dog is a subtype
 class Dog(val legs: Int, age: Int, name: String) extends Animal(age, name)
+```
+
+### Super Type
+A super type is a term give to a type when a related type can use its function members and its variable members.
+
 ```Scala
+// Animal is a super type
+class Animal(val age: Int, val name: String)
+
+class Dog(val legs: Int, age: Int, name: String) extends Animal(age, name)
+```
