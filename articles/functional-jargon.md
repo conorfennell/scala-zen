@@ -569,3 +569,8 @@ def productTen(i: Int): Int = i + 10
 // combining functions
 List(1, 2, 3).map(addOne).map(productTen)
 ```
+
+### Category Theory 
+Samuel Eilenberg introduced the notion of category theory in 1942. At that point Saunders Mac Lane wrote the subject was called "general abstract nonsense".  
+
+In 1945 they both defined the axioms for categories, functors and natural transformation.  
