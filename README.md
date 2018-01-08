@@ -8,11 +8,11 @@ Scala Zen
 
 ### Functional jargon in Scala
 
-- @ref[Jargon](./articles/functional-jargon.md)
+- @ref[Functional Jargon](./articles/functional-jargon.md)
 
 ### Type jargon in Scala
 
-- @ref[Jargon](./articles/type-jargon.md)
+- @ref[Type Jargon](./articles/type-jargon.md)
 
 ### Design patterns in Scala
 
