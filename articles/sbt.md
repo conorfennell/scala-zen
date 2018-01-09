@@ -585,3 +585,64 @@ Setting the property `fork` to true will kick it off in a new JVM
 ```Scala
 fork := true
 ```
+
+### Use older version of SBT through global sbt config file  
+
+#### File layout  
+```
+/usr/local/etc/sbtopts
+```
+
+#### Files
+`/usr/local/etc/sbtopts`
+```Scala
+# Sets the SBT version to use.
+-sbt-version  0.13.12
+```
+
+Other options  
+```
+# Disable ANSI color codes
+#
+#-no-colors
+
+# Starts sbt even if the current directory contains no sbt project.
+#
+-sbt-create
+
+# Path to global settings/plugins directory (default: ~/.sbt)
+#
+#-sbt-dir  /etc/sbt
+
+# Path to shared boot directory (default: ~/.sbt/boot in 0.11 series)
+#
+#-sbt-boot ~/.sbt/boot  
+
+# Path to local Ivy repository (default: ~/.ivy2)
+#
+#-ivy ~/.ivy2
+
+# set memory options
+#
+#-mem   <integer>  
+
+# Use local caches for projects, no sharing.
+#
+#-no-share
+
+# Put SBT in offline mode.
+#
+#-offline
+
+# Sets the SBT version to use.
+#-sbt-version  0.11.3
+
+# Scala version (default: latest release)
+#
+#-scala-home <path>        
+#-scala-version <version>
+
+# java version (default: java from PATH, currently $(java -version |& grep version))
+#
+#-java-home <path>
+```
