@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+<title>SBT Examples</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content='Scala Zen'/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+<script type="text/javascript" src="../js/groups.js"></script>
+<link rel="stylesheet" type="text/css" href="../lib/normalize.css/normalize.css"/>
+<link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/page.css"/>
+
+<!--
+<link rel="shortcut icon" href="../images/favicon.ico" />
+-->
+</head>
+
+<body>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+<div class="off-canvas position-left" id="off-canvas-menu" data-off-canvas>
+<nav class="off-canvas-nav">
+<div class="nav-home">
+<a href="../articles/sbt.html" class="active">
+<span class="home-icon">⌂</span>SBT Examples
+</a>
+<div class="version-number">
+0.1*
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+
+<header class="site-header expanded row">
+<div class="small-12 column">
+<a href="#" class="off-canvas-toggle hide-for-medium" data-toggle="off-canvas-menu"><svg class="svg-icon svg-icon-menu" version="1.1" id="Menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <path class="svg-icon-menu-path" fill="#53CDEC" d="M16.4,9H3.6C3.048,9,3,9.447,3,10c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,9.447,16.952,9,16.4,9z M16.4,13
+H3.6C3.048,13,3,13.447,3,14c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,13.447,16.952,13,16.4,13z M3.6,7H16.4
+C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.048,7,3.6,7z"/></svg>
+</a>
+<div class="title"><a href="../articles/sbt.html" class="active">SBT Examples</a></div>
+
+<!--
+<a href="https://www.example.com" class="logo show-for-medium">logo</a>
+-->
+</div>
+</header>
+
+<div class="expanded row">
+
+<div class="medium-3 large-2 show-for-medium column">
+<nav class="site-nav">
+<div class="nav-home">
+<a href="../articles/sbt.html" class="active">
+<span class="home-icon">⌂</span>SBT Examples
+</a>
+<div class="version-number">
+0.1*
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="small-12 medium-9 large-10 column">
+<section class="site-content">
+
+<div class="page-header row">
+<div class="medium-12 show-for-medium column">
+</div>
+</div>
+
+<div class="page-content row">
+<div class="small-12 large-9 column" id="docs">
+<h2><a href="#sbt-examples" name="sbt-examples" class="anchor"><span class="anchor-link"></span></a>SBT Examples</h2>
+<p>These examples presume you have SBT installed from <a href="http://www.scala-sbt.org/">http://www.scala-sbt.org/</a></p>
+<h3><a href="#hello-world" name="hello-world" class="anchor"><span class="anchor-link"></span></a>Hello World</h3>
+<h4><a href="#purpose" name="purpose" class="anchor"><span class="anchor-link"></span></a>Purpose</h4>
+<p>Excute a scala source file with SBT.</p>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File Layout</h4>
+<pre><code>./HelloWorld.scala
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>HelloWorld.scala</code></p>
+<pre class="prettyprint"><code class="language-Scala">object HelloWorld extends App {
+    println(&quot;Hi Martin!&quot;)
+}
+</code></pre>
+<h4><a href="#sbt-commands" name="sbt-commands" class="anchor"><span class="anchor-link"></span></a>SBT commands</h4>
+<pre class="prettyprint"><code class="language-Bash">sbt run
+</code></pre>
+<p><code>sbt run</code><br/>- compiles any scala files in the directory.<br/>- packages the files into a jar.<br/>- executes the jar file with the presumption that one class has <code>def main(args: String)</code> function defined. </p>
+<h3><a href="#use-specific-version-of-sbt" name="use-specific-version-of-sbt" class="anchor"><span class="anchor-link"></span></a>Use specific version of SBT</h3>
+<h4><a href="#purpose" name="purpose" class="anchor"><span class="anchor-link"></span></a>Purpose</h4>
+<p>Show how to use a specific version of SBT in a project. </p>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File Layout</h4>
+<pre><code>./project
+./project/build.properties
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>./project/build.properties</code></p>
+<pre class="prettyprint"><code class="language-INI">sbt.vesion=1.0.4
+</code></pre>
+<h4><a href="#sbt-commands" name="sbt-commands" class="anchor"><span class="anchor-link"></span></a>SBT commands</h4>
+<pre class="prettyprint"><code class="language-Bash"><br/>sbt
+</code></pre>
+<p><code>sbt</code><br/>- checks for version of SBT in <code>./project/build.properties</code>.<br/>- downloads the version specifed or uses the default one installed globally if no properties present.<br/>- launches a sbt shell that you can now issue commands to such as <code>run</code> <code>compile</code> <code>package</code>. </p>
+<h3><a href="#set-name-and-version-of-project" name="set-name-and-version-of-project" class="anchor"><span class="anchor-link"></span></a>Set name and version of project</h3>
+<h4><a href="#purpose" name="purpose" class="anchor"><span class="anchor-link"></span></a>Purpose</h4>
+<p>Show how to set the packaged jar version and name of the jar.</p>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File layout</h4>
+<pre><code>./build.sbt
+./HelloWorld.scala
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>./build.sbt</code></p>
+<pre class="prettyprint"><code class="language-Scala">name := &quot;hello&quot;
+version := &quot;1.0.1&quot;
+organization := &quot;com.scala&quot;
+</code></pre>
+<p><code>./HelloWorld.scala</code></p>
+<pre class="prettyprint"><code class="language-Scala">object HelloWorld extends App {
+    println(&quot;Hi Martin!&quot;)
+}
+</code></pre>
+<h4><a href="#sbt-commands" name="sbt-commands" class="anchor"><span class="anchor-link"></span></a>SBT commands</h4>
+<pre class="prettyprint"><code class="language-Bash">sbt package
+</code></pre>
+<p><code>sbt package</code><br/>- outputs a jar in target to <code>/target/scala-2.12/hello_2.12-1.0.1.jar</code></p>
+<h3><a href="#add-dependency" name="add-dependency" class="anchor"><span class="anchor-link"></span></a>Add dependency</h3>
+<h4><a href="#purpose" name="purpose" class="anchor"><span class="anchor-link"></span></a>Purpose</h4>
+<p>Show how to add a jar dependency</p>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File layout</h4>
+<pre><code>./build.sbt
+./HelloWorld.scala
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>./build.sbt</code></p>
+<pre class="prettyprint"><code class="language-Scala">name := &quot;hello&quot;
+version := &quot;1.0.1&quot;
+organization := &quot;com.scala&quot;
+librayDependencies += &quot;ch.qos.logback&quot; % &quot;logback-classic&quot; % &quot;0.9.28&quot;
+</code></pre>
+<p><code>./HelloWorld.scala</code></p>
+<pre class="prettyprint"><code class="language-Scala">object HelloWorld extends App {
+    println(&quot;Hi Martin!&quot;)
+}
+</code></pre>
+<h5><a href="#notes" name="notes" class="anchor"><span class="anchor-link"></span></a>Notes</h5>
+<ul>
+  <li><code>libraryDependencies</code> is a <code>SettingsKey[Seq[ModuleId]]</code>, it comes prepopulated with <code>org.scala-lang:scala-library:2.12.4</code>.</li>
+  <li><code>+=</code> adds a library dependency to the <code>Seq[ModuleID]</code> and sets it in the <code>SettingsKey</code>.</li>
+  <li><code>&quot;ch.qos.logback&quot;</code> is automatically converted to a <code>GroupId</code> and has the function <code>%</code> which takes an artifact string <code>&quot;logback-classic&quot;</code> and returns a <code>GroupArtifact</code>.</li>
+  <li>Finally to make it a <code>ModuleId</code> it needs a version and this is added with the <code>%</code> function of the <code>GroupArtifact</code></li>
+</ul>
+<h3><a href="#cross-build-for-different-versions-of-scala" name="cross-build-for-different-versions-of-scala" class="anchor"><span class="anchor-link"></span></a>Cross build for different versions of scala</h3>
+<h4><a href="#purpose" name="purpose" class="anchor"><span class="anchor-link"></span></a>Purpose</h4>
+<p>Show how to cross build for different versions of Scala.</p>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File layout</h4>
+<pre><code>./build.sbt
+./HelloWorld.scala
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>./build.sbt</code></p>
+<pre class="prettyprint"><code class="language-Scala">name := &quot;hello&quot;
+version := &quot;1.0.1&quot;
+organization := &quot;com.scala&quot;
+crossScalaVersions := Seq(&quot;2.11.2&quot;, &quot;2.12.2&quot;)
+</code></pre>
+<p><code>./HelloWorld.scala</code></p>
+<pre class="prettyprint"><code class="language-Scala">object HelloWorld extends App {
+    println(&quot;Hi Martin!&quot;)
+}
+</code></pre>
+<h4><a href="#sbt-commands" name="sbt-commands" class="anchor"><span class="anchor-link"></span></a>SBT commands</h4>
+<pre class="prettyprint"><code class="language-Bash">sbt &quot;+ package&quot;
+</code></pre>
+<p><code>sbt &quot;+ package&quot;</code><br/>- outputs a version <code>2.12</code> jar <code>/target/scala-2.12/hello_2.12-1.0.1.jar</code><br/>- outputs a version <code>2.11</code> jar <code>/target/scala-2.12/hello_2.11-1.0.1.jar</code></p>
+<h3><a href="#prevent-sbt-including-test-dependencies" name="prevent-sbt-including-test-dependencies" class="anchor"><span class="anchor-link"></span></a>Prevent SBT including test dependencies</h3>
+<p>Show how adding a configuration <code>% test</code> to the <code>ModuleId</code> prevents it from being included when building a fat jar. </p>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File layout</h4>
+<pre><code>./build.sbt
+./HelloWorld.scala
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>./build.sbt</code></p>
+<pre class="prettyprint"><code class="language-Scala">name := &quot;hello&quot;
+version := &quot;1.0.1&quot;
+organization := &quot;com.scala&quot;
+librayDependencies += &quot;org.scalatest&quot; %% &quot;scalatest&quot; % &quot;3.0.4&quot; % &quot;test&quot;
+</code></pre>
+<p><code>./HelloWorld.scala</code></p>
+<pre class="prettyprint"><code class="language-Scala">object HelloWorld extends App {
+    println(&quot;Hi Martin!&quot;)
+}
+</code></pre>
+<h3><a href="#show-how-to-run-command-line-tools" name="show-how-to-run-command-line-tools" class="anchor"><span class="anchor-link"></span></a>Show how to run command line tools</h3>
+<p>To define custom tasks, the <code>taskKey</code> function is used to generate a <code>TaskKey[T]</code>.<br/>Then the actual code to be run can be set on the task using the <code>:=</code> function. </p>
+<h4><a href="#purpose" name="purpose" class="anchor"><span class="anchor-link"></span></a>Purpose</h4>
+<p>Determines the current git commit SHA</p>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File layout</h4>
+<pre><code>./build.sbt
+./HelloWorld.scala
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>./build.sbt</code></p>
+<pre class="prettyprint"><code class="language-Scala">import scala.sys.process.Process
+
+val head = taskKey[String](&quot;Determines the current git commit SHA&quot;)
+head := Process(&quot;git rev-parse head&quot;).lineStream.head
+</code></pre>
+<p><code>./HelloWorld.scala</code></p>
+<pre class="prettyprint"><code class="language-Scala">object HelloWorld extends App {
+    println(&quot;Hi Martin!&quot;)
+}
+</code></pre>
+<h4><a href="#sbt-commands" name="sbt-commands" class="anchor"><span class="anchor-link"></span></a>SBT commands</h4>
+<pre class="prettyprint"><code class="language-Bash">sbt
+head
+</code></pre>
+<p><code>sbt</code><br/>- loads up the <code>head</code> task defined in the build.sbt<br/><code>head</code><br/>- Runs the defined <code>head</code> task and assigns the first line result, this being the commit SHA </p>
+<h3><a href="#show-details-including-version-about-sbt" name="show-details-including-version-about-sbt" class="anchor"><span class="anchor-link"></span></a>Show details including version about sbt</h3>
+<h4><a href="#purpose" name="purpose" class="anchor"><span class="anchor-link"></span></a>Purpose</h4>
+<p>Shows the following:<br/>- version of sbt<br/>- what version of scala is built against<br/>- shows available plugins </p>
+<h4><a href="#sbt-commands" name="sbt-commands" class="anchor"><span class="anchor-link"></span></a>SBT commands</h4>
+<pre class="prettyprint"><code class="language-Bash">sbt about
+</code></pre>
+<p><code>sbt about</code><br/>- Outputs <code>[info] This is sbt 1.0.3</code> </p>
+<h3><a href="#set-scalac-options-in-sbt" name="set-scalac-options-in-sbt" class="anchor"><span class="anchor-link"></span></a>Set scalac options in sbt</h3>
+<h4><a href="#purpose" name="purpose" class="anchor"><span class="anchor-link"></span></a>Purpose</h4>
+<p>Show how to set <code>scalac</code> options. </p>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File layout</h4>
+<pre><code>./build.sbt
+./HelloWorld.scala
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>./build.sbt</code></p>
+<pre class="prettyprint"><code class="language-Scala">scalacOptions := Seq(&quot;-deprecation&quot;)
+</code></pre>
+<p><code>./HelloWorld.scala</code></p>
+<pre class="prettyprint"><code class="language-Scala">object Main extends App {
+    @deprecated(&quot;remove this in method&quot;, &quot;1.0.0&quot;)
+    def hello() = println(&quot;Hello Martin&quot;)
+    
+    hello()
+}
+</code></pre>
+<h4><a href="#sbt-commands" name="sbt-commands" class="anchor"><span class="anchor-link"></span></a>SBT commands</h4>
+<pre class="prettyprint"><code class="language-Bash">sbt run
+</code></pre>
+<p><code>sbt compile</code><br/>- While compiling it will warn on the deprecated function</p>
+<pre><code>[warn] /Users/conor/mess/sbt-examlpes/HelloWorld.scala:4:5: method hello in object Main is deprecated (since 1.0.0): remove this in method
+[warn]     hello()
+[warn]     ^
+[warn] one warning found
+</code></pre>
+<h3><a href="#use-a-plugin-in-sbt" name="use-a-plugin-in-sbt" class="anchor"><span class="anchor-link"></span></a>Use a plugin in sbt</h3>
+<h4><a href="#purpose" name="purpose" class="anchor"><span class="anchor-link"></span></a>Purpose</h4>
+<p>Adds the scalastyle plugin to the project.</p>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File layout</h4>
+<pre><code>./build.sbt
+./project/plugins.sbt
+./src/main/scala/HelloWorld.scala
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>./project/plugins.sbt</code></p>
+<pre><code>addSbtPlugin(&quot;org.scalastyle&quot; %% &quot;scalastyle-sbt-plugin&quot; % &quot;1.0.0&quot;)
+</code></pre>
+<p><code>./build.sbt</code></p>
+<pre class="prettyprint"><code class="language-Scala">scalastyleFailOnError := true
+scalastyleFailOnWarning := true
+</code></pre>
+<p><code>./src/main/scala/HelloWorld.scala</code></p>
+<pre class="prettyprint"><code class="language-Scala">object Main extends App {
+    @deprecated(&quot;remove this in method&quot;, &quot;1.0.0&quot;)
+    def hello() = println(&quot;Hello Martin&quot;)
+    
+    hello()
+}
+</code></pre>
+<h4><a href="#sbt-commands" name="sbt-commands" class="anchor"><span class="anchor-link"></span></a>SBT commands</h4>
+<pre class="prettyprint"><code class="language-Bash">sbt scalastyleGenerateConfig
+sbt scalastyle
+</code></pre>
+<p><code>sbt scalastyle</code> - Checks the code for style</p>
+<pre><code>[warn] ./sbt-examlpes/src/main/scala/HelloWorld.scala:1: Header does not match expected text
+[warn] ./sbt-examlpes/src/main/scala/HelloWorld.scala:2:4: Regular expression matched &#39;println&#39;
+[info] scalastyle Processed 1 file(s)
+[info] scalastyle Found 0 errors
+[info] scalastyle Found 2 warnings
+[info] scalastyle Found 0 infos
+[info] scalastyle Finished in 0 ms
+</code></pre>
+<h3><a href="#show-how-to-call-tasks-from-other-tasks" name="show-how-to-call-tasks-from-other-tasks" class="anchor"><span class="anchor-link"></span></a>Show how to call tasks from other tasks</h3>
+<h4><a href="#purpose" name="purpose" class="anchor"><span class="anchor-link"></span></a>Purpose</h4>
+<p>Shows how a task can be ran by calling <code>.value</code> on it.</p>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File layout</h4>
+<pre><code>./build.sbt
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>./build.sbt</code></p>
+<pre class="prettyprint"><code class="language-Scala">val copy = taskKey[Unit](&quot;copy&quot;)
+val delete = taskKey[Unit](&quot;delete&quot;)
+val combine = taskKey[Unit](&quot;combine&quot;)
+copy := println(&quot;copy&quot;)
+delete := println(&quot;delete&quot;)
+combine := {
+    copy.value
+    delete.value
+    println(&quot;combine&quot;)
+}
+</code></pre>
+<h4><a href="#sbt-commands" name="sbt-commands" class="anchor"><span class="anchor-link"></span></a>SBT commands</h4>
+<pre class="prettyprint"><code class="language-Bash">sbt 
+combine
+</code></pre>
+<p><code>sbt combine</code> - Runs copy and delete tasks</p>
+<pre><code>delete
+copy
+combine
+</code></pre>
+<h3><a href="#show-to-log-out-to-the-sbt-logger" name="show-to-log-out-to-the-sbt-logger" class="anchor"><span class="anchor-link"></span></a>Show to log out to the sbt logger</h3>
+<h4><a href="#purpose" name="purpose" class="anchor"><span class="anchor-link"></span></a>Purpose</h4>
+<p>Rather than using println use the sbt logger to output to the console </p>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File layout</h4>
+<pre><code>./build.sbt
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>./build.sbt</code></p>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<pre class="prettyprint"><code class="language-Scala">val task = inputKey[Unit](&quot;I am a task&quot;)
+
+task := {
+    val s = streams.value
+    s.log.info(&quot;logged info&quot;)
+    s.log.warn(&quot;logged warn&quot;)
+    s.log.error(&quot;logged error&quot;)
+}
+</code></pre>
+<h4><a href="#sbt-commands" name="sbt-commands" class="anchor"><span class="anchor-link"></span></a>SBT commands</h4>
+<pre class="prettyprint"><code class="language-Bash">sbt print
+</code></pre>
+<p><code>sbt print</code></p>
+<pre><code>[info] logged info
+[warn] logged warn
+[error] logged error
+</code></pre>
+<h3><a href="#show-to-take-input-into-a-task" name="show-to-take-input-into-a-task" class="anchor"><span class="anchor-link"></span></a>Show to take input into a task</h3>
+<h4><a href="#purpose" name="purpose" class="anchor"><span class="anchor-link"></span></a>Purpose</h4>
+<p>Show how to parse input correctly</p>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File layout</h4>
+<pre><code>./build.sbt
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>./build.sbt</code></p>
+<pre class="prettyprint"><code class="language-Scala">import sbt.complete._
+import complete.DefaultParsers._
+
+val myTask = inputKey[Unit](&quot;This task takes a parameter!&quot;)
+
+val stageEnv: Parser[String] = &quot; staging&quot; 
+val intEnv : Parser[String] = &quot; integration&quot; 
+val prodEnv : Parser[String] = &quot; production&quot;
+val combinedParser: Parser[String] = stageEnv | intEnv | prodEnv
+
+myTask := {
+    val environment = combinedParser.parsed.trim
+    val s = streams.value
+    s.log.info(s&quot;Parameter was $environment&quot;)
+}
+</code></pre>
+<h4><a href="#sbt-commands" name="sbt-commands" class="anchor"><span class="anchor-link"></span></a>SBT commands</h4>
+<pre class="prettyprint"><code class="language-Bash">sbt myTask &lt;something&gt;
+</code></pre>
+<p><code>sbt myTask staging</code> - prints out staging <code>sbt myTask blah</code></p>
+<pre><code>[error] Expected end of input.
+[error] Expected &#39;staging&#39;
+[error] Expected &#39;integration&#39;
+[error] Expected &#39;production&#39;
+[error] myTask blah
+</code></pre>
+<h3><a href="#check-the-dependencies-of-a-build-sbt" name="check-the-dependencies-of-a-build-sbt" class="anchor"><span class="anchor-link"></span></a>Check the dependencies of a build.sbt</h3>
+<h4><a href="#purpose" name="purpose" class="anchor"><span class="anchor-link"></span></a>Purpose</h4>
+<p>A command to see all the dependenices that are being used</p>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File layout</h4>
+<pre><code>./build.sbt
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>./build.sbt</code></p>
+<pre class="prettyprint"><code class="language-Scala">libraryDependencies += &quot;org.scalatest&quot; %% &quot;scalatest&quot; % &quot;3.0.4&quot; % &quot;test&quot;
+</code></pre>
+<h4><a href="#sbt-commands" name="sbt-commands" class="anchor"><span class="anchor-link"></span></a>SBT commands</h4>
+<pre class="prettyprint"><code class="language-Bash">sbt &quot;inspect tree allDependencies&quot;
+</code></pre>
+<pre><code>[info] *:allDependencies = Task[scala.collection.Seq[sbt.librarymanagement.ModuleID]]
+[info]   +-*:libraryDependencies = List(org.scala-lang:scala-library:2.12.4, org.scalatest:scalatest:3.0.4:test)
+[info]   | +-*/*:autoScalaLibrary = true
+[info]   | +-*/*:managedScalaInstance = true
+[info]   | +-*/*:sbtPlugin = false
+[info]   | +-*/*:scalaHome = None
+[info]   | +-*/*:scalaOrganization = org.scala-lang
+[info]   | +-*/*:scalaVersion = 2.12.4
+[info]   | 
+[info]   +-*/*:managedScalaInstance = true
+[info]   +-*:pluginCrossBuild::sbtDependency = org.scala-sbt:sbt:1.0.4
+[info]   | +-*/*:appConfiguration = xsbt.boot.AppConfiguration@531ed68e
+[info]   | +-*/*:pluginCrossBuild::sbtVersion = 1.0.4
+[info]   | +-*/*:scalaBinaryVersion = 2.12
+[info]   | +-*/*:scalaVersion = 2.12.4
+[info]   | 
+[info]   +-*:projectDependencies = Task[scala.collection.Seq[sbt.librarymanagement.ModuleID]]
+[info]   | +-*/*:buildDependencies = sbt.internal.BuildDependencies@551976c2
+[info]   | +-*/*:settingsData = Task[sbt.internal.util.Settings[sbt.Scope]]
+[info]   | +-*:thisProjectRef = ProjectRef(file:/Users/conor/mess/sbt-examlpes/,sbt-examlpes)
+[info]   | 
+[info]   +-*/*:sbtDependency = org.scala-sbt:sbt:1.0.4
+[info]   +-*/*:sbtPlugin = false
+[info]   +-*/*:scalaHome = None
+[info]   +-*:scalaModuleInfo = Some(ScalaModuleInfo(2.12.4, 2.12, Vector(), true, false, true, org.scala-lang, Vector(scala-library, scala-compiler, scala-..
+[info]   | +-*/*:scalaArtifacts = Vector(scala-library, scala-compiler, scala-reflect, scala-actors, scalap)
+[info]   | +-*/*:scalaOrganization = org.scala-lang
+[info]   | +-*/*:scalaBinaryVersion = 2.12
+[info]   | +-*/*:scalaVersion = 2.12.4
+[info]   | 
+[info]   +-*/*:scalaOrganization = org.scala-lang
+[info]   +-*/*:scalaVersion = 2.12.4
+[info]   
+</code></pre>
+<h3><a href="#show-all-the-tasks-defined-for-this-project" name="show-all-the-tasks-defined-for-this-project" class="anchor"><span class="anchor-link"></span></a>Show all the tasks defined for this project</h3>
+<h4><a href="#sbt-commands" name="sbt-commands" class="anchor"><span class="anchor-link"></span></a>SBT commands</h4>
+<pre class="prettyprint"><code class="language-Bash">sbt &quot;tasks -v&quot;
+</code></pre>
+<pre><code>  bgRun                           Start an application&#39;s default main class as a background job
+  bgRunMain                       Start a provided main class as a background job
+  clean                           Deletes files produced by the build, such as generated sources, compiled classes, and task caches.
+  compile                         Compiles sources.
+  console                         Starts the Scala interpreter with the project classes on the classpath.
+  consoleProject                  Starts the Scala interpreter with the sbt and the build definition on the classpath and useful imports.
+  consoleQuick                    Starts the Scala interpreter with the project dependencies on the classpath.
+  copyResources                   Copies resources to the output directory.
+  deliver                         Generates the Ivy file for publishing to a repository.
+  deliverLocal                    Generates the Ivy file for publishing to the local repository.
+  dependencyClasspath             The classpath consisting of internal and external, managed and unmanaged dependencies.
+  dependencyClasspathAsJars       The classpath consisting of internal and external, managed and unmanaged dependencies, all as JARs.
+  doc                             Generates API documentation.
+  exportedProductJars             Build products that go on the exported classpath as JARs.
+  exportedProductJarsIfMissing    Build products that go on the exported classpath as JARs if missing.
+  exportedProductJarsNoTracking   Just the exported classpath as JARs without triggering the compilation.
+  fullClasspath                   The exported classpath, consisting of build products and unmanaged and managed, internal and external dependencies.
+  fullClasspathAsJars             The exported classpath, consisting of build products and unmanaged and managed, internal and external dependencies, all as JARs.
+  internalDependencyAsJars        The internal (inter-project) classpath as JARs.
+  javaOptions                     Options passed to a new JVM when forking.
+  javacOptions                    Options for the Java compiler.
+  mainClass                       Defines the main class for packaging or running.
+  makePom                         Generates a pom for publishing when publishing Maven-style.
+  manipulateBytecode              Manipulates generated bytecode
+  mappings                        Defines the mappings from a file to a path, used by packaging, for example.
+  package                         Produces the main artifact, such as a binary jar.  This is typically an alias for the task that actually does the packaging.
+  packageBin                      Produces a main artifact, such as a binary jar.
+  packageDoc                      Produces a documentation artifact, such as a jar containing API documentation.
+  packageSrc                      Produces a source artifact, such as a jar containing sources and resources.
+  printWarnings                   Shows warnings from compilation, including ones that weren&#39;t printed initially.
+  publish                         Publishes artifacts to a repository.
+  publishLocal                    Publishes artifacts to the local Ivy repository.
+  publishM2                       Publishes artifacts to the local Maven repository.
+  publishTo                       The resolver to publish to.
+  publisher                       Provides the sbt interface to publisher
+  run                             Runs a main class, passing along arguments provided on the command line.
+  runMain                         Runs the main class selected by the first argument, passing the remaining arguments to the main method.
+  scalacOptions                   Options for the Scala compiler.
+  test                            Executes all tests.
+  testOnly                        Executes the tests provided as arguments or all tests if no arguments are provided.
+  testOptions                     Options for running tests.
+  testQuick                       Executes the tests that either failed before, were not run or whose transitive dependencies changed, among those provided as arguments.
+  unmanagedClasspath              Classpath entries (deep) that are manually managed.
+  unmanagedJars                   Classpath entries for the current project (shallow) that are manually managed.
+  unmanagedResources              Unmanaged resources, which are manually created.
+  unmanagedSources                Unmanaged sources, which are manually created.
+  update                          Resolves and optionally retrieves dependencies, producing a report.
+  updateClassifiers               Resolves and optionally retrieves classified artifacts, such as javadocs and sources, for dependency definitions, transitively.
+  updateSbtClassifiers            Resolves and optionally retrieves classifiers, such as javadocs and sources, for sbt, transitively.
+  woo                             Woo
+</code></pre>
+<h3><a href="#show-how-to-rerun-commands-when-code-changes" name="show-how-to-rerun-commands-when-code-changes" class="anchor"><span class="anchor-link"></span></a>Show how to rerun commands when code changes</h3>
+<p>By putting <code>~</code> before any command it puts sbt in a mode that reruns the last command</p>
+<h4><a href="#sbt-commands" name="sbt-commands" class="anchor"><span class="anchor-link"></span></a>SBT commands</h4>
+<pre class="prettyprint"><code class="language-Bash">sbt ~compile
+</code></pre>
+<pre><code>1. Waiting for source changes... (press enter to interrupt)
+</code></pre>
+<h3><a href="#configure-how-to-run-tasks-in-a-seperate-jvm" name="configure-how-to-run-tasks-in-a-seperate-jvm" class="anchor"><span class="anchor-link"></span></a>Configure how to run tasks in a seperate JVM</h3>
+<p>Setting the property <code>fork</code> to true will kick it off in a new JVM</p>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File layout</h4>
+<pre><code>./build.sbt
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>./build.sbt</code></p>
+<pre class="prettyprint"><code class="language-Scala">fork := true
+</code></pre>
+<h3><a href="#use-older-version-of-sbt-through-global-sbt-config-file" name="use-older-version-of-sbt-through-global-sbt-config-file" class="anchor"><span class="anchor-link"></span></a>Use older version of SBT through global sbt config file</h3>
+<h4><a href="#file-layout" name="file-layout" class="anchor"><span class="anchor-link"></span></a>File layout</h4>
+<pre><code>/usr/local/etc/sbtopts
+</code></pre>
+<h4><a href="#files" name="files" class="anchor"><span class="anchor-link"></span></a>Files</h4>
+<p><code>/usr/local/etc/sbtopts</code></p>
+<pre class="prettyprint"><code class="language-Scala"># Sets the SBT version to use.
+-sbt-version  0.13.12
+</code></pre>
+<p>Other options </p>
+<pre><code># Disable ANSI color codes
+#
+#-no-colors
+
+# Starts sbt even if the current directory contains no sbt project.
+#
+-sbt-create
+
+# Path to global settings/plugins directory (default: ~/.sbt)
+#
+#-sbt-dir  /etc/sbt
+
+# Path to shared boot directory (default: ~/.sbt/boot in 0.11 series)
+#
+#-sbt-boot ~/.sbt/boot  
+
+# Path to local Ivy repository (default: ~/.ivy2)
+#
+#-ivy ~/.ivy2
+
+# set memory options
+#
+#-mem   &lt;integer&gt;  
+
+# Use local caches for projects, no sharing.
+#
+#-no-share
+
+# Put SBT in offline mode.
+#
+#-offline
+
+# Sets the SBT version to use.
+#-sbt-version  0.11.3
+
+# Scala version (default: latest release)
+#
+#-scala-home &lt;path&gt;        
+#-scala-version &lt;version&gt;
+
+# java version (default: java from PATH, currently $(java -version |&amp; grep version))
+#
+#-java-home &lt;path&gt;
+</code></pre>
+</div>
+<div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../articles/sbt.html#sbt-examples" class="header">SBT Examples</a>
+  <ul>
+    <li><a href="../articles/sbt.html#hello-world" class="header">Hello World</a></li>
+    <li><a href="../articles/sbt.html#use-specific-version-of-sbt" class="header">Use specific version of SBT</a></li>
+    <li><a href="../articles/sbt.html#set-name-and-version-of-project" class="header">Set name and version of project</a></li>
+    <li><a href="../articles/sbt.html#add-dependency" class="header">Add dependency</a></li>
+    <li><a href="../articles/sbt.html#cross-build-for-different-versions-of-scala" class="header">Cross build for different versions of scala</a></li>
+    <li><a href="../articles/sbt.html#prevent-sbt-including-test-dependencies" class="header">Prevent SBT including test dependencies</a></li>
+    <li><a href="../articles/sbt.html#show-how-to-run-command-line-tools" class="header">Show how to run command line tools</a></li>
+    <li><a href="../articles/sbt.html#show-details-including-version-about-sbt" class="header">Show details including version about sbt</a></li>
+    <li><a href="../articles/sbt.html#set-scalac-options-in-sbt" class="header">Set scalac options in sbt</a></li>
+    <li><a href="../articles/sbt.html#use-a-plugin-in-sbt" class="header">Use a plugin in sbt</a></li>
+    <li><a href="../articles/sbt.html#show-how-to-call-tasks-from-other-tasks" class="header">Show how to call tasks from other tasks</a></li>
+    <li><a href="../articles/sbt.html#show-to-log-out-to-the-sbt-logger" class="header">Show to log out to the sbt logger</a></li>
+    <li><a href="../articles/sbt.html#show-to-take-input-into-a-task" class="header">Show to take input into a task</a></li>
+    <li><a href="../articles/sbt.html#check-the-dependencies-of-a-build-sbt" class="header">Check the dependencies of a build.sbt</a></li>
+    <li><a href="../articles/sbt.html#show-all-the-tasks-defined-for-this-project" class="header">Show all the tasks defined for this project</a></li>
+    <li><a href="../articles/sbt.html#show-how-to-rerun-commands-when-code-changes" class="header">Show how to rerun commands when code changes</a></li>
+    <li><a href="../articles/sbt.html#configure-how-to-run-tasks-in-a-seperate-jvm" class="header">Configure how to run tasks in a seperate JVM</a></li>
+    <li><a href="../articles/sbt.html#use-older-version-of-sbt-through-global-sbt-config-file" class="header">Use older version of SBT through global sbt config file</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</div>
+
+</section>
+</div>
+
+</div>
+
+<footer class="site-footer">
+
+<section class="site-footer-nav">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 medium-4 large-3 text-center column">
+<div class="nav-links">
+<ul>
+<!-- <li><a href="https://www.example.com/products/">Products</a> -->
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="site-footer-base">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 text-center large-9 column">
+
+<!--
+<div class="copyright">
+<span class="text">&copy; 2018</span>
+<a href="https://www.example.com" class="logo">logo</a>
+</div>
+-->
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</footer>
+
+</div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../lib/foundation/dist/foundation.min.js"></script>
+<script type="text/javascript">jQuery(document).foundation();</script>
+<script type="text/javascript" src="../js/magellan.js"></script>
+
+<style type="text/css">@import "../lib/prettify/prettify.css";</style>
+<script type="text/javascript" src="../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+
+</html>

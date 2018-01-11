@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+<title>Scala levels: beginner to expert, application programmer to library designer</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content='Scala Zen'/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+<script type="text/javascript" src="../js/groups.js"></script>
+<link rel="stylesheet" type="text/css" href="../lib/normalize.css/normalize.css"/>
+<link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/page.css"/>
+
+<!--
+<link rel="shortcut icon" href="../images/favicon.ico" />
+-->
+</head>
+
+<body>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+<div class="off-canvas position-left" id="off-canvas-menu" data-off-canvas>
+<nav class="off-canvas-nav">
+<div class="nav-home">
+<a href="../articles/scala-level.html" class="active">
+<span class="home-icon">⌂</span>Scala levels: beginner to expert, application programmer to library designer
+</a>
+<div class="version-number">
+0.1*
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+
+<header class="site-header expanded row">
+<div class="small-12 column">
+<a href="#" class="off-canvas-toggle hide-for-medium" data-toggle="off-canvas-menu"><svg class="svg-icon svg-icon-menu" version="1.1" id="Menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <path class="svg-icon-menu-path" fill="#53CDEC" d="M16.4,9H3.6C3.048,9,3,9.447,3,10c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,9.447,16.952,9,16.4,9z M16.4,13
+H3.6C3.048,13,3,13.447,3,14c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,13.447,16.952,13,16.4,13z M3.6,7H16.4
+C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.048,7,3.6,7z"/></svg>
+</a>
+<div class="title"><a href="../articles/scala-level.html" class="active">Scala levels: beginner to expert, application programmer to library designer</a></div>
+
+<!--
+<a href="https://www.example.com" class="logo show-for-medium">logo</a>
+-->
+</div>
+</header>
+
+<div class="expanded row">
+
+<div class="medium-3 large-2 show-for-medium column">
+<nav class="site-nav">
+<div class="nav-home">
+<a href="../articles/scala-level.html" class="active">
+<span class="home-icon">⌂</span>Scala levels: beginner to expert, application programmer to library designer
+</a>
+<div class="version-number">
+0.1*
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="small-12 medium-9 large-10 column">
+<section class="site-content">
+
+<div class="page-header row">
+<div class="medium-12 show-for-medium column">
+</div>
+</div>
+
+<div class="page-content row">
+<div class="small-12 large-9 column" id="docs">
+<h1><a href="#scala-levels-beginner-to-expert-application-programmer-to-library-designer" name="scala-levels-beginner-to-expert-application-programmer-to-library-designer" class="anchor"><span class="anchor-link"></span></a>Scala levels: beginner to expert, application programmer to library designer</h1>
+<h4><a href="#by-the-creator-martin-oderskey" name="by-the-creator-martin-oderskey" class="anchor"><span class="anchor-link"></span></a>by the creator Martin Oderskey</h4>
+<p>Scala is a bit of a chameleon. It makes many programming tasks refreshingly easy and at the same time contains some pretty intricate constructs that allow experts to design truly advanced typesafe libraries. This means that, depending at what piece of code you look at, Scala might look very simple or very complex. But which pieces exactly are easy for beginners and which are more advanced? In the end, everybody will have their own yardstick. Nevertheless, I am trying here to give a rough categorization. I hope this will help newcomers to the language decide in what order to pick subjects to learn, and that it will give some advice to teachers and book authors in what order to present the material. I assume that programmers have already a good knowledge of Java, so we can take at least pre-generics Java 1.4 for granted. If that&rsquo;s not the case, some of the entry-level concepts such as classes and exceptions would need to be moved to more advanced levels.</p>
+<p>Also, I distinguish between Scala application programmers and Scala library designers, because the required skill sets are really quite different. A first shot at a categorization has been discussed last month on the scala-debate mailing list. The current categorization incorporates some of the suggestions that were made then. So, here we go:</p>
+<h2><a href="#level-a1-beginning-application-programmer" name="level-a1-beginning-application-programmer" class="anchor"><span class="anchor-link"></span></a>Level A1: Beginning application programmer</h2>
+<ul>
+  <li>Java-like statements and expressions: standard operators, method calls, conditionals, loops, try/catch</li>
+  <li>class, object, def, val, var, import, package</li>
+  <li>Infix notation for method calls</li>
+  <li>Simple closures</li>
+  <li>Collections with map, filter, etc</li>
+  <li>for-expressions</li>
+</ul>
+<h2><a href="#level-a2-intermediate-application-programmer" name="level-a2-intermediate-application-programmer" class="anchor"><span class="anchor-link"></span></a>Level A2: Intermediate application programmer</h2>
+<ul>
+  <li>Pattern matching</li>
+  <li>Trait composition</li>
+  <li>Recursion, in particular tail recursion</li>
+  <li>XML literals</li>
+</ul>
+<h2><a href="#level-a3-expert-application-programmer" name="level-a3-expert-application-programmer" class="anchor"><span class="anchor-link"></span></a>Level A3: Expert application programmer</h2>
+<ul>
+  <li>Folds, i.e. methods such as foldLeft, foldRight</li>
+  <li>Streams and other lazy data structures</li>
+  <li>Actors</li>
+  <li>Combinator parsers</li>
+</ul>
+<h2><a href="#level-l1-junior-library-designer" name="level-l1-junior-library-designer" class="anchor"><span class="anchor-link"></span></a>Level L1: Junior library designer</h2>
+<ul>
+  <li>Type parameters</li>
+  <li>Traits</li>
+  <li>Lazy vals</li>
+  <li>Control abstraction, currying</li>
+  <li>By-name parameters</li>
+</ul>
+<h2><a href="#level-l2-senior-library-designer" name="level-l2-senior-library-designer" class="anchor"><span class="anchor-link"></span></a>Level L2: Senior library designer</h2>
+<ul>
+  <li>Variance annotations</li>
+  <li>Existential types (e.g., to interface with Java wildcards)</li>
+  <li>Self type annotations and the cake pattern for dependency injection</li>
+  <li>Structural types (aka static duck typing)</li>
+  <li>Defining map/flatmap/withFilter for new kinds of for-expressions</li>
+  <li>Extractors</li>
+</ul>
+<h2><a href="#level-l3-expert-library-designer" name="level-l3-expert-library-designer" class="anchor"><span class="anchor-link"></span></a>Level L3: Expert library designer</h2>
+<ul>
+  <li>Early initializers</li>
+  <li>Abstract types</li>
+  <li>Implicit definitions</li>
+  <li>Higher-kinded types</li>
+</ul>
+<p>As I wrote above, the skill sets required from application programmers and library designers are really quite different. But if I should throw them into the same baskets, I would group like this:</p>
+<ul>
+  <li>A1, A2/L1, A3/L2, L3</li>
+</ul>
+<p>That is, intermediate application programming is about on the same level of difficulty as junior library design, and advanced application programming is on the same level as senior library design.</p>
+<p>To clarify: One can program very productively in Scala on level A1, which one should be able to pick up in a day or so, coming from Java. Mastering A2 will doubtlessly increase programmer productivity. A3 is for expert programmers with more specialized tasks, not everyone needs to get to that level. The same holds for library design. There are great libraries designed with the tools on level L1 and L2. Some libraries require L3 elements such as implicits and higher-kinded types, but a library does not automatically get better if it uses these elements &ndash; often the opposite is true.</p>
+<p><a href="http://www.scala-lang.org/old/node/8610">Source Blog</a></p>
+</div>
+<div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../articles/scala-level.html#scala-levels-beginner-to-expert-application-programmer-to-library-designer" class="header">Scala levels: beginner to expert, application programmer to library designer</a>
+  <ul>
+    <li><a href="../articles/scala-level.html#by-the-creator-martin-oderskey" class="header">by the creator Martin Oderskey</a></li>
+    <li><a href="../articles/scala-level.html#level-a1-beginning-application-programmer" class="header">Level A1: Beginning application programmer</a></li>
+    <li><a href="../articles/scala-level.html#level-a2-intermediate-application-programmer" class="header">Level A2: Intermediate application programmer</a></li>
+    <li><a href="../articles/scala-level.html#level-a3-expert-application-programmer" class="header">Level A3: Expert application programmer</a></li>
+    <li><a href="../articles/scala-level.html#level-l1-junior-library-designer" class="header">Level L1: Junior library designer</a></li>
+    <li><a href="../articles/scala-level.html#level-l2-senior-library-designer" class="header">Level L2: Senior library designer</a></li>
+    <li><a href="../articles/scala-level.html#level-l3-expert-library-designer" class="header">Level L3: Expert library designer</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</div>
+
+</section>
+</div>
+
+</div>
+
+<footer class="site-footer">
+
+<section class="site-footer-nav">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 medium-4 large-3 text-center column">
+<div class="nav-links">
+<ul>
+<!-- <li><a href="https://www.example.com/products/">Products</a> -->
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="site-footer-base">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 text-center large-9 column">
+
+<!--
+<div class="copyright">
+<span class="text">&copy; 2018</span>
+<a href="https://www.example.com" class="logo">logo</a>
+</div>
+-->
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</footer>
+
+</div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../lib/foundation/dist/foundation.min.js"></script>
+<script type="text/javascript">jQuery(document).foundation();</script>
+<script type="text/javascript" src="../js/magellan.js"></script>
+
+<style type="text/css">@import "../lib/prettify/prettify.css";</style>
+<script type="text/javascript" src="../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+
+</html>

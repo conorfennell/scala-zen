@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+<title>Functional jargon in Scala</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content='Scala Zen'/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+<script type="text/javascript" src="../js/groups.js"></script>
+<link rel="stylesheet" type="text/css" href="../lib/normalize.css/normalize.css"/>
+<link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/page.css"/>
+
+<!--
+<link rel="shortcut icon" href="../images/favicon.ico" />
+-->
+</head>
+
+<body>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+<div class="off-canvas position-left" id="off-canvas-menu" data-off-canvas>
+<nav class="off-canvas-nav">
+<div class="nav-home">
+<a href="../articles/functional-jargon.html" class="active">
+<span class="home-icon">⌂</span>Functional jargon in Scala
+</a>
+<div class="version-number">
+0.1*
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+
+<header class="site-header expanded row">
+<div class="small-12 column">
+<a href="#" class="off-canvas-toggle hide-for-medium" data-toggle="off-canvas-menu"><svg class="svg-icon svg-icon-menu" version="1.1" id="Menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <path class="svg-icon-menu-path" fill="#53CDEC" d="M16.4,9H3.6C3.048,9,3,9.447,3,10c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,9.447,16.952,9,16.4,9z M16.4,13
+H3.6C3.048,13,3,13.447,3,14c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,13.447,16.952,13,16.4,13z M3.6,7H16.4
+C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.048,7,3.6,7z"/></svg>
+</a>
+<div class="title"><a href="../articles/functional-jargon.html" class="active">Functional jargon in Scala</a></div>
+
+<!--
+<a href="https://www.example.com" class="logo show-for-medium">logo</a>
+-->
+</div>
+</header>
+
+<div class="expanded row">
+
+<div class="medium-3 large-2 show-for-medium column">
+<nav class="site-nav">
+<div class="nav-home">
+<a href="../articles/functional-jargon.html" class="active">
+<span class="home-icon">⌂</span>Functional jargon in Scala
+</a>
+<div class="version-number">
+0.1*
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="small-12 medium-9 large-10 column">
+<section class="site-content">
+
+<div class="page-header row">
+<div class="medium-12 show-for-medium column">
+</div>
+</div>
+
+<div class="page-content row">
+<div class="small-12 large-9 column" id="docs">
+<h2><a href="#functional-jargon-in-scala" name="functional-jargon-in-scala" class="anchor"><span class="anchor-link"></span></a>Functional jargon in Scala</h2>
+<h3><a href="#arity" name="arity" class="anchor"><span class="anchor-link"></span></a>Arity</h3>
+<p>Represents the number of parameters passed into a function.</p>
+<p>More specific representations:</p>
+<ul>
+  <li>A <code>nullary</code> function has an arity of zero</li>
+  <li>A <code>unary</code> function has an arity of one</li>
+  <li>A <code>binary</code> function has an arity of two</li>
+  <li>A <code>ternary</code> function has an arity of three</li>
+  <li>An <code>n-ary</code> function has an arity of n</li>
+  <li>A <code>variable arity</code> function takes variable number of parameters</li>
+</ul>
+<pre class="prettyprint"><code class="language-Scala">// nullary
+def time = System.nanoTime()
+
+// unary
+def addFive(x: Int): Int = x + 5
+
+// binary
+def sum(x: Int, y: Int): Int = x + y
+
+// ternary
+def ifElse[A](expression: =&gt; Boolean, trueOutcome: A, falseOutcome: A): A = if(expression) trueOutcome else falseOutcome
+
+// variable arity
+def sumAll(x: Int*): Int = x.foldLeft(0)(_ + _)
+sumAll()
+sumAll(1)
+sumAll(1, 2, 3, 4)
+
+</code></pre>
+<h3><a href="#higher-order-functions-hof-" name="higher-order-functions-hof-" class="anchor"><span class="anchor-link"></span></a>Higher-Order Functions (HOF)</h3>
+<p>A higher order function is a function which takes another function as an argument and/or a function which returns another function as a result.</p>
+<pre class="prettyprint"><code class="language-scala">// map, flatMap and filter are examples of functions which take other functions as arguments
+List(1, 2, 3).map(_ + 2)
+List(1, 2, 3).flatMap(number =&gt; number.to(10).toList)
+List(1, 2, 3).filter(number =&gt; (number % 2) == 0)
+
+// generateAdder is an example of a function returning another function
+def generateAdder(x: Int) = (y: Int) =&gt; y + x
+val addFive = generateAdder(5)
+addFive(4)
+
+</code></pre>
+<h3><a href="#currying" name="currying" class="anchor"><span class="anchor-link"></span></a>Currying</h3>
+<p>Currying transforms a function that takes multiple parameters into a chain of functions, each taking a subset of the parameters.<br/>Currying is essentianly a factory for functions.<br/>Its achieved by defining parameter lists <code>(x:Int, t: Int)(y:Int)(z:Int)</code>.<br/>The strange term currying is named after the logician <a href="https://en.wikipedia.org/wiki/Haskell_Curry">Haskell Curry</a>.</p>
+<pre class="prettyprint"><code class="language-Scala">def sum(x:Int)(y: Int): Int = x + y
+
+val sumFive = sum(5)(_)
+
+println(sumFive(5))
+
+</code></pre>
+<h3><a href="#free-and-bound-variables" name="free-and-bound-variables" class="anchor"><span class="anchor-link"></span></a>Free and Bound variables</h3>
+<p>Free and bound variables are variables referenced in a function body.<br/><code>bound variables</code> are arguments to a function that are explicity defined in their function definition.<br/><code>free variables</code> are variables that are referenced in the function body and are defined outside the function</p>
+<pre class="prettyprint"><code class="language-scala">// bound variable function, x is a bound variable
+def addOne(x: Int): Int = x + 1
+
+object Counter {
+  var counter: Int = 0
+  // free variable function, counter is a free variable
+  def increment: Int = {
+    counter = counter + 1
+    counter
+  }
+
+  // mix of bound varibale `x` and free variable `counter`
+  def resetCounterTo(x: Int): Int = {
+    counter = x
+    counter
+  }
+}
+
+println(Counter.increment)
+
+
+</code></pre>
+<h3><a href="#closure" name="closure" class="anchor"><span class="anchor-link"></span></a>Closure</h3>
+<p>A function which has free variables bound are known as closures. Even if the scope of which the variable was defined has exited it will still exist if the closure function is within scope.</p>
+<pre class="prettyprint"><code class="language-Scala">val increment = {
+    var counter = 0
+    () =&gt; {
+        counter = counter + 1
+        counter
+        }
+    
+}
+
+println(increment())
+
+</code></pre>
+<h3><a href="#partial-application" name="partial-application" class="anchor"><span class="anchor-link"></span></a>Partial Application</h3>
+<p>A partially applied function is a function where some of the parameters are applied and it returns a function defined with just the unapplied parameters.<br/>Underscore followed by its type <code>_ : Int</code> is used to desiginate the unapplied parameters.</p>
+<pre class="prettyprint"><code class="language-Scala">val enclose = (prefix:String, inner:String, postfix:String) =&gt; s&quot;$prefix$inner$postfix&quot;
+
+val div = enclose(&quot;&lt;div&gt;&quot;, _ : String, &quot;&lt;/div&gt;&quot;)
+val p = enclose(&quot;&lt;p&gt;&quot;, _ : String, &quot;&lt;/p&gt;&quot;)
+
+println(div(p(&quot;Hello World!&quot;)))
+
+</code></pre>
+<h3><a href="#functor" name="functor" class="anchor"><span class="anchor-link"></span></a>Functor</h3>
+<p>Functors are types which define a map function. The map function adheres to two laws: <code>preserve identity</code> and <code>composablity</code>.</p>
+<pre class="prettyprint"><code class="language-Scala">trait Functor[A] {
+    def map[B](f: A =&gt; B): Functor[B]
+}
+</code></pre>
+<p><code>Preserve Identity</code> When an idenity functor is passed to a map. The resulting functor will be equal to the original functor.</p>
+<pre class="prettyprint"><code class="language-Scala">// an identity function simply returns the argument passed in without changing it
+def identity(x: Int) = x
+List(1, 2, 3).map(identity)  == List(1, 2, 3)
+</code></pre>
+<p><code>Composable</code> composing two functions and then mapping the resulting function over a functor should be the same as first mapping one function over the functor and then mapping the other one. <code>functor.map(x =&gt; f(g(x))) = functor.map(g).map(f)</code></p>
+<pre class="prettyprint"><code class="language-Scala">def addOne(x: Int) = x + 1
+def multiplyByFive(x: Int) = x * 5
+
+val nums = List(1, 2, 3)
+
+nums.map(num =&gt; multiplyByFive(addOne(num))) == nums.map(addOne).map(multiplyByFive)
+
+</code></pre>
+<p>Examples of functors in the scala library are <code>List</code>, <code>Try</code> and <code>Option</code>.</p>
+<h3><a href="#referential-transparency" name="referential-transparency" class="anchor"><span class="anchor-link"></span></a>Referential Transparency</h3>
+<p>Is the ability to replace an expression by its resulting value and not change the behaviour of a program.</p>
+<p><code>Referentially transparent</code></p>
+<pre class="prettyprint"><code class="language-Scala">def add(x:Int, y: Int): Int = x + y
+
+// this is referentially transparent
+val sum = add(3, 4)
+// and can be replaced with
+val sum = 7
+
+</code></pre>
+<p><code>Not Referentially transparent</code></p>
+<pre class="prettyprint"><code class="language-Scala">var counter = 0
+
+def addAndCount(x:Int, y: Int): Int = {
+  counter = counter + 1
+  x + y
+}
+
+// this is not referentially transparent
+val sum = addAndCount(3, 4)
+val counterSum = _sum + counter
+println(counterSum) // prints 8
+
+counter = 0 // reset
+
+// cannot be replaced with 
+val _sum = 7
+val _counterSum = 7 + 0
+println(_counterSum) // prints 7
+</code></pre>
+<h3><a href="#lambda" name="lambda" class="anchor"><span class="anchor-link"></span></a>Lambda</h3>
+<p>Lambda is an anonymous function that can be passed around like a value.</p>
+<pre class="prettyprint"><code class="language-Scala">val sum = (x:Int, y:Int) =&gt; x + y
+sum(3, 4)
+</code></pre>
+<p>They are often passed into Higher Order Functions</p>
+<pre class="prettyprint"><code class="language-Scala">List(1, 2, 3)
+  .map((num: Int) =&gt; num * 10)
+</code></pre>
+<h3><a href="#algerbraic-data-types" name="algerbraic-data-types" class="anchor"><span class="anchor-link"></span></a>Algerbraic Data Types</h3>
+<p>ADT&rsquo;s approach structuring your data as <code>products</code> and <code>sums</code>.</p>
+<p>Sum types are <code>this</code> OR <code>that</code><br/>Product types are <code>this</code> AND <code>that</code> </p>
+<p>As an example when modelling ADT&rsquo;s for renewable power plants. </p>
+<p>A power plant can be solar <code>OR</code> wind.<br/>A power source can be solar panels <code>OR</code> turbines. </p>
+<p>A power plant has many solar panels <code>AND</code> a support contractor.</p>
+<p><code>Solar</code> OR <code>Wind</code><br/><code>SolarPanel</code> OR <code>Turbine</code><br/><code>powerPanels</code> AND <code>supportContractor</code></p>
+<p>Example algerbraic data types in the core scala library <code>Option</code>, <code>Either</code>, <code>Try</code> and <code>List</code> </p>
+<pre class="prettyprint"><code class="language-Scala">sealed trait RenewablePlant {
+  val powerSources: Seq[PowerSource]
+  val supportContractor: String
+}
+sealed trait PowerSource
+
+case class SolarPanel() extends PowerSource
+case class Turbine() extends PowerSource
+
+case class Solar(powerSources: Seq[SolarPanel], supportContractor: String) extends RenewablePlant
+
+case class Wind(powerSources: Seq[Turbine], supportContractor: String) extends RenewablePlant
+
+def identify(plant: RenewablePlant): Unit = plant match {
+  case Solar(_, _) =&gt; println(&quot;SUN SUN SUN&quot;)
+  case Wind(_, _) =&gt; println(&quot;WIND WIND WIND&quot;)
+}
+
+identify(Solar(List(), &quot;Jim&quot;))
+identify(Wind(List(), &quot;Mark&quot;))
+
+</code></pre>
+<h3><a href="#value" name="value" class="anchor"><span class="anchor-link"></span></a>Value</h3>
+<p>A value is the result of an expression which can be assigned to a variable.</p>
+<p>Examples of a value</p>
+<pre class="prettyprint"><code class="language-Scala">// the lambda function here is a value
+val add = (x:Int, y:Int) =&gt; x + y
+
+// 3 is a value
+val x = 3
+
+</code></pre>
+<h3><a href="#side-effect" name="side-effect" class="anchor"><span class="anchor-link"></span></a>Side Effect</h3>
+<p>A function is said to have a side effect if it read or wrote to external mutable state.</p>
+<pre class="prettyprint"><code class="language-Scala">// no side effect, pure function
+def add(x:Int, y:Int): Int = x + y
+
+// side effects by printing
+def addPrint(x:Int, y:Int): Int = {
+  println(x + y)
+  x + y
+}
+</code></pre>
+<h3><a href="#pure" name="pure" class="anchor"><span class="anchor-link"></span></a>Pure</h3>
+<p>A pure function is said to have no side effects and is not allowed to read from any mutual external state.</p>
+<pre class="prettyprint"><code class="language-Scala">// no side effect, pure function
+def add(x:Int, y:Int): Int = x + y
+</code></pre>
+<h3><a href="#idempotent" name="idempotent" class="anchor"><span class="anchor-link"></span></a>Idempotent</h3>
+<p>An idempotent function can cause idempotent side-effects.<br/>When calling an idempotent function multiple times with the same parameters, it will produce the same result and any of its side-effects will produce the same results.</p>
+<p>The function below is idempotent, since the number stays removed from the set after subsequent calls i.e. additional calls do nothing. </p>
+<pre class="prettyprint"><code class="language-Scala">var set = Set(1, 2)
+
+def removeFromSet(x:Int): Boolean = {
+  set = set.-(x)
+  set.contains(x)
+  } 
+removeFromSet(2)
+removeFromSet(2)
+removeFromSet(2)
+
+</code></pre>
+<h3><a href="#constant" name="constant" class="anchor"><span class="anchor-link"></span></a>Constant</h3>
+<p>A constant is a variable which can not be reassigned once assigned.<br/>In Scala a variable is made constant using the <code>val</code> keyword. </p>
+<p>Constants are <a href="#referential-transparency">referentially transparent</a>.</p>
+<pre class="prettyprint"><code class="language-Scala">val Five = 5
+val sum = (x:Int, y:Int): Int =&gt; x + y
+</code></pre>
+<h3><a href="#semigroup" name="semigroup" class="anchor"><span class="anchor-link"></span></a>Semigroup</h3>
+<p>Formally, a type can be called a semigroup if it has:<br/>- a combine operation with type (A, A) =&gt; A<br/>- adheres to the rules of associatively when combining </p>
+<p>Examples of semigroups are<br/>- Concatenation of strings <code>{&quot;a&quot; + &quot;b&quot;} + &quot;c&quot; == &quot;a&quot; + {&quot;b&quot; + &quot;c&quot;}</code><br/>- Addition of integers <code>{1 + 2} + 3 == 1 + {2 + 3}</code><br/>- Oring of Booleans <code>{true || false} || false == true || {false || false}</code> </p>
+<pre class="prettyprint"><code class="language-Scala">// def combine[A](a: A, b: A): A
+def stringConcatSemigroup(a: String, b: String): String = s&quot;$a$b&quot;
+
+def integerAddSemigroup(x: Int, y: Int): Int = x + y
+
+def booleanAndSemigroup(a: Boolean, b: Boolean): Boolean = a &amp;&amp; b
+
+
+// assoicative laws held (x combine y) combine z = x combine (y combine z)
+stringConcatSemigroup(&quot;x&quot;, stringConcatSemigroup(&quot;y&quot;, &quot;z&quot;)) == stringConcatSemigroup(stringConcatSemigroup(&quot;x&quot;, &quot;y&quot;), &quot;z&quot;)
+
+integerAddSemigroup(1, integerAddSemigroup(2, 3)) == integerAddSemigroup(integerAddSemigroup(1, 2), 3)
+
+booleanAndSemigroup(true, booleanAndSemigroup(false, true)) == booleanAndSemigroup(booleanAndSemigroup(true, false), true)
+</code></pre>
+<h3><a href="#lift" name="lift" class="anchor"><span class="anchor-link"></span></a>Lift</h3>
+<p>The term <code>lifting</code> comes from category theory.<br/>It is the ability to convert a function of <code>A =&gt; B</code> to a lifted function <code>F[A] =&gt; F[B]</code> where it can be applied to a <a href="#functor">functor</a> or monad <code>F[A]</code> </p>
+<p>A concrete example using the monad container <code>Option</code>:<br/>Assume we have a function that converts a string to an integer and the string is wrapped in an <code>Option</code> monad. Here we cannot pass in the <code>Option(&quot;4&quot;)</code> in to the function because of incompatiable types. So we have to lift the function to be compatiable. </p>
+<pre class="prettyprint"><code class="language-Scala">def stringToInt(s: String): Int = s.toInt
+val four: Option[String] = Option(&quot;4&quot;)
+
+def lift[A, B](f: A =&gt; B): Option[A] =&gt; Option[B] = (a: Option[A]) =&gt; a.map(f)
+
+val optionStringToInt = lift(stringToInt)
+optionStringToInt(four)
+</code></pre>
+<h3><a href="#domain-codomain" name="domain-codomain" class="anchor"><span class="anchor-link"></span></a>Domain Codomain</h3>
+<p>A function maps one set, called a <code>domain</code>, to another set, called the <code>codomain</code>.<br/>A function associates every element in the domain with exactly one element in the codomain. In Scala, both domain and codomain are known as <code>types</code>.</p>
+<pre class="prettyprint"><code class="language-Scala">// domain and codomain are both Ints
+def increment(num: Int): Int = num + 1
+
+// domain and codomain are Strings
+def upperCase(s: String): String = s.toUpperCase
+
+// domain is type Int and the codomain is type string
+def intToString(num: Int): String = num.toString
+
+</code></pre>
+<h3><a href="#morphism" name="morphism" class="anchor"><span class="anchor-link"></span></a>Morphism</h3>
+<p>Is a mapping from <code>type</code> to <code>type</code></p>
+<h4><a href="#endomorphism" name="endomorphism" class="anchor"><span class="anchor-link"></span></a>Endomorphism</h4>
+<p>A mapping where the input type is the same as the output type. </p>
+<pre class="prettyprint"><code class="language-Scala">def upperCase(s: String): String = s.toUpperCase
+
+def increment(num: Int): Int = num + 1 
+</code></pre>
+<h4><a href="#isomorphism" name="isomorphism" class="anchor"><span class="anchor-link"></span></a>Isomorphism</h4>
+<p>A pair of transformations between 2 types of objects that is structural in nature and no data is lost.<br/>For example, 2D coordinates could be stored as an array <code>[2,3]</code> or object <code>{x: 2, y: 3}</code></p>
+<pre class="prettyprint"><code class="language-Scala">// Providing functions to convert in both directions makes them isomorphic.
+case class Coords(x: Int, y: Int)
+
+val pairToCoords = (pair: (Int, Int)) =&gt; Coords(pair._1, pair._2)
+
+val coordsToPair = (coods: Coords) =&gt; (coods.x, coods.y)
+
+coordsToPair(pairToCoords((1, 2)))
+
+pairToCoords(coordsToPair(Coords(1, 2)))
+</code></pre>
+<h3><a href="#predicate" name="predicate" class="anchor"><span class="anchor-link"></span></a>Predicate</h3>
+<p>A predicate is a function which takes a value and returns a boolean <code>(a:A):Boolean</code> Commonly used for filtering.<br/><code>something which is affirmed or denied concerning an argument of a proposition.</code></p>
+<pre class="prettyprint"><code class="language-Scala">def isEven(a: Int):Boolean = (a % 2) == 0
+
+Array(1, 3, 4, 5, 6).filter(isEven)
+</code></pre>
+<h3><a href="#auto-currying" name="auto-currying" class="anchor"><span class="anchor-link"></span></a>Auto Currying</h3>
+<p>Transforming a function that takes multiple arguments into one that if given less than its correct number of arguments returns a function that takes the rest. When the function gets the correct number of arguments it is then evaluated.</p>
+<pre class="prettyprint"><code class="language-Scala">val add = (x: Int, y: Int) =&gt; x + y
+
+val curriedAdd = add.curried
+curriedAdd(2) // (y) =&gt; 2 + y
+
+curriedAdd(1)(2)
+</code></pre>
+<h3><a href="#identity-function" name="identity-function" class="anchor"><span class="anchor-link"></span></a>Identity Function</h3>
+<p>An identity function takes one argument and returns that argument without modification.<br/>There is an identity function defined in Scala <a href="https://www.scala-lang.org/api/current/scala/Predef$.html">Predef</a></p>
+<pre class="prettyprint"><code class="language-Scala">def identity[A](a: A): a
+
+List(List(1), List(2, 3), List(4, 5)).flatMap(identity) // List(1, 2, 3, 4, 5)
+</code></pre>
+<h3><a href="#monoid" name="monoid" class="anchor"><span class="anchor-link"></span></a>Monoid</h3>
+<p>A monoid is a <a href="#semigroup">Semigroup</a> with an empty element, in math it is known as an identity element. </p>
+<p>Formally, a monoid has the properties of a semigroup:<br/>- a combine operation with type (A, A) =&gt; A<br/>- adheres to the rules of associatively when combining </p>
+<p>With the additional property:<br/>- an empty element of type A </p>
+<pre class="prettyprint"><code class="language-Scala">// def combine[A](a: A, b: A): A
+val emptyString: String = &quot;&quot;
+def stringConcatSemigroup(a: String, b: String = emptyString): String = s&quot;$a$b&quot;
+
+val emptyAddInteger = 0
+def integerAddSemigroup(x: Int, y: Int = emptyAddInteger): Int = x + y
+
+val emptyAndBoolean = true
+def booleanAndSemigroup(a: Boolean, b: Boolean = emptyAndBoolean): Boolean = a &amp;&amp; b
+
+
+// assoicative laws held (x combine y) combine z = x combine (y combine z)
+stringConcatSemigroup(&quot;x&quot;, stringConcatSemigroup(&quot;y&quot;, &quot;z&quot;)) == stringConcatSemigroup(stringConcatSemigroup(&quot;x&quot;, &quot;y&quot;), &quot;z&quot;)
+
+integerAddSemigroup(1, integerAddSemigroup(2, 3)) == integerAddSemigroup(integerAddSemigroup(1, 2), 3)
+
+booleanAndSemigroup(true, booleanAndSemigroup(false, true)) == booleanAndSemigroup(booleanAndSemigroup(true, false), true)
+</code></pre>
+<h3><a href="#setoid" name="setoid" class="anchor"><span class="anchor-link"></span></a>Setoid</h3>
+<p>Is a type which can be compared with instances of the same type for equality. </p>
+<p>Make array a setoid, therefore equivalent if sorted and has the same elements.</p>
+<pre class="prettyprint"><code class="language-Scala">trait Eq[A] {
+  def eqv(X: A, y: A): Boolean
+}
+
+object Eq {
+  def apply[A](implicit ev: Eq[A]) = ev
+
+  implicit def arrayInstances[B]: Eq[Array[B]] = new Eq[Array[B]] {
+    def eqv(xs: Array[B], ys: Array[B]): Boolean =
+      xs.zip(ys).foldLeft(true) {
+        case (isEq, (x, y)) =&gt; isEq &amp;&amp; x == y
+      }
+  }
+
+  implicit class EqOps[A](x:A) {
+    def eqv(y: A)(implicit ev: Eq[A]) = ev.eqv(x, y)
+  }
+}
+
+import Eq._
+Array(1, 3) == Array(1, 3) // false
+
+Array(1, 3).eqv(Array(1, 3)) // true
+
+Array(1, 3).eqv(Array(0)) // false
+</code></pre>
+<h3><a href="#monad" name="monad" class="anchor"><span class="anchor-link"></span></a>Monad</h3>
+<p>“Eugenio Moggi first described the general use of monads to structure programs in 1991. Several people built on his work … early versions of Haskell used a problematic ‘lazy list’ model for I/O, and Haskell 1.3 introduced monads as a more flexible way to combine I/O with lazy evaluation.”</p>
+<p>Monads are types which define a flatMap and pure function. The flatMap function adheres to three laws: <code>left identity</code>, <code>right identity</code> and <code>associativity</code>.</p>
+<pre class="prettyprint"><code class="language-Scala">trait Monad[A] {
+  def pure(value: A): Monad[A]
+  def flatMap[B](f: A =&gt; Monad[B]): Monad[B]
+}
+</code></pre>
+<p>Examples of Monads in Scala are <code>Option</code> and <code>List</code>.<br/>With Option and List the <code>apply</code> function is the equivalent of <code>pure</code>. </p>
+<p><code>Left Identity</code> Calling pure on type A followed by a flatmapping over f is the same as calling f on type A </p>
+<pre class="prettyprint"><code class="language-Scala">val a = 1
+def f(x: Int): Option[Int] = Option.apply(x + 1)
+
+Option.apply(a).flatMap(f) == f(a)
+</code></pre>
+<p><code>Right Identity</code> a monad flatmapping over pure results in the same monad</p>
+<pre class="prettyprint"><code class="language-Scala">val a = 1
+def f(x: Int): Option[Int] = Option.apply(x + 1)
+
+val monad = Option.apply(a)
+
+monad.flatMap(Option.apply) == monad
+</code></pre>
+<p><code>Associativity</code> flat mapping over function f and g is the same as flat mapping over f and then g.</p>
+<pre class="prettyprint"><code class="language-Scala">val a = 1
+def f(x: Int): Option[Int] = Option.apply(x + 1)
+def g(x: Int): Option[Int] = Option.apply(x * 2)
+
+val monad = Option.apply(a)
+
+monad.flatMap(f).flatMap(g) == monad.flatMap(f(_).flatMap(g))
+</code></pre>
+<h3><a href="#immutability" name="immutability" class="anchor"><span class="anchor-link"></span></a>Immutability</h3>
+<p>Immutablility is a variable reference or object whose state cannot be modified after it is created.<br/>Scala is not strict on immutability and allows mutable variables and mutable objects too.</p>
+<ul>
+  <li>A reference can be declared immutable <code>val</code> or mutable <code>var</code></li>
+  <li>Scala provides <code>immutable collection</code> and <code>mutable collection</code></li>
+</ul>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>collection.immutable</th>
+      <th>collection.mutable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>val</td>
+      <td>😃</td>
+      <td>😓 </td>
+    </tr>
+    <tr>
+      <td>var</td>
+      <td>😐</td>
+      <td>💩</td>
+    </tr>
+  </tbody>
+</table>
+<pre class="prettyprint"><code class="language-Scala">// Order of preference
+// 1 val --&gt; immutable
+val valImmutable = scala.collection.immutable.Set(0)
+// 2 var --&gt; immutable
+var varImmutable = scala.collection.immutable.Set(0)
+// 3 val --&gt; mutable
+val valMutable = scala.collection.mutable.Set(0)
+// 4 var --&gt; mutable
+var varMutable = scala.collection.mutable.Set(0)
+</code></pre>
+<h3><a href="#equational-reasoning" name="equational-reasoning" class="anchor"><span class="anchor-link"></span></a>Equational Reasoning</h3>
+<p>Equational reasoning is enabled by <a href="#referential-transparency">Referential Transparency</a>. When an application is composed of expressions which Scala can achieve and devoid of side effects, truths about the system can be derived from the parts.</p>
+<h3><a href="#combinator" name="combinator" class="anchor"><span class="anchor-link"></span></a>Combinator</h3>
+<p>From the Haskell wiki &ldquo;a style of oranising libraries centered around the idea of combining things&rdquo;. Specifically in this case it is combining functions.</p>
+<p>Scala has parser combinators which join parses. </p>
+<pre class="prettyprint"><code class="language-Scala">def addOne(i: Int): Int = i + 1
+def productTen(i: Int): Int = i + 10
+
+// combining functions
+List(1, 2, 3).map(addOne).map(productTen)
+</code></pre>
+<h3><a href="#category-theory" name="category-theory" class="anchor"><span class="anchor-link"></span></a>Category Theory</h3>
+<p>Samuel Eilenberg introduced the notion of category theory in 1942. At that point Saunders Mac Lane wrote the subject was called &ldquo;general abstract nonsense&rdquo;. </p>
+<p>In 1945 they both defined the axioms for categories, functors and natural transformation. </p>
+</div>
+<div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../articles/functional-jargon.html#functional-jargon-in-scala" class="header">Functional jargon in Scala</a>
+  <ul>
+    <li><a href="../articles/functional-jargon.html#arity" class="header">Arity</a></li>
+    <li><a href="../articles/functional-jargon.html#higher-order-functions-hof-" class="header">Higher-Order Functions (HOF)</a></li>
+    <li><a href="../articles/functional-jargon.html#currying" class="header">Currying</a></li>
+    <li><a href="../articles/functional-jargon.html#free-and-bound-variables" class="header">Free and Bound variables</a></li>
+    <li><a href="../articles/functional-jargon.html#closure" class="header">Closure</a></li>
+    <li><a href="../articles/functional-jargon.html#partial-application" class="header">Partial Application</a></li>
+    <li><a href="../articles/functional-jargon.html#functor" class="header">Functor</a></li>
+    <li><a href="../articles/functional-jargon.html#referential-transparency" class="header">Referential Transparency</a></li>
+    <li><a href="../articles/functional-jargon.html#lambda" class="header">Lambda</a></li>
+    <li><a href="../articles/functional-jargon.html#algerbraic-data-types" class="header">Algerbraic Data Types</a></li>
+    <li><a href="../articles/functional-jargon.html#value" class="header">Value</a></li>
+    <li><a href="../articles/functional-jargon.html#side-effect" class="header">Side Effect</a></li>
+    <li><a href="../articles/functional-jargon.html#pure" class="header">Pure</a></li>
+    <li><a href="../articles/functional-jargon.html#idempotent" class="header">Idempotent</a></li>
+    <li><a href="../articles/functional-jargon.html#constant" class="header">Constant</a></li>
+    <li><a href="../articles/functional-jargon.html#semigroup" class="header">Semigroup</a></li>
+    <li><a href="../articles/functional-jargon.html#lift" class="header">Lift</a></li>
+    <li><a href="../articles/functional-jargon.html#domain-codomain" class="header">Domain Codomain</a></li>
+    <li><a href="../articles/functional-jargon.html#morphism" class="header">Morphism</a></li>
+    <li><a href="../articles/functional-jargon.html#predicate" class="header">Predicate</a></li>
+    <li><a href="../articles/functional-jargon.html#auto-currying" class="header">Auto Currying</a></li>
+    <li><a href="../articles/functional-jargon.html#identity-function" class="header">Identity Function</a></li>
+    <li><a href="../articles/functional-jargon.html#monoid" class="header">Monoid</a></li>
+    <li><a href="../articles/functional-jargon.html#setoid" class="header">Setoid</a></li>
+    <li><a href="../articles/functional-jargon.html#monad" class="header">Monad</a></li>
+    <li><a href="../articles/functional-jargon.html#immutability" class="header">Immutability</a></li>
+    <li><a href="../articles/functional-jargon.html#equational-reasoning" class="header">Equational Reasoning</a></li>
+    <li><a href="../articles/functional-jargon.html#combinator" class="header">Combinator</a></li>
+    <li><a href="../articles/functional-jargon.html#category-theory" class="header">Category Theory</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</div>
+
+</section>
+</div>
+
+</div>
+
+<footer class="site-footer">
+
+<section class="site-footer-nav">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 medium-4 large-3 text-center column">
+<div class="nav-links">
+<ul>
+<!-- <li><a href="https://www.example.com/products/">Products</a> -->
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="site-footer-base">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 text-center large-9 column">
+
+<!--
+<div class="copyright">
+<span class="text">&copy; 2018</span>
+<a href="https://www.example.com" class="logo">logo</a>
+</div>
+-->
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</footer>
+
+</div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../lib/foundation/dist/foundation.min.js"></script>
+<script type="text/javascript">jQuery(document).foundation();</script>
+<script type="text/javascript" src="../js/magellan.js"></script>
+
+<style type="text/css">@import "../lib/prettify/prettify.css";</style>
+<script type="text/javascript" src="../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+
+</html>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+<title>Scala Questions</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content='Scala Zen'/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+<script type="text/javascript" src="../js/groups.js"></script>
+<link rel="stylesheet" type="text/css" href="../lib/normalize.css/normalize.css"/>
+<link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/page.css"/>
+
+<!--
+<link rel="shortcut icon" href="../images/favicon.ico" />
+-->
+</head>
+
+<body>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+<div class="off-canvas position-left" id="off-canvas-menu" data-off-canvas>
+<nav class="off-canvas-nav">
+<div class="nav-home">
+<a href="../questions/scala.html" class="active">
+<span class="home-icon">⌂</span>Scala Questions
+</a>
+<div class="version-number">
+0.1*
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+
+<header class="site-header expanded row">
+<div class="small-12 column">
+<a href="#" class="off-canvas-toggle hide-for-medium" data-toggle="off-canvas-menu"><svg class="svg-icon svg-icon-menu" version="1.1" id="Menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <path class="svg-icon-menu-path" fill="#53CDEC" d="M16.4,9H3.6C3.048,9,3,9.447,3,10c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,9.447,16.952,9,16.4,9z M16.4,13
+H3.6C3.048,13,3,13.447,3,14c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,13.447,16.952,13,16.4,13z M3.6,7H16.4
+C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.048,7,3.6,7z"/></svg>
+</a>
+<div class="title"><a href="../questions/scala.html" class="active">Scala Questions</a></div>
+
+<!--
+<a href="https://www.example.com" class="logo show-for-medium">logo</a>
+-->
+</div>
+</header>
+
+<div class="expanded row">
+
+<div class="medium-3 large-2 show-for-medium column">
+<nav class="site-nav">
+<div class="nav-home">
+<a href="../questions/scala.html" class="active">
+<span class="home-icon">⌂</span>Scala Questions
+</a>
+<div class="version-number">
+0.1*
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="small-12 medium-9 large-10 column">
+<section class="site-content">
+
+<div class="page-header row">
+<div class="medium-12 show-for-medium column">
+</div>
+</div>
+
+<div class="page-content row">
+<div class="small-12 large-9 column" id="docs">
+<h2><a href="#scala-questions" name="scala-questions" class="anchor"><span class="anchor-link"></span></a>Scala Questions</h2>
+<ol>
+  <li><a href="#explain-by-value-parameter">Explain by value parameter</a></li>
+  <li><a href="#explain-by-name-parameter">Explain by name parameter</a></li>
+  <li><a href="#what-is-unit">What is Unit</a></li>
+  <li><a href="#differences-between-def-val-var-lazy">Differences between def val var lazy</a></li>
+  <li><a href="#what-are-nothing-nil-none-empty-null-null">What are Nothing Nil None Empty Null null</a></li>
+  <li><a href="#what-is-the-uniform-access-principal">What is the uniform access principal</a></li>
+  <li><a href="#what-are-free-and-bound-variables">What are free and bound variables</a></li>
+  <li><a href="#what-is-a-higher-order-function">What is a higher order function</a></li>
+  <li><a href="#what-is-a-first-class-function">What is a first class function</a></li>
+  <li><a href="#what-is-a-companion-object">What is a companion object</a></li>
+  <li><a href="#is-there-an-if-statement-in-scala">Is there an if statement in scala</a></li>
+  <li><a href="#what-are-the-differences-between-case-class-and-normal-class">What are the differences between case class and normal class</a></li>
+  <li><a href="#what-would-be-a-trait-for-a-monad-in-scala">What would be a trait for a monad in Scala</a></li>
+  <li><a href="#what-operations-is-a-for-comprehension-syntactic-sugar-for">What operations is a for comprehension syntactic sugar for</a></li>
+  <li><a href="#what-is-an-algerbraic-data-type">What is an algerbraic data type</a></li>
+  <li><a href="#what-is-function-currying">What is function currying</a></li>
+  <li><a href="#what-is-head-and-tail-recursion">What is head and tail recursion</a></li>
+  <li><a href="#what-is-type-inference">What is type inference</a></li>
+  <li><a href="#what-is-a-vararg-parameter">What is a vararg parameter</a></li>
+</ol>
+<h2><a href="#explain-by-value-parameter" name="explain-by-value-parameter" class="anchor"><span class="anchor-link"></span></a>Explain by value parameter</h2>
+<p>A by-value parameter is evaluated before the method is invoked. e.g. <code>(a: Int)</code></p>
+<pre class="prettyprint"><code class="language-scala">// a and b are by value parameters
+def sum(a: Int, b: Int): Int = a + b
+
+sum(3 + 4, 4)
+</code></pre>
+<h2><a href="#explain-by-name-parameter" name="explain-by-name-parameter" class="anchor"><span class="anchor-link"></span></a>Explain by name parameter</h2>
+<p>A by-name parameter is not evaluated before the method is invoked. But each time the parameter is referenced inside the method e.g. <code>(msg: =&gt; String)</code></p>
+<pre class="prettyprint"><code class="language-scala">trait Logger {
+  def info(msg: =&gt; String)
+  def warn(msg: =&gt; String)
+  def error(msg: =&gt; String)
+}
+
+case class Log(var level: String =&quot;ERROR&quot;) extends Logger {
+  def info(msg: =&gt; String) = if (level != &quot;ERROR&quot;) println(msg)
+  def warn(msg: =&gt; String) = if (level == &quot;WARN&quot;) println(msg)
+  def error(msg: =&gt; String) = println(msg)
+}
+
+val log = Log()
+
+// the argument passed to `log.warn` is never evaluated
+log.warn(s&quot;${Thread.currentThread().getName}: yo there is an error on thread&quot;)
+
+</code></pre>
+<h2><a href="#what-is-unit" name="what-is-unit" class="anchor"><span class="anchor-link"></span></a>What is Unit</h2>
+<p><code>Unit</code> is a subtype of <code>AnyVal</code>. There is only one value of type <code>Unit</code>, <code>()</code>, and it is not represented by any object in the underlying runtime system. A method with return type <code>Unit</code> is analogous to a Java method which is declared <code>void</code>.</p>
+<pre><code>def logToConsole(msg: =&gt; String): Unit = println(msg)
+</code></pre>
+<h2><a href="#differences-between-def-val-var-lazy" name="differences-between-def-val-var-lazy" class="anchor"><span class="anchor-link"></span></a>Differences between def val var lazy</h2>
+<p><code>def</code> defines a method<br/><code>val</code> defines a fixed value, it is immmutable and eagerly initialized<br/><code>var</code> defines a variable reference, it is mutable<br/><code>lazy</code> only initialised when required and as late as possible, default is strict and is not recomputed like <code>by-name</code> parameters</p>
+<pre class="prettyprint"><code class="language-scala">// evaluated every time that gets invoked
+def z = { println(&quot;z&quot;); 3}
+// evaluated immeditately once
+val x = {println(&quot;x&quot;); 1}
+// evaluated immeditately
+val w = {println(&quot;x&quot;); 1}
+// evaluated only when invoked, once
+lazy val y = { println(&quot;y&quot;); 2}
+</code></pre>
+<h2><a href="#what-are-nothing-nil-none-empty-null-null" name="what-are-nothing-nil-none-empty-null-null" class="anchor"><span class="anchor-link"></span></a>What are Nothing Nil None Empty Null null</h2>
+<p><code>Nothing</code> is a trait that is the bottom subtype of every subtype of <code>Any</code><br/><code>Nil</code> is an empty list that is defined as a List[Nothing]<br/><code>None</code> is an empty Option that is defined as a Option[Nothing]<br/><code>Null</code> is a trait and is the bottom type similiar to Nothing but only for <code>AnyRef</code> not <code>AnyVal</code><br/><code>null</code> is an instance of the <code>Null</code> trait</p>
+<p><img src="./class-hierarchy.png?raw=true" alt="Alt text" title="Scala class hierarchy" /></p>
+<h2><a href="#what-is-the-uniform-access-principal" name="what-is-the-uniform-access-principal" class="anchor"><span class="anchor-link"></span></a>What is the uniform access principal</h2>
+<p>The uniform access principle states that variables, precomputed properties and parameterless functions should be accessed using the same syntax. Therefore not betraying whether they are implemented through storage or through computation.<br/>Scala supports this principle by not allowing parentheses to be placed at call sites of parameterless functions.<br/>A parameterless function definition can be changed to a val or vice versa, without affecting client code</p>
+<pre class="prettyprint"><code class="language-scala">  def nonUniformRandom() = new scala.util.Random().nextInt()
+  def uniformRandom = new scala.util.Random().nextInt()
+  val rand = 213
+
+  // non uniform access
+  nonUniformRandom()
+  rand 
+  
+  // uniform access
+  uniformRandom
+  rand
+
+
+  object a {
+      def nonUniformRandom() = new scala.util.Random().nextInt()
+      def uniformRandom = new scala.util.Random().nextInt()
+      val rand = 213
+  }
+
+  // non uniform access
+  a.nonUniformRandom()
+  a.rand 
+  
+  // uniform access
+  a.uniformRandom
+  a.rand
+
+</code></pre>
+<h2><a href="#what-are-free-and-bound-variables" name="what-are-free-and-bound-variables" class="anchor"><span class="anchor-link"></span></a>What are free and bound variables</h2>
+<p>Free and bound variables are talked about in the context of a function.<br/><code>bound variables</code> are arguments to a function that are explicity defined in their function definition.<br/><code>free variables</code> are variables that are referenced in the function body and are defined outside the function</p>
+<pre class="prettyprint"><code class="language-scala">// bound variable function, x is a bound variable
+def addOne(x: Int): Int = x + 1
+
+object Counter {
+  var counter: Int = 0
+  // free variable function, counter is a free variable
+  def increment: Int = {
+    counter = counter + 1
+    counter
+  }
+
+  // mix of bound varibale `x` and free variable `counter`
+  def resetCounterTo(x: Int): Int = {
+    counter = x
+    counter
+  }
+}
+
+println(Counter.increment)
+
+
+</code></pre>
+<h2><a href="#what-is-a-higher-order-function" name="what-is-a-higher-order-function" class="anchor"><span class="anchor-link"></span></a>What is a higher order function</h2>
+<p>A higher order function is either: 1. A function which takes another function as an argument. 2. A function which returns another function as a result.</p>
+<pre class="prettyprint"><code class="language-scala">// map, flatMap and filter are examples of functions which take other functions as arguments
+List(1, 2, 3).map(_ + 2)
+List(1, 2, 3).flatMap(number =&gt; number.to(10).toList)
+List(1, 2, 3).filter(number =&gt; (number % 2) == 0)
+
+// generateAdder is an example of a function returning another function
+def generateAdder(x: Int) = (y: Int) =&gt; y + x
+val addFive = generateAdder(5)
+addFive(4)
+
+
+</code></pre>
+<h2><a href="#what-is-a-first-class-function" name="what-is-a-first-class-function" class="anchor"><span class="anchor-link"></span></a>What is a first class function</h2>
+<p>A first class function is when a language treats a function as a value and can be assigned to variables.</p>
+<pre class="prettyprint"><code class="language-scala">// a function assigned to a variable
+val squared = (x: Int) =&gt; x * x
+
+// then set to another variable
+val squareInt = squared
+
+println(squared(5))
+println(squareInt(5))
+
+</code></pre>
+<h2><a href="#what-is-a-companion-object" name="what-is-a-companion-object" class="anchor"><span class="anchor-link"></span></a>What is a companion object</h2>
+<p>A companion object is a singleton object that shares the same name with a class defined in the same source file.<br/>Companion objects and classes have access to each other’s private members.</p>
+<pre class="prettyprint"><code class="language-scala"><br/>class User(val name: String, val age: Int)
+
+object User {
+  // factory pattern in Scala, do not require nee for instantiation
+  def apply(name: String, age: Int): User = new User(name, age)
+  // unapply enables the extractor pattern
+  def unapply(user: User): Option[(String, Int)] = Option((user.name, user.age))
+}
+
+User(&quot;Conor&quot;, 32) match {
+  case User(name, _) =&gt; println(name)
+  case _ =&gt; println(&quot;default&quot;)
+}
+</code></pre>
+<h2><a href="#is-there-an-if-statement-in-scala" name="is-there-an-if-statement-in-scala" class="anchor"><span class="anchor-link"></span></a>Is there an if statement in scala</h2>
+<p>If statement like functionality is known as <code>conditional expressions</code> in Scala.<br/>The key difference is that the if syntax returns a value, so therefore it is an expression rather than a statement.<br/>In Java the if statement does not return a value.</p>
+<pre class="prettyprint"><code class="language-Scala"><br/>// conditional expression returns the Boolean value
+def isNegative(x: Int): Boolean = if (x &lt; 0) true else false 
+
+
+// more traditional way outside Scala with statements
+def isPositive(x: Int): Boolean = {
+  var isPos = false
+  if (x &gt; -1) {
+    isPos = true
+  }
+  return isPos  
+}
+</code></pre>
+<h2><a href="#what-are-the-differences-between-case-class-and-normal-class" name="what-are-the-differences-between-case-class-and-normal-class" class="anchor"><span class="anchor-link"></span></a>What are the differences between case class and normal class</h2>
+<ol>
+  <li>By default case class member variables are <code>val</code>.</li>
+  <li>Creates a companion object with <code>apply</code> and <code>unapply</code> methods.</li>
+  <li>Automatically can use for extractor pattern.</li>
+  <li>Eligible <code>toString</code> statement.</li>
+  <li>Sane <code>equals</code> which compares the member variables and not the memory reference of the instance.</li>
+  <li>Useful <code>copy</code> method.</li>
+  <li>An implemented <code>hashCode</code>.</li>
+</ol>
+<pre class="prettyprint"><code class="language-Scala"><br/>case class CaseUser(name: String, age: Int)
+class NormalUser(val name: String, val age: Int)
+
+// Calls CaseUser.apply(&quot;Conor&quot;, 32) which is on the generated companion object
+val caseConor = CaseUser(&quot;Conor&quot;, 32)
+// Normal instantiation of a class
+val normalConor = new NormalUser(&quot;Conor&quot;, 32)
+
+// Extractor pattern
+caseConor match {
+  case CaseUser(name, _) =&gt; println(name)
+}
+
+// prints: CaseUser(Conor,32)
+println(caseConor)
+// prints: NormalUser@1b53e6fc
+println(normalConor)
+
+// compares the member variables for equality 
+println(CaseUser(&quot;Conor&quot;, 32) == CaseUser(&quot;Conor&quot;, 32)) // results true
+
+// compares the memory reference
+println(new NormalUser(&quot;Conor&quot;, 32) == new NormalUser(&quot;Conor&quot;, 32)) // results false
+
+
+// useful copy method when you want to preserve some fields and return an new instance
+def changeName(user: CaseUser, name: String): CaseUser = user.copy(name = name)
+
+println(changeName(caseConor, &quot;James&quot;))
+
+</code></pre>
+<h2><a href="#what-would-be-a-trait-for-a-monad-in-scala" name="what-would-be-a-trait-for-a-monad-in-scala" class="anchor"><span class="anchor-link"></span></a>What would be a trait for a monad in Scala</h2>
+<p>Simply a monad trait in Scala would have two methods 1. <code>apply</code> which takes any <code>A</code> and wraps it in a monad 2. <code>flatMap</code> take a higher order function which converts <code>A</code> into a monad of type <code>F[B]</code></p>
+<p>The great thing is when <code>flatMap</code> and <code>apply</code> is defined, <code>map</code> can be easily derived from them.</p>
+<pre class="prettyprint"><code class="language-Scala"><br/>trait Monad[F[_]] {
+  def apply[A](value: A): F[A]
+  def flatMap[A, B](value: F[A])(func: A =&gt; F[B]): F[B]
+}
+
+trait MonadWithMap[F[_]] {
+  def apply[A](value: A): F[A]
+
+  def flatMap[A, B](value: F[A])(func: A =&gt; F[B]): F[B]
+
+  def map[A, B](value: F[A])(func: A =&gt; B): F[B] = 
+    flatMap(value)(a =&gt; apply(func(a)))  
+}
+
+</code></pre>
+<h2><a href="#what-operations-is-a-for-comprehension-syntactic-sugar-for" name="what-operations-is-a-for-comprehension-syntactic-sugar-for" class="anchor"><span class="anchor-link"></span></a>What operations is a for comprehension syntactic sugar for</h2>
+<p>Scala’s <code>for comprehensions</code> are syntactic sugar for composition of multiple operations with <code>foreach</code> ,<code>map</code> ,<code>flatMap</code> ,<code>filter</code> or <code>withFilter</code>.<br/>Scala actually translates a for-expression into calls to those methods, so any class providing them, or a subset of them, can be used with for comprehensions.</p>
+<h4><a href="#ex-1-foreach" name="ex-1-foreach" class="anchor"><span class="anchor-link"></span></a>Ex 1: foreach</h4>
+<pre class="prettyprint"><code class="language-Scala"><br/>val ages = List(21, 24, 43, 21, 33, 44)
+
+
+for (age &lt;- ages) {
+    println(age)
+  }
+
+// is translated into
+ages.foreach(age =&gt; println(age))
+</code></pre>
+<h4><a href="#ex-2-foreach" name="ex-2-foreach" class="anchor"><span class="anchor-link"></span></a>Ex 2: foreach</h4>
+<pre class="prettyprint"><code class="language-Scala">for (age1 &lt;- ages; age2 &lt;- ages) {
+    println(age1 + age2)
+  }
+
+// is translated into
+ages.foreach(age1 =&gt; ages.foreach(age2 =&gt; println(age1 + age2)))  
+</code></pre>
+<h4><a href="#ex-3-map" name="ex-3-map" class="anchor"><span class="anchor-link"></span></a>Ex 3: map</h4>
+<pre class="prettyprint"><code class="language-Scala">for (
+  age &lt;- ages
+) yield age + 1
+
+// is translated into
+ages.map(age =&gt; age + 1)
+</code></pre>
+<h4><a href="#ex-4-flatmap-map" name="ex-4-flatmap-map" class="anchor"><span class="anchor-link"></span></a>Ex 4: flatMap + map</h4>
+<pre class="prettyprint"><code class="language-Scala">for (
+  age1 &lt;- ages;
+  age2 &lt;- ages
+  ) yield age1 + age2
+  
+// is translated into
+ages.flatMap(age1 =&gt; ages.map(age2 =&gt; age1 + age2))  
+</code></pre>
+<h4><a href="#ex-5-withfilter-map" name="ex-5-withfilter-map" class="anchor"><span class="anchor-link"></span></a>Ex 5: withFilter + map</h4>
+<pre class="prettyprint"><code class="language-Scala">for (
+  age &lt;- ages if age % 2 == 0
+  ) yield age + 1
+  
+// is translated into
+ages.withFilter(age =&gt; age % 2 == 0).map(age =&gt; age + 1)
+
+// with a fallback into filter if withFilter is not available
+ages.filter(age =&gt; age % 2 == 0).map(age =&gt; age + 1)
+
+</code></pre>
+<h2><a href="#what-is-an-algerbraic-data-type" name="what-is-an-algerbraic-data-type" class="anchor"><span class="anchor-link"></span></a>What is an algerbraic data type</h2>
+<p>ADT&rsquo;s approach structuring your data as products and sums.</p>
+<p>Say we are modelling renewable power plants. </p>
+<p>A power plant can be solar or wind.<br/>A power source can be solar panels or turbines. </p>
+<p>A power plant has many solar panels and a support contractor.</p>
+<p>Sum types are <code>this</code> OR <code>that</code><br/><code>Solar</code> OR <code>Wind</code><br/><code>SolarPanel</code> OR <code>Turbine</code> </p>
+<p>Product types are <code>this</code> AND <code>that</code><br/><code>powerPanels</code> AND <code>supportContractor</code></p>
+<p>Example algerbraic data types in the core scala library <code>Option</code>, <code>Either</code>, <code>Try</code> and <code>List</code> </p>
+<pre class="prettyprint"><code class="language-Scala"><br/>sealed trait RenewablePlant {
+  val powerSources: Seq[PowerSource]
+  val supportContractor: String
+}
+sealed trait PowerSource
+
+case class SolarPanel() extends PowerSource
+case class Turbine() extends PowerSource
+
+case class Solar(powerSources: Seq[SolarPanel], supportContractor: String) extends RenewablePlant
+
+case class Wind(powerSources: Seq[Turbine], supportContractor: String) extends RenewablePlant
+
+def identify(plant: RenewablePlant): Unit = plant match {
+  case Solar(_, _) =&gt; println(&quot;SUN SUN SUN&quot;)
+  case Wind(_, _) =&gt; println(&quot;WIND WIND WIND&quot;)
+}
+
+identify(Solar(List(), &quot;Jim&quot;))
+identify(Wind(List(), &quot;Mark&quot;))
+
+</code></pre>
+<h2><a href="#what-is-function-currying" name="what-is-function-currying" class="anchor"><span class="anchor-link"></span></a>What is function currying</h2>
+<p>Currying transforms a function that takes multiple parameters into a chain of functions, each taking a subset of the parameters.<br/>Its achieved by defining parameter lists <code>(x:Int, t: Int)(y:Int)(z:Int)</code>.<br/>The strange term currying is named after the logician <a href="https://en.wikipedia.org/wiki/Haskell_Curry">Haskell Curry</a>.</p>
+<pre class="prettyprint"><code class="language-Scala"><br/>def sum(x:Int)(y: Int): Int = x + y
+
+val sumFive = sum(5)(_)
+
+println(sumFive(5))
+
+
+</code></pre>
+<h2><a href="#what-is-head-and-tail-recursion" name="what-is-head-and-tail-recursion" class="anchor"><span class="anchor-link"></span></a>What is head and tail recursion</h2>
+<p>Recursion occurs when a function calls itself.<br/><code>Head</code> recursion is where the function calls itself before the last expression in the function body.<br/><code>Tail</code> recursion is a more specific recursion where the last expression in the function body calls itself. </p>
+<p>Tail recursion has the advantage that it is optimised by the scala compiler into a normal loop and therefore cannot cause stackoverflows.</p>
+<pre class="prettyprint"><code class="language-Scala"><br/>// head recursion as sumHead(n -1) is not the final expression
+def sumHead(n: Int): Int = {
+  val result = if (n &lt;= 0) 
+    0
+  else
+    n + sumHead(n -1) 
+
+  result
+}
+
+// tail recursion as sumTail(n -1) is the final expression
+def sumTail(acc: Int, n: Int): Int =
+  if (n &lt;= 1) 
+    acc 
+  else
+    sumTail(acc + n, n - 1) 
+
+
+sumHead(1000000) // throws stack overflow as it is not converted to a normal loop
+
+sumTail(0,1000000) // executes normally because it is optimised to a normal loop
+
+</code></pre>
+<h2><a href="#what-is-type-inference" name="what-is-type-inference" class="anchor"><span class="anchor-link"></span></a>What is type inference</h2>
+<p>In scala the compiler can infer the type of an expression and therefore leave out the explictit declaring of types for variable declarations.</p>
+<pre class="prettyprint"><code class="language-Scala">// 3&#39;s type is automatically infered to be an Int
+val integer = 3
+// versus
+val _integer: Int = 3
+
+// &quot;I am a string&quot; type is automatically infered to be a string
+val string = &quot;I am a string&quot;
+// versus
+val _string: String = &quot;I am a string&quot;
+
+case class Person(age: Int, name: String)
+
+// Person(32, &quot;conor&quot;) is automatically infered to be a Person
+val person = Person(32, &quot;Conor&quot;)
+// versus
+val _person: Person = Person(32, &quot;Conor&quot;)
+
+</code></pre>
+<h2><a href="#what-is-a-vararg-parameter" name="what-is-a-vararg-parameter" class="anchor"><span class="anchor-link"></span></a>What is a vararg parameter</h2>
+<p>It allows a function to have a variable amount of arguments of the same type.</p>
+<pre class="prettyprint"><code class="language-Scala">def concat(strings: String*): String = strings.foldLeft(&quot;&quot;)(_ + _)
+
+concat(&quot;hello&quot;, &quot;world&quot;)
+</code></pre>
+</div>
+<div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../questions/scala.html#scala-questions" class="header">Scala Questions</a>
+  <ul>
+    <li><a href="../questions/scala.html#explain-by-value-parameter" class="header">Explain by value parameter</a></li>
+    <li><a href="../questions/scala.html#explain-by-name-parameter" class="header">Explain by name parameter</a></li>
+    <li><a href="../questions/scala.html#what-is-unit" class="header">What is Unit</a></li>
+    <li><a href="../questions/scala.html#differences-between-def-val-var-lazy" class="header">Differences between def val var lazy</a></li>
+    <li><a href="../questions/scala.html#what-are-nothing-nil-none-empty-null-null" class="header">What are Nothing Nil None Empty Null null</a></li>
+    <li><a href="../questions/scala.html#what-is-the-uniform-access-principal" class="header">What is the uniform access principal</a></li>
+    <li><a href="../questions/scala.html#what-are-free-and-bound-variables" class="header">What are free and bound variables</a></li>
+    <li><a href="../questions/scala.html#what-is-a-higher-order-function" class="header">What is a higher order function</a></li>
+    <li><a href="../questions/scala.html#what-is-a-first-class-function" class="header">What is a first class function</a></li>
+    <li><a href="../questions/scala.html#what-is-a-companion-object" class="header">What is a companion object</a></li>
+    <li><a href="../questions/scala.html#is-there-an-if-statement-in-scala" class="header">Is there an if statement in scala</a></li>
+    <li><a href="../questions/scala.html#what-are-the-differences-between-case-class-and-normal-class" class="header">What are the differences between case class and normal class</a></li>
+    <li><a href="../questions/scala.html#what-would-be-a-trait-for-a-monad-in-scala" class="header">What would be a trait for a monad in Scala</a></li>
+    <li><a href="../questions/scala.html#what-operations-is-a-for-comprehension-syntactic-sugar-for" class="header">What operations is a for comprehension syntactic sugar for</a></li>
+    <li><a href="../questions/scala.html#what-is-an-algerbraic-data-type" class="header">What is an algerbraic data type</a></li>
+    <li><a href="../questions/scala.html#what-is-function-currying" class="header">What is function currying</a></li>
+    <li><a href="../questions/scala.html#what-is-head-and-tail-recursion" class="header">What is head and tail recursion</a></li>
+    <li><a href="../questions/scala.html#what-is-type-inference" class="header">What is type inference</a></li>
+    <li><a href="../questions/scala.html#what-is-a-vararg-parameter" class="header">What is a vararg parameter</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</div>
+
+</section>
+</div>
+
+</div>
+
+<footer class="site-footer">
+
+<section class="site-footer-nav">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 medium-4 large-3 text-center column">
+<div class="nav-links">
+<ul>
+<!-- <li><a href="https://www.example.com/products/">Products</a> -->
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="site-footer-base">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 text-center large-9 column">
+
+<!--
+<div class="copyright">
+<span class="text">&copy; 2018</span>
+<a href="https://www.example.com" class="logo">logo</a>
+</div>
+-->
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</footer>
+
+</div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../lib/foundation/dist/foundation.min.js"></script>
+<script type="text/javascript">jQuery(document).foundation();</script>
+<script type="text/javascript" src="../js/magellan.js"></script>
+
+<style type="text/css">@import "../lib/prettify/prettify.css";</style>
+<script type="text/javascript" src="../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+
+</html>
