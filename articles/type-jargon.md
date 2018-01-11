@@ -218,3 +218,15 @@ A full type descriptor of a Scala type. For example, a TypeTag[List[String]] con
 A partial type descriptor of a Scala type. For example, a ClassTag[List[String]] contains only the erased class type information, in this case, of type scala.collection.immutable.List. ClassTags provide access only to the runtime class of a type. Analogous to scala.reflect.ClassManifest  
 * scala.reflect.api.TypeTags#WeakTypeTag   
 A type descriptor for abstract types.
+
+```Scala
+import scala.reflect.runtime.universe._
+
+class Foo
+class Bar extends Foo
+
+def meth[A : TypeTag](xs: List[A]) = typeOf[A] match {
+  case t if t =:= typeOf[String] => "list of strings"
+  case t if t <:< typeOf[Foo] => "list of foos"
+}
+```
