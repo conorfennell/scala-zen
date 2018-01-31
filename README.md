@@ -56,3 +56,4 @@ Scala Zen
 - [Scala Native:](http://www.scala-native.org/en/latest/) No JVM
 - [Chisel3:](https://chisel.eecs.berkeley.edu/) Hardware construction language
 - [Ammonite](http://ammonite.io/#Ammonite-REPL) Improved Scala shell  
+- [Mima](https://github.com/lightbend/migration-manager) Scala Binary Compatibility validation tool
