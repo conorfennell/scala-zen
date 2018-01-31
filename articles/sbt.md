@@ -1,6 +1,9 @@
 ## SBT Examples
 These examples presume you have SBT installed from http://www.scala-sbt.org/
 
+### Sbt version manager  
+There is very useful sbt version manager you can find here [sbtenv](https://github.com/sbtenv/sbtenv)  
+
 ### Hello World
 
 #### Purpose
