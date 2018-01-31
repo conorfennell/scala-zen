@@ -175,7 +175,7 @@ Show how adding a configuration `% test` to the `ModuleId` prevents it from bein
 name := "hello"
 version := "1.0.1"
 organization := "com.scala"
-librayDependencies += "org.scalatest" %% "scalatest" % "3.0.4" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.4" % "test"
 ```
 
 `./HelloWorld.scala`
@@ -649,3 +649,45 @@ Other options
 #
 #-java-home <path>
 ```
+
+### Run only tests whos files has changed  
+
+#### Purpose
+Execute tests but only the tests that have changed  
+
+#### File Layout
+```
+./src/main/scala/UsefulFunctions.scala
+./src/test/scala/UsefulFunctions.scala
+./build.sbt
+```
+
+#### Files
+`./src/main/scala/UsefulFunctions.scala`
+```Scala
+object UsefulFunctions {
+    def add(x: Int, y Int): Int = x + y 
+}
+```
+`./src/test/scala/UsefulFunctions.scala`
+```Scala
+import org.scalatest._
+
+class UsefulFunctionsSpec extends FlatSpec with Matchers {
+    "add function" should "add two integers" in {
+        UsefulFunctions.add(1, 2) should be (3)
+    }
+}
+```
+`./build.sbt`
+```Scala
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.4" % "test"
+```
+
+#### SBT commands
+```Bash
+sbt test
+```
+`sbt test`  
+- serches the `./src/test/scals/` folder to find tests.
+- then runs the defined steps one by one.  
