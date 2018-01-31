@@ -42,7 +42,7 @@ Show how to use a specific version of SBT in a project.
 #### Files
 `./project/build.properties`
 ```INI
-sbt.vesion=1.0.4
+sbt.version=1.1.0
 ```
 
 #### SBT commands
