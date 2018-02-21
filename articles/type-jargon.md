@@ -9,6 +9,29 @@ type Number = Int
 
 ```
 
+
+### Proper Types
+Proper types are generally "any type that can applied to an expression in our programming language." (Michael Pilquist)  
+
+They are known, concrete types that do not require construction.
+
+Examples:
+```Scala
+String
+Int
+List[Long]
+```
+
+### Type Constructors  
+Type constructors like List, Option, Try require a type parameter to construct a proper type.
+
+When a type is provided as a parameter it constructs a proper type:
+```Scala
+List[String]("Kind")
+List[Int](3)
+Option[String]("Woo")
+```
+
 ### Invariance - nonvariant
 Invariance in a type system means the allowable type is held to the specified type and its subtypes.  
 
