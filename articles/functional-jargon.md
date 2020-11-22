@@ -559,7 +559,7 @@ When an application is composed of expressions which Scala can achieve and devoi
 ### Combinator
 From the Haskell wiki "a style of oranising libraries centered around the idea of combining things". Specifically in this case it is combining functions.
 
-Scala has parser combinators which join parses.  
+Scala has parser combinators which join parsers.  
 
 
 ```Scala
